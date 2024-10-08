@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
-namespace InnoversUI
+namespace InnoversUI.Controls
 {
+
     public class TextField : TextBox
     {
-
         // HINT TEXT
+        #region [HINTTEXT]
         public string HintText
         {
             get { return (string)GetValue(HintTextProperty); }
@@ -17,8 +19,25 @@ namespace InnoversUI
         public static readonly DependencyProperty HintTextProperty =
             DependencyProperty.Register("HintText", typeof(string), typeof(TextField), new PropertyMetadata(string.Empty));
 
+        #endregion [HINTTEXT]
+
+        //HINTTEXT COLOR
+
+        #region [HINTTEXT COLOR]
+        public SolidColorBrush HintTextColor
+        {
+            get { return (SolidColorBrush)GetValue(HintTextColorProperty); }
+            set { SetValue(HintTextColorProperty, value); }
+        }
+
+        public static readonly DependencyProperty HintTextColorProperty =
+            DependencyProperty.Register("HintTextColor", typeof(SolidColorBrush), typeof(TextField), new PropertyMetadata(Brushes.Gray));
+        #endregion [HINTTEXT COLOR]
+
+
 
         //IS EMPTY
+        #region [ISEMPTY]
         public bool IsEmpty
         {
             get { return (bool)GetValue(IsEmptyProperty); }
@@ -30,7 +49,10 @@ namespace InnoversUI
 
         public static readonly DependencyProperty IsEmptyProperty = IsEmptyPropertyKey.DependencyProperty;
 
+        #endregion [ISEMPTY]
 
+        //ISONLYNUMERIC
+        #region [ISONLYNUMERIC]
         public bool IsOnlyNumeric
         {
             get { return (bool)GetValue(IsOnlyNumericProperty); }
@@ -41,6 +63,7 @@ namespace InnoversUI
            DependencyProperty.RegisterReadOnly("IsOnlyNumeric", typeof(bool), typeof(TextField), new PropertyMetadata(false));
 
         public static readonly DependencyProperty IsOnlyNumericProperty = IsOnlyNumericPropertyKey.DependencyProperty;
+        #endregion [ISONLYNUMERIC]
 
         static TextField()
         {
@@ -53,10 +76,5 @@ namespace InnoversUI
             Console.WriteLine("LIBRARY USAGE");
             base.OnTextChanged(e);
         }
-
-        //protected override void OnPreviewTextInput(TextCompositionEventArgs e)
-        //{
-        //    base.OnPreviewTextInput(e);
-        //}
     }
 }

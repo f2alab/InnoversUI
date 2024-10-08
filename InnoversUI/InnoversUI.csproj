@@ -48,17 +48,26 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\CircleButton.cs" />
+    <Compile Include="Controls\CircleImage.cs" />
+    <Compile Include="Controls\CircleProgressBar.cs" />
+    <Compile Include="Controls\DateRange.cs" />
+    <Compile Include="Controls\FavoriteCheckBox.cs" />
+    <Compile Include="Controls\IconTextField.cs" />
+    <Compile Include="Controls\InnoButton.cs" />
+    <Compile Include="Controls\InnoComboBox.cs" />
+    <Compile Include="Controls\InnoDatePicker.cs" />
+    <Compile Include="Controls\NumericUpDown.cs" />
+    <Compile Include="Controls\TextField.cs" />
     <Compile Include="Dialogs\DialogWait.xaml.cs">
       <DependentUpon>DialogWait.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\InnoDialog.xaml.cs">
       <DependentUpon>InnoDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InnoButton.cs" />
     <Compile Include="MainActivity.xaml.cs">
       <DependentUpon>MainActivity.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TextField.cs" />
     <Compile Include="Utils\AnimationsUtils.cs" />
     <Compile Include="Utils\ControlsUtils.cs" />
     <Compile Include="Utils\DialogsUtils.cs" />
@@ -82,14 +91,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="CircleProgressBar.cs" />
     <Compile Include="Converters\StrokeDashArrayConverter.cs" />
-    <Compile Include="CustomControl1.cs">
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IconTextField.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:InnoversUITest" xmlns:customs="clr-namespace:InnoversUI;assembly=InnoversUI"
+        xmlns:local="clr-namespace:InnoversUITest" xmlns:customs="clr-namespace:InnoversUI.Controls;assembly=InnoversUI"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         KeyDown="Window_KeyDown">
@@ -19,6 +19,19 @@
             <Button x:Name="DialogtBtn" Content="Dialog" Click="DialogtBtn_Click"/>
             <Border Height="10" />
             <customs:InnoButton x:Name="InnoBtn" Click="InnoBtn_Click"/>
+            <Border Height="10" />
+            <customs:InnoButton  CornerRadius="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="Red" Height="25" CornerRadius="10 0 0 10"/>
+                    <Border Background="Green" Height="25" Grid.Column="1" CornerRadius="0 10 10 0" Padding="3">
+                        <TextBlock Text="AJOUTER UN PRODUT CLIENT" VerticalAlignment="Center"/>
+                    </Border>
+                </Grid>
+            </customs:InnoButton>
         </StackPanel>
     </Grid>
 </Window>

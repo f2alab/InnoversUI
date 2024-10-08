@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace InnoversUI
+namespace InnoversUI.Controls
 {
 
     public class IconTextField : TextBox

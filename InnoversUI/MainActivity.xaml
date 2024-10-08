@@ -3,14 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:InnoversUI"
+        xmlns:local="clr-namespace:InnoversUI.Controls"
         mc:Ignorable="d"
         Title="MainActivity" Height="450" Width="800" Padding="10">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <StackPanel >
             <local:CircleProgressBar IsLoading="True" Size="50"/>
             <Border Height="10" />
-            <local:TextField HintText="TextField" Text="" />
+            <local:TextField HintText="TextField" Text=""/>
             <Border Height="10" />
             <local:IconTextField HintText="IconTextField" Text="" Height="35" BorderThickness="6"/>
             <Border Height="10" />
@@ -21,7 +21,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Border Background="Red" Height="25" CornerRadius="10 0 0 10"/>
-                    <Border Background="Green" Height="25" Grid.Column="1" CornerRadius="0 10 10 0">
+                    <Border Background="Green" Height="25" Grid.Column="1" CornerRadius="0 10 10 0" Padding="3">
                         <TextBlock Text="AJOUTER UN PRODUT CLIENT" VerticalAlignment="Center"/>
                     </Border>
                 </Grid>

@@ -2,10 +2,12 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace InnoversUI
+namespace InnoversUI.Controls
 {
+
     public class CircleProgressBar : Control
     {
+
         #region [PROPRIETIES]
 
         public static readonly DependencyProperty SizeProperty =

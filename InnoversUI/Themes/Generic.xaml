@@ -35,7 +35,9 @@
                         StrokeThickness="{TemplateBinding Thickness}"
                         StrokeDashCap="{TemplateBinding LineCape}"
                         Visibility="{TemplateBinding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}"
-                        RenderTransformOrigin="0.5 0.5">
+                        RenderTransformOrigin="0.5 0.5"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
 
                         <Ellipse.StrokeDashArray>
                             <MultiBinding Converter="{StaticResource StrokeDashArrayConverter}">

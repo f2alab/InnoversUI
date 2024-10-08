@@ -1,11 +1,13 @@
-﻿using System.Windows;
+﻿using InnoversUI.Dialogs;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace InnoversUI.Utils
 {
     public class DialogsUtils
     {
         //DIALOG BACKGROUNG SIZE
-        private static void DialogBackgroudSize(Window Parent, Window Child)
+        public static void DialogBackgroudSize(Window Parent, Window Child)
         {
             if (Parent != null)
             {
@@ -17,7 +19,17 @@ namespace InnoversUI.Utils
             }
         }
 
+        public static DialogWait DialogWait(Window Parent, string Message = null)
+        {
+            DialogWait dialog = new DialogWait(Parent: Parent, Message: Message);
+            dialog.Show();
+            return dialog;
+        }
 
+        public static void ShowDialog(Window Parent, Control Child, bool IsDismissible = false)
+        {
+            new InnoDialog(Parent: Parent, Child: Child, IsDismissible: IsDismissible).Show();
+        }
 
     }
 }

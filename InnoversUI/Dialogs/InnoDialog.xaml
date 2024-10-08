@@ -1,0 +1,19 @@
+﻿<Window x:Class="InnoversUI.Dialogs.InnoDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InnoversUI.Dialogs"
+        mc:Ignorable="d"
+        Title="DialogWait" Height="450" Width="800"
+        x:Name="MainDialog"
+        ShowInTaskbar="False"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        MouseDown="Window_MouseDown"
+        KeyDown="Window_KeyDown">
+    <Grid Background="#7F000000">
+        <Border x:Name="MainBorder" x:FieldModifier="private" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</Window>

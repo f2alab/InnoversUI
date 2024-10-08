@@ -1,6 +1,8 @@
-﻿using InnoversUI.Utils;
+﻿using InnoversUI;
+using InnoversUI.Utils;
 using System;
 using System.Windows;
+using System.Windows.Media;
 
 namespace InnoversUITest
 {
@@ -25,6 +27,16 @@ namespace InnoversUITest
         {
             Console.WriteLine("IsEmpty: " + TF.IsEmpty);
             Console.WriteLine("CALL USAGE");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DialogsUtils.DialogWait(Parent: this, Message: "En Cours...");
+        }
+
+        private void DialogtBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DialogsUtils.ShowDialog(Parent: this, Child: new CircleProgressBar() { ProgressColor = Brushes.White });
         }
     }
 }

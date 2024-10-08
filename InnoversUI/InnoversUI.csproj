@@ -48,6 +48,12 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dialogs\DialogWait.xaml.cs">
+      <DependentUpon>DialogWait.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\InnoDialog.xaml.cs">
+      <DependentUpon>InnoDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainActivity.xaml.cs">
       <DependentUpon>MainActivity.xaml</DependentUpon>
     </Compile>
@@ -59,6 +65,14 @@
     <Compile Include="Utils\ResourcesUtils.cs" />
     <Compile Include="Utils\SystemUtils.cs" />
     <Compile Include="Utils\WindowUtils.cs" />
+    <Page Include="Dialogs\DialogWait.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\InnoDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainActivity.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

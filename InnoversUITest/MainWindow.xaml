@@ -14,6 +14,9 @@
             <customs:TextField x:Name="TF" HintText="TextField" Text="" PreviewTextInput="TextField_PreviewTextInput" TextChanged="TextField_TextChanged"/>
             <Border Height="10" />
             <customs:IconTextField HintText="IconTextField" Text="" Height="35" BorderThickness="6"/>
+            <Border Height="10" />
+            <Button x:Name="DialogWaitBtn" Content="Dialog Wait" Click="Button_Click"/>
+            <Button x:Name="DialogtBtn" Content="Dialog" Click="DialogtBtn_Click"/>
         </StackPanel>
     </Grid>
 </Window>

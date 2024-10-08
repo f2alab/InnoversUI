@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Media;
 
@@ -13,7 +9,7 @@ namespace InnoversUI.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if(values.Length < 2 ||
+            if (values.Length < 2 ||
                 !double.TryParse(values[0].ToString(), out double size) ||
                 !double.TryParse(values[1].ToString(), out double thickness)
                 )
@@ -25,7 +21,7 @@ namespace InnoversUI.Converters
             double LineLength = Circonference * 0.75;
             double GapLength = Circonference - LineLength;
 
-            return new DoubleCollection(new[] {LineLength/thickness, GapLength/thickness});
+            return new DoubleCollection(new[] { LineLength / thickness, GapLength / thickness });
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

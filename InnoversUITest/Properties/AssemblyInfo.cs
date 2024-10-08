@@ -3,20 +3,20 @@ using System.Runtime.InteropServices;
 using System.Windows;
 
 // Les informations générales relatives à un assembly dépendent de
-// l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
+// l'ensemble d'attributs suivant. Pour modifier les informations
 // associées à un assembly.
-[assembly: AssemblyTitle("InnoversUI")]
+[assembly: AssemblyTitle("InnoversUITest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("InnoversUI")]
+[assembly: AssemblyProduct("InnoversUITest")]
 [assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// L'affectation de la valeur false à ComVisible rend les types invisibles dans cet assembly 
-// aux composants COM.  Si vous devez accéder à un type dans cet assembly à partir de 
-// COM, affectez la valeur true à l'attribut ComVisible sur ce type.
+// L'affectation de la valeur false à ComVisible rend les types invisibles dans cet assembly
+// aux composants COM. Si vous devez accéder à un type dans cet assembly à partir de
+// COM, affectez la valeur True à l'attribut ComVisible sur ce type.
 [assembly: ComVisible(false)]
 
 //Pour commencer à générer des applications localisables, définissez
@@ -39,7 +39,7 @@ using System.Windows;
 )]
 
 
-// Les informations de version pour un assembly se composent des quatre valeurs suivantes :
+// Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 //
 //      Version principale
 //      Version secondaire

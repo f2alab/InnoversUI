@@ -1,24 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace InnoversUI
 {
     public class CircleProgressBar : Control
     {
         #region [PROPRIETIES]
-        
+
         public static readonly DependencyProperty SizeProperty =
           DependencyProperty.Register("Size", typeof(double), typeof(CircleProgressBar), new PropertyMetadata(80.0));
 
@@ -54,7 +43,7 @@ namespace InnoversUI
             set { SetValue(ProgressColorProperty, value); }
         }
 
-        
+
         // Using a DependencyProperty as the backing store for ProgressColor.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ProgressColorProperty =
             DependencyProperty.Register("ProgressColor", typeof(SolidColorBrush), typeof(CircleProgressBar), new PropertyMetadata(Brushes.Black));

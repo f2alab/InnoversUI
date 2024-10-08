@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InnoversUI"
         mc:Ignorable="d"
-        Title="MainActivity" Height="450" Width="800">
-    <Grid>
-        <local:CircleProgressBar IsLoading="True" Size="50"/>
+        Title="MainActivity" Height="450" Width="800" Padding="10">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel >
+            <local:CircleProgressBar IsLoading="True" Size="50"/>
+            <Border Height="10" />
+            <local:TextField HintText="TextField" Text="" />
+            <Border Height="10" />
+            <local:IconTextField HintText="IconTextField" Text="" Height="35" BorderThickness="6"/>
+        </StackPanel>
     </Grid>
 </Window>

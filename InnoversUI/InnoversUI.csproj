@@ -54,6 +54,7 @@
     <Compile Include="Dialogs\InnoDialog.xaml.cs">
       <DependentUpon>InnoDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InnoButton.cs" />
     <Compile Include="MainActivity.xaml.cs">
       <DependentUpon>MainActivity.xaml</DependentUpon>
     </Compile>
@@ -106,6 +107,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\outfit_bold.ttf" />
+    <Resource Include="Fonts\outfit_extra_light.ttf" />
+    <Resource Include="Fonts\outfit_light.ttf" />
+    <Resource Include="Fonts\outfit_medium.ttf" />
+    <Resource Include="Fonts\outfit_regular.ttf" />
+    <Resource Include="Fonts\outfit_semi_bold.ttf" />
+    <Resource Include="Fonts\outfit_thin.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

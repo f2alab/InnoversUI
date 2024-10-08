@@ -45,7 +45,8 @@ namespace InnoversUI.Dialogs
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             //EMPECHER LA FERMERTURE AVEC ALT + F4
-            WindowUtils.PreventAltF4Close(e);
+            if(!Dismissible)
+                WindowUtils.PreventAltF4Close(e);
         }
     }
 }

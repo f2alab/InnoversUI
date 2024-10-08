@@ -17,6 +17,8 @@
             <Border Height="10" />
             <Button x:Name="DialogWaitBtn" Content="Dialog Wait" Click="Button_Click"/>
             <Button x:Name="DialogtBtn" Content="Dialog" Click="DialogtBtn_Click"/>
+            <Border Height="10" />
+            <customs:InnoButton x:Name="InnoBtn" Click="InnoBtn_Click"/>
         </StackPanel>
     </Grid>
 </Window>

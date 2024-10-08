@@ -13,6 +13,23 @@
             <local:TextField HintText="TextField" Text="" />
             <Border Height="10" />
             <local:IconTextField HintText="IconTextField" Text="" Height="35" BorderThickness="6"/>
+            <Border Height="10" />
+            <local:InnoButton  CornerRadius="10">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Border Background="Red" Height="25" CornerRadius="10 0 0 10"/>
+                    <Border Background="Green" Height="25" Grid.Column="1" CornerRadius="0 10 10 0">
+                        <TextBlock Text="AJOUTER UN PRODUT CLIENT" VerticalAlignment="Center"/>
+                    </Border>
+                </Grid>
+            </local:InnoButton>
+            <Border Height="10" />
+            <local:InnoButton Content="AJOUTER UN PRODUT CLIENT" />
+
+
         </StackPanel>
     </Grid>
 </Window>

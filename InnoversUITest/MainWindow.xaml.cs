@@ -2,6 +2,8 @@
 using InnoversUI.Utils;
 using System;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace InnoversUITest
@@ -13,17 +15,17 @@ namespace InnoversUITest
             InitializeComponent();
         }
 
-        private void TextField_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        private void TextField_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             ControlsUtils.TextBoxOnlyNumericInput(e);
         }
 
-        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             WindowUtils.PreventAltF4Close(e, PlaySound: true);
         }
 
-        private void TextField_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        private void TextField_TextChanged(object sender, TextChangedEventArgs e)
         {
             Console.WriteLine("IsEmpty: " + TF.IsEmpty);
             Console.WriteLine("CALL USAGE");
@@ -36,7 +38,12 @@ namespace InnoversUITest
 
         private void DialogtBtn_Click(object sender, RoutedEventArgs e)
         {
-            DialogsUtils.ShowDialog(Parent: this, Child: new CircleProgressBar() { ProgressColor = Brushes.White });
+            DialogsUtils.ShowDialog(Parent: this, Child: new CircleProgressBar() { ProgressColor = Brushes.White }, IsDismissible: true);
+        }
+
+        private void InnoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("INNO BUTTON CLICK");
         }
     }
 }

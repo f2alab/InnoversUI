@@ -21,8 +21,8 @@ namespace InnoversUI.Dialogs
 
             Dismissible = IsDismissible;
             //DIALOG BACKGROUND SIZE
-            if (Parent != null)
-                DialogsUtils.DialogBackgroudSize(Parent: Parent, Child: this);
+            //if (Parent != null)
+            DialogsUtils.DialogBackgroudSize(Parent: Parent, Child: this);
 
             //ADD CHILD
             MainBorder.Child = Child;

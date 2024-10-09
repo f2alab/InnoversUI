@@ -9,11 +9,13 @@
         x:Name="MainDialog"
         ShowInTaskbar="False"
         WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
         AllowsTransparency="True"
         Background="Transparent"
         MouseDown="Window_MouseDown"
         KeyDown="Window_KeyDown">
-    <Grid Background="#7F000000">
+    <Grid Background="#7F000000" x:Name="MainGrid">
         <Border x:Name="MainBorder" x:FieldModifier="private" HorizontalAlignment="Center" VerticalAlignment="Center"/>
     </Grid>
 </Window>

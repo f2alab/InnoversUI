@@ -127,6 +127,7 @@
         <Setter Property="Background" Value="Blue"/>
         <Setter Property="Height" Value="35"/>
         <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Content" Value="Button"/>
         <Setter Property="Cursor" Value="Hand"/>

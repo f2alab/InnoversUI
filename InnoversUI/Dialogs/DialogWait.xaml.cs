@@ -17,8 +17,8 @@ namespace InnoversUI.Dialogs
             InitializeComponent();
 
             //DIALOG BACKGROUND SIZE
-            if (Parent != null)
-                DialogsUtils.DialogBackgroudSize(Parent: Parent, Child: this);
+            //if (Parent != null)
+            DialogsUtils.DialogBackgroudSize(Parent: Parent, Child: this);
 
             if (Message != null)
             {

@@ -1,5 +1,7 @@
 ﻿using System.Media;
+using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace InnoversUI.Utils
 {
@@ -13,6 +15,27 @@ namespace InnoversUI.Utils
                 e.Handled = true;
                 if (PlaySound)
                     SystemSounds.Exclamation.Play();
+            }
+        }
+
+
+        public static Window GetParentWindow(DependencyObject child)
+        {
+            DependencyObject parentObject = VisualTreeHelper.GetParent(child);
+
+            if (parentObject == null)
+            {
+                return null;
+            }
+
+            Window parent = parentObject as Window;
+            if (parent != null)
+            {
+                return parent;
+            }
+            else
+            {
+                return GetParentWindow(parentObject);
             }
         }
     }

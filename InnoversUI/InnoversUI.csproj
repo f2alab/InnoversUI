@@ -48,6 +48,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Child.xaml.cs">
+      <DependentUpon>Child.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CircleButton.cs" />
     <Compile Include="Controls\CircleImage.cs" />
     <Compile Include="Controls\CircleProgressBar.cs" />
@@ -75,6 +78,10 @@
     <Compile Include="Utils\ResourcesUtils.cs" />
     <Compile Include="Utils\SystemUtils.cs" />
     <Compile Include="Utils\WindowUtils.cs" />
+    <Page Include="Child.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\DialogWait.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -9,6 +9,8 @@
         Title="DialogWait" Height="450" Width="800"
         ShowInTaskbar="False"
         WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="Manual"
         AllowsTransparency="True"
         Background="Transparent"
         MouseDown="Window_MouseDown"

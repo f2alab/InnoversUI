@@ -1,4 +1,5 @@
-﻿using InnoversUI.Controls;
+﻿using InnoversUI;
+using InnoversUI.Controls;
 using InnoversUI.Utils;
 using System;
 using System.Windows;
@@ -44,6 +45,11 @@ namespace InnoversUITest
         private void InnoBtn_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("INNO BUTTON CLICK");
+        }
+
+        private void DialogWithChildBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DialogsUtils.ShowDialog(Parent: this, Child: new Child(), IsDismissible: true);
         }
     }
 }

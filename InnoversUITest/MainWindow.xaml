@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:InnoversUITest" xmlns:customs="clr-namespace:InnoversUI.Controls;assembly=InnoversUI"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        KeyDown="Window_KeyDown">
+        KeyDown="Window_KeyDown"
+        WindowState="Maximized">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <StackPanel >
             <customs:CircleProgressBar IsLoading="True" Size="50" ProgressColor="Red"/>
@@ -32,6 +33,9 @@
                     </Border>
                 </Grid>
             </customs:InnoButton>
+            <Border Height="10" />
+            <customs:InnoButton x:Name="DialogWithChildBtn" Content="Dialog With Child" Click="DialogWithChildBtn_Click"/>
+            
         </StackPanel>
     </Grid>
 </Window>

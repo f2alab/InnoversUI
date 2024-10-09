@@ -1,4 +1,6 @@
 ﻿using InnoversUI.Dialogs;
+using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,7 +14,9 @@ namespace InnoversUI.Utils
             if (Parent != null)
             {
                 Child.Width = Parent.ActualWidth;
+                Child.MaxWidth = Parent.ActualWidth;
                 Child.Height = Parent.ActualHeight;
+                Child.MaxHeight = Parent.ActualHeight;
                 Child.Top = Parent.Top;
                 Child.Left = Parent.Left;
                 Child.Owner = Parent;
@@ -29,6 +33,12 @@ namespace InnoversUI.Utils
         public static void ShowDialog(Window Parent, Control Child, bool IsDismissible = false)
         {
             new InnoDialog(Parent: Parent, Child: Child, IsDismissible: IsDismissible).Show();
+        }
+
+        public static void CloseDialog()
+        {
+            foreach (Window window in Application.Current.Windows.OfType<InnoDialog>())
+                ((InnoDialog)window).Close();
         }
 
     }

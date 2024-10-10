@@ -10,7 +10,7 @@
         ShowInTaskbar="False"
         WindowStyle="None"
         ResizeMode="NoResize"
-        WindowStartupLocation="Manual"
+        WindowStartupLocation="CenterOwner"
         AllowsTransparency="True"
         Background="Transparent"
         MouseDown="Window_MouseDown"

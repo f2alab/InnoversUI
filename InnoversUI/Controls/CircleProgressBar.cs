@@ -46,7 +46,7 @@ namespace InnoversUI.Controls
         }
 
 
-        // Using a DependencyProperty as the backing store for ProgressColor.  This enables animation, styling, binding, etc...
+       
         public static readonly DependencyProperty ProgressColorProperty =
             DependencyProperty.Register("ProgressColor", typeof(SolidColorBrush), typeof(CircleProgressBar), new PropertyMetadata(Brushes.Black));
 
@@ -59,7 +59,7 @@ namespace InnoversUI.Controls
             set { SetValue(LineCapeProperty, value); }
         }
 
-        // Using a DependencyProperty as the backing store for LineCape.  This enables animation, styling, binding, etc...
+        
         public static readonly DependencyProperty LineCapeProperty =
             DependencyProperty.Register("LineCape", typeof(PenLineCap), typeof(CircleProgressBar), new PropertyMetadata(PenLineCap.Round));
 

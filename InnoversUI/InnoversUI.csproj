@@ -62,6 +62,7 @@
     <Compile Include="Controls\InnoDatePicker.cs" />
     <Compile Include="Controls\NumericUpDown.cs" />
     <Compile Include="Controls\TextField.cs" />
+    <Compile Include="Converters\DoubleToCornerRadius.cs" />
     <Compile Include="Dialogs\DialogWait.xaml.cs">
       <DependentUpon>DialogWait.xaml</DependentUpon>
     </Compile>

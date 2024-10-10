@@ -48,5 +48,11 @@ namespace InnoversUI.Dialogs
             if (!Dismissible)
                 WindowUtils.PreventAltF4Close(e);
         }
+
+        private void MainBorder_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            //POUR DESACTIVER LE CLICKAGE DE BORDER POUR EVITER DE FERMER LE DIALOG EN CAS DE DISMISSIBLE=true
+            e.Handled = true;
+        }
     }
 }

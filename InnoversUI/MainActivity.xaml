@@ -28,6 +28,9 @@
             </local:InnoButton>
             <Border Height="10" />
             <local:InnoButton Content="AJOUTER UN PRODUT CLIENT" />
+            <local:CircleButton Size="25">
+                <TextBlock Text="CB"/>
+            </local:CircleButton>
 
 
         </StackPanel>

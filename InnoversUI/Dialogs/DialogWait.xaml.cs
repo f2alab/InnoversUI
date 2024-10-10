@@ -7,7 +7,7 @@ namespace InnoversUI.Dialogs
 {
     public partial class DialogWait : Window
     {
-        public DialogWait()
+        internal DialogWait()
         {
             InitializeComponent();
         }

@@ -20,10 +20,6 @@ namespace InnoversUI.Controls
         #endregion [SIZE]
 
 
-
-
-
-
         public SolidColorBrush SplashColor
         {
             get { return (SolidColorBrush)GetValue(SplashColorProperty); }

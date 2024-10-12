@@ -217,10 +217,15 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:CircleImage}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
 
+                    <ControlTemplate.Resources>
+                        <converters:DoubleToCornerRadius x:Key="DoubleToCornerRadius"/>
+                    </ControlTemplate.Resources>
+
+                    <Border x:Name="Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Size}" Height="{TemplateBinding Size}" CornerRadius="{TemplateBinding Size, Converter={StaticResource DoubleToCornerRadius}}">
+                        <Border.Background>
+                            <ImageBrush ImageSource="{TemplateBinding ImageSource}" Stretch="{TemplateBinding Stretch}"/>
+                        </Border.Background>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

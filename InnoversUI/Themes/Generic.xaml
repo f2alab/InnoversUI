@@ -75,6 +75,12 @@
         <Setter Property="Background" Value="White"/>
         <Setter Property="BorderBrush" Value="Gray"/>
         <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Height" Value="35"/>
+        <Setter Property="MinWidth" Value="100"/>
+        <Setter Property="Padding" Value="3"/>
 
         <Setter Property="Template" >
             <Setter.Value>
@@ -86,10 +92,10 @@
                         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
                     </ControlTemplate.Resources>
 
-                    <Border x:Name="Border" Focusable="False" CornerRadius="5" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Height="35" Padding="3" MinWidth="100" >
+                    <Border x:Name="Border" Focusable="False" CornerRadius="{TemplateBinding CornerRadius}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Height="{TemplateBinding Height}" Padding="{TemplateBinding Padding}" MinWidth="{TemplateBinding MinHeight}" MaxWidth="{TemplateBinding MaxWidth}" MinHeight="{TemplateBinding MinHeight}" MaxHeight="{TemplateBinding MaxHeight}">
                         <Grid>
-                            <TextBlock Foreground="{TemplateBinding HintTextColor}" VerticalAlignment="Center" FontWeight="DemiBold" FontSize="12" Margin="3 0" Padding="{TemplateBinding Padding}" Text="{TemplateBinding HintText}" Visibility="{TemplateBinding IsEmpty,Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                            <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="Center" FontWeight="DemiBold" FontSize="{TemplateBinding FontSize}" Cursor="IBeam"/>
+                            <TextBlock HorizontalAlignment="{TemplateBinding HintTextHorizontalAlignment}" VerticalAlignment="{TemplateBinding HintTextVerticalAlignment}" Foreground="{TemplateBinding HintTextColor}" FontFamily="{TemplateBinding FontFamily}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" Margin="3 0" Padding="{TemplateBinding Padding}" Text="{TemplateBinding HintText}" Visibility="{TemplateBinding IsEmpty,Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                            <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="{TemplateBinding VerticalAlignment}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" Cursor="IBeam"/>
                         </Grid>
                     </Border>
 
@@ -172,8 +178,9 @@
     <!--#endregion BUTTON-->
 
 
+    <!--#region CIRCLEBUTTON -->
     <Style TargetType="{x:Type local:CircleButton}">
-        
+
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -202,4 +209,23 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--#endregion CIRCLEBUTTON-->
+
+
+    <!--#region CIRCLEIMAGE -->
+    <Style TargetType="{x:Type local:CircleImage}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:CircleImage}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion CIRCLEIMAGE-->
+
 </ResourceDictionary>

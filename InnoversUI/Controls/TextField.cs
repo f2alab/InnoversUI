@@ -22,7 +22,6 @@ namespace InnoversUI.Controls
         #endregion [HINTTEXT]
 
         //HINTTEXT COLOR
-
         #region [HINTTEXT COLOR]
         public SolidColorBrush HintTextColor
         {
@@ -34,8 +33,40 @@ namespace InnoversUI.Controls
             DependencyProperty.Register("HintTextColor", typeof(SolidColorBrush), typeof(TextField), new PropertyMetadata(Brushes.Gray));
         #endregion [HINTTEXT COLOR]
 
+        //HINT TEXT VERTICAL ALIGNMENT
+        #region [HINTTEXT VERTICAL ALIGNMENT]
+        public VerticalAlignment HintTextVerticalAlignment
+        {
+            get { return (VerticalAlignment)GetValue(HintTextVerticalAlignmentProperty); }
+            set { SetValue(HintTextVerticalAlignmentProperty, value); }
+        }
 
+        public static readonly DependencyProperty HintTextVerticalAlignmentProperty =
+            DependencyProperty.Register("HintTextVerticalAlignment", typeof(VerticalAlignment), typeof(TextField), new PropertyMetadata(VerticalAlignment.Center));
+        #endregion [HINTTEXT VERTICAL ALIGNMENT]
 
+        //HINT TEXT HORIZONTAL ALIGNMENT
+        #region [HINTTEXT HORIZONTAL ALIGNMENT]
+        public HorizontalAlignment HintTextHorizontalAlignment
+        {
+            get { return (HorizontalAlignment)GetValue(HintTextHorizontalAlignmentProperty); }
+            set { SetValue(HintTextHorizontalAlignmentProperty, value); }
+        }
+
+        public static readonly DependencyProperty HintTextHorizontalAlignmentProperty =
+            DependencyProperty.Register("HintTextHorizontalAlignment", typeof(HorizontalAlignment), typeof(TextField), new PropertyMetadata(HorizontalAlignment.Left));
+        #endregion [HINTTEXT HORIZONTAL ALIGNMENT]
+
+        #region [CORNER RADIUS]
+        public CornerRadius CornerRadius
+        {
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(TextField), new PropertyMetadata(new CornerRadius(5)));
+        #endregion [CORNER RADIUS]
         //IS EMPTY
         #region [ISEMPTY]
         public bool IsEmpty
@@ -73,7 +104,6 @@ namespace InnoversUI.Controls
         protected override void OnTextChanged(TextChangedEventArgs e)
         {
             IsEmpty = string.IsNullOrEmpty(Text);
-            Console.WriteLine("LIBRARY USAGE");
             base.OnTextChanged(e);
         }
     }

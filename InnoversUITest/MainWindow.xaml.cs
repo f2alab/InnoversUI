@@ -51,5 +51,10 @@ namespace InnoversUITest
         {
             DialogsUtils.ShowDialog(Parent: this, Child: new Child(), IsDismissible: true);
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

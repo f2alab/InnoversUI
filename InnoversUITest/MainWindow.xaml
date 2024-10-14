@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InnoversUITest" xmlns:customs="clr-namespace:InnoversUI.Controls;assembly=InnoversUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="690" Width="800"
         KeyDown="Window_KeyDown"
-        WindowState="Maximized">
+        WindowState="Maximized"
+        Loaded="Window_Loaded">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <StackPanel >
             <customs:CircleProgressBar IsLoading="True" Size="50" ProgressColor="Red"/>
@@ -45,9 +46,12 @@
                 </Viewbox>
             </customs:CircleButton>
             <Border Height="10" />
+            <customs:CircleImage x:Name="CircleImg" ImageSource="../Gifs/customer_80px.png" />
+            <Border Height="10" />
             <!--<customs:GifImage  x:Name="gifImage" Stretch="None" GifSource="../Gifs/search_location.gif" AutoStart="True" />-->
             <!--<customs:GifImage x:Name="gifImage" Stretch="None" GifSource="../Gifs/search_location.gif" AutoStart="True" />-->
             <Image Source="../Gifs/search_location.gif" Height="60"/>
+            <Image Source="../Gifs/customer_80px.png" Height="60"/>
         </StackPanel>
     </Grid>
 </Window>

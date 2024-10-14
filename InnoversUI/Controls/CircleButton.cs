@@ -19,6 +19,7 @@ namespace InnoversUI.Controls
             DependencyProperty.Register("Size", typeof(double), typeof(CircleButton), new PropertyMetadata(40.0));
         #endregion [SIZE]
 
+       
 
         public SolidColorBrush SplashColor
         {
@@ -34,8 +35,6 @@ namespace InnoversUI.Controls
         static CircleButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CircleButton), new FrameworkPropertyMetadata(typeof(CircleButton)));
-            //Border b = null;
-            //b.Background;
         }
     }
 }

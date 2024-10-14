@@ -100,5 +100,15 @@
   <ItemGroup>
     <Resource Include="Gifs\search_location.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\customer1_80px.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gifs\customer_80px.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

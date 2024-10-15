@@ -19,7 +19,6 @@ namespace InnoversUI.Controls
             DependencyProperty.Register("Size", typeof(double), typeof(CircleButton), new PropertyMetadata(40.0));
         #endregion [SIZE]
 
-       
 
         public SolidColorBrush SplashColor
         {
@@ -28,7 +27,7 @@ namespace InnoversUI.Controls
         }
 
         public static readonly DependencyProperty SplashColorProperty =
-            DependencyProperty.Register("SplashColor", typeof(SolidColorBrush), typeof(CircleButton), new PropertyMetadata(Brushes.WhiteSmoke));
+            DependencyProperty.Register("SplashColor", typeof(SolidColorBrush), typeof(CircleButton), new PropertyMetadata(Brushes.Red));
 
 
 

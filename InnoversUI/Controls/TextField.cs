@@ -53,9 +53,23 @@ namespace InnoversUI.Controls
             set { SetValue(HintTextHorizontalAlignmentProperty, value); }
         }
 
+
         public static readonly DependencyProperty HintTextHorizontalAlignmentProperty =
             DependencyProperty.Register("HintTextHorizontalAlignment", typeof(HorizontalAlignment), typeof(TextField), new PropertyMetadata(HorizontalAlignment.Left));
         #endregion [HINTTEXT HORIZONTAL ALIGNMENT]
+
+        //HINT TEXT PADDING
+        #region [HINTTEXT PADDING]
+        public Thickness HintTextPadding
+        {
+            get { return (Thickness)GetValue(HintTextPaddingProperty); }
+            set { SetValue(HintTextPaddingProperty, value); }
+        }
+
+
+        public static readonly DependencyProperty HintTextPaddingProperty =
+            DependencyProperty.Register("HintTextPadding", typeof(Thickness), typeof(TextField), new PropertyMetadata(new Thickness(3)));
+        #endregion [HINTTEXT PADDING]
 
         #region [CORNER RADIUS]
         public CornerRadius CornerRadius
@@ -99,6 +113,7 @@ namespace InnoversUI.Controls
         static TextField()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(TextField), new FrameworkPropertyMetadata(typeof(TextField)));
+            
         }
 
         protected override void OnTextChanged(TextChangedEventArgs e)

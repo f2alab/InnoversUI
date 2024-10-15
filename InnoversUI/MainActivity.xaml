@@ -10,7 +10,7 @@
         <StackPanel >
             <local:CircleProgressBar IsLoading="True" Size="50"/>
             <Border Height="10" />
-            <local:CircleImage  Size="60" BorderThickness="1" ImageSource="Assets/customer_80px.png"/>
+            <local:CircleImage  Size="10" BorderThickness="1" BorderBrush="BlueViolet" ImageSource="Assets/customer_80px.png"/>
             <Border Height="10" />
             <local:TextField HintText="TextField" Text=""/>
             <Border Height="10" />
@@ -31,7 +31,7 @@
             <Border Height="10" />
             <local:InnoButton Content="AJOUTER UN PRODUT CLIENT" />
             <local:CircleButton  >
-                <TextBlock Text="SALUT"/>
+                <TextBlock Text="GTF" HorizontalAlignment="Center"/>
             </local:CircleButton>
 
 

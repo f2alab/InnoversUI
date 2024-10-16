@@ -261,6 +261,7 @@
         <Setter Property="BorderBrush" Value="Gray"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="Cursor" Value="Hand"/>
+       
         <Setter Property="Template">
 
             <Setter.Value>
@@ -272,13 +273,14 @@
                     </ControlTemplate.Resources>
 
                     <Grid>
-                        <Border x:Name="Border" Padding="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Cursor="{TemplateBinding Cursor}" Width="{TemplateBinding Size}" Height="{TemplateBinding Size}" CornerRadius="{TemplateBinding Size, Converter={StaticResource DoubleToCornerRadius}}">
+                        <Border x:Name="Border" ToolTip="{TemplateBinding ToolTip}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Cursor="{TemplateBinding Cursor}" Width="{TemplateBinding Size}" Height="{TemplateBinding Size}" CornerRadius="{TemplateBinding Size, Converter={StaticResource DoubleToCornerRadius}}">
                             <Border.Background>
-                                <ImageBrush Stretch="{TemplateBinding Stretch}" ImageSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ImageSource}" />
+                                <ImageBrush Stretch="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Stretch}" ImageSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ImageSource}">
+                                </ImageBrush>
                             </Border.Background>
                         </Border>
 
-                        <Border x:Name="Splash" Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SplashColor}" Opacity="0.4" Visibility="Hidden" Width="{TemplateBinding Size, Converter={StaticResource ControlSizeToSplashSize}}" Height="{TemplateBinding Size, Converter={StaticResource ControlSizeToSplashSize}}" CornerRadius="{TemplateBinding Size, Converter={StaticResource DoubleToCornerRadius}}">
+                        <Border x:Name="Splash" ToolTip="{TemplateBinding ToolTip}" Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SplashColor}" Opacity="0.4" Visibility="Hidden" Width="{TemplateBinding Size, Converter={StaticResource ControlSizeToSplashSize}}" Height="{TemplateBinding Size, Converter={StaticResource ControlSizeToSplashSize}}" CornerRadius="{TemplateBinding Size, Converter={StaticResource DoubleToCornerRadius}}">
 
                         </Border>
                     </Grid>

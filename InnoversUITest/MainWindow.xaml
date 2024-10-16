@@ -12,6 +12,7 @@
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <ScrollViewer Padding="5">
             <StackPanel >
+                <customs:CircleImageButton x:Name="CircleImageBtn" Size="150" BorderThickness="1" SplashColor="SkyBlue" Click="CircleImageBtn_Click"/>
                 <customs:CircleProgressBar IsLoading="True" Size="50" ProgressColor="Red"/>
                 <Border Height="10" />
                 <customs:TextField x:Name="TF" HintText="TextField" PreviewTextInput="TextField_PreviewTextInput" TextChanged="TextField_TextChanged"/>
@@ -47,8 +48,8 @@
                 </customs:CircleButton>
                 <Border Height="10" />
                 <customs:CircleImage x:Name="CircleImg" ImageSource="/Gifs/customer_80px.png" />
-                <Border Height="10" />
-                <customs:CircleImageButton ImageSource="/Gifs/customer_80px.png" BorderThickness="0" SplashColor="SkyBlue"/>
+                <Border Height="10" /> 
+               
 
             </StackPanel>
         </ScrollViewer>

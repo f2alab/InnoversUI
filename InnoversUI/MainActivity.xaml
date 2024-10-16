@@ -34,6 +34,8 @@
                 <TextBlock Text="GTF" HorizontalAlignment="Center"/>
             </local:CircleButton>
 
+            <local:CircleImageButton x:Name="CircleImageBtn" BorderThickness="0" SplashColor="SkyBlue"  ToolTip="Circle Image Button"/>
+
 
         </StackPanel>
     </Grid>

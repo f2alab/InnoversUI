@@ -51,7 +51,7 @@ namespace InnoversUI.Controls
         }
 
         public static readonly DependencyProperty StretchProperty =
-            DependencyProperty.Register("Stretch", typeof(Stretch), typeof(CircleImageButton), new PropertyMetadata(Stretch.Uniform));
+            DependencyProperty.Register("Stretch", typeof(Stretch), typeof(CircleImageButton), new PropertyMetadata(Stretch.UniformToFill));
         #endregion [IMAGE STRETCH]
 
         public SolidColorBrush SplashColor

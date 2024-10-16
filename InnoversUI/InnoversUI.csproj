@@ -79,6 +79,7 @@
     <Compile Include="Utils\ControlsUtils.cs" />
     <Compile Include="Utils\DialogsUtils.cs" />
     <Compile Include="Utils\Enums.cs" />
+    <Compile Include="Utils\ImagesUtils.cs" />
     <Compile Include="Utils\ResourcesUtils.cs" />
     <Compile Include="Utils\SystemUtils.cs" />
     <Compile Include="Utils\WindowUtils.cs" />

@@ -13,7 +13,7 @@ namespace InnoversUI.Converters
             {
                 throw new Exception("Value error! Except double but got " + value.GetType());
             }
-            return new CornerRadius(d);
+            return new CornerRadius(d + 10);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

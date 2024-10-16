@@ -1,11 +1,13 @@
 ﻿using InnoversUI;
 using InnoversUI.Controls;
 using InnoversUI.Utils;
+using Microsoft.Win32;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace InnoversUITest
 {
@@ -55,6 +57,11 @@ namespace InnoversUITest
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void CircleImageBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ImagesUtils.OpenAndDisplayImage(ImageControl: CircleImageBtn);
         }
     }
 }

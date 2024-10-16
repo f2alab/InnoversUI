@@ -48,7 +48,8 @@
                 <Border Height="10" />
                 <customs:CircleImage x:Name="CircleImg" ImageSource="/Gifs/customer_80px.png" />
                 <Border Height="10" />
-                
+                <customs:CircleImageButton ImageSource="/Gifs/customer_80px.png" BorderThickness="0"/>
+
             </StackPanel>
         </ScrollViewer>
     </Grid>

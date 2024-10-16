@@ -225,12 +225,13 @@
     </Style>
     <!--#endregion CIRCLEBUTTON-->
 
+
     <!--#region CIRCLEIMAGE -->
     <Style TargetType="{x:Type local:CircleImage}">
         <Setter Property="BorderBrush" Value="Gray"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="Template">
-            
+
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:CircleImage}">
 
@@ -245,10 +246,53 @@
                                 <ImageBrush Stretch="{TemplateBinding Stretch}" ImageSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ImageSource}" />
                             </Border.Background>
                         </Border>
-                       
+
                     </Grid>
 
-                   
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!--#endregion CIRCLEIMAGE-->
+
+    <!--#region CIRCLEIMAGE -->
+    <Style TargetType="{x:Type local:CircleImageButton}">
+        <Setter Property="BorderBrush" Value="Gray"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:CircleImageButton}">
+
+                    <ControlTemplate.Resources>
+                        <converters:DoubleToCornerRadius x:Key="DoubleToCornerRadius"/>
+                        <converters:ControlSizeToSplashSize x:Key="ControlSizeToSplashSize"/>
+                    </ControlTemplate.Resources>
+
+                    <Grid>
+                        <Border x:Name="Border" Padding="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Cursor="{TemplateBinding Cursor}" Width="{TemplateBinding Size}" Height="{TemplateBinding Size}" CornerRadius="{TemplateBinding Size, Converter={StaticResource DoubleToCornerRadius}}">
+                            <Border.Background>
+                                <ImageBrush Stretch="{TemplateBinding Stretch}" ImageSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ImageSource}" />
+                            </Border.Background>
+                        </Border>
+
+                        <Border x:Name="Splash" Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SplashColor}" Opacity="0.4" Visibility="Hidden" Width="{TemplateBinding Size, Converter={StaticResource ControlSizeToSplashSize}}" Height="{TemplateBinding Size, Converter={StaticResource ControlSizeToSplashSize}}" CornerRadius="{TemplateBinding Size, Converter={StaticResource DoubleToCornerRadius}}">
+
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Visibility" Value="Visible" TargetName="Splash"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Visibility" Value="Visible" TargetName="Splash"/>
+                            <Setter Property="Opacity" Value="0.7" TargetName="Splash"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

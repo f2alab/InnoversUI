@@ -65,6 +65,7 @@
     <Compile Include="Controls\NumericUpDown.cs" />
     <Compile Include="Controls\TextField.cs" />
     <Compile Include="Converters\ControlSizeToSplashSize.cs" />
+    <Compile Include="Converters\CornerRadiusToLeftIcon.cs" />
     <Compile Include="Converters\DoubleToCornerRadius.cs" />
     <Compile Include="Dialogs\DialogWait.xaml.cs">
       <DependentUpon>DialogWait.xaml</DependentUpon>
@@ -76,6 +77,7 @@
       <DependentUpon>MainActivity.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\AnimationsUtils.cs" />
+    <Compile Include="Utils\Constantes.cs" />
     <Compile Include="Utils\ControlsUtils.cs" />
     <Compile Include="Utils\DialogsUtils.cs" />
     <Compile Include="Utils\Enums.cs" />

@@ -79,7 +79,7 @@
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Height" Value="35"/>
-        <Setter Property="Width" Value="180"/>
+        <Setter Property="MinWidth" Value="40"/>
         <Setter Property="Padding" Value="3"/>
 
 
@@ -93,10 +93,32 @@
                         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
                     </ControlTemplate.Resources>
 
-                    <Border x:Name="Border" Focusable="False" CornerRadius="{TemplateBinding CornerRadius}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Padding="{TemplateBinding Padding}" MinWidth="{TemplateBinding MinHeight}" MaxWidth="{TemplateBinding MaxWidth}" MinHeight="{TemplateBinding MinHeight}" MaxHeight="{TemplateBinding MaxHeight}">
+                    <Border x:Name="Border" Focusable="False" CornerRadius="{TemplateBinding CornerRadius}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" MinWidth="{TemplateBinding MinHeight}" MaxWidth="{TemplateBinding MaxWidth}" MinHeight="{TemplateBinding MinHeight}" MaxHeight="{TemplateBinding MaxHeight}">
                         <Grid>
-                            <TextBlock  HorizontalAlignment="{TemplateBinding HintTextHorizontalAlignment}" VerticalAlignment="{TemplateBinding HintTextVerticalAlignment}" Foreground="{TemplateBinding HintTextColor}" FontFamily="{TemplateBinding FontFamily}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" Margin="3 0" Padding="{TemplateBinding HintTextPadding}" Text="{TemplateBinding HintText}" Visibility="{TemplateBinding IsEmpty,Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                            <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="{TemplateBinding VerticalAlignment}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" Cursor="IBeam"/>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <!--LEFT ICON-->
+                            <Border Grid.Column="0" CornerRadius="4 0 0 4" Background="{TemplateBinding LeftIconBackColor}" Padding="3">
+                                <ContentControl Content="{TemplateBinding LeftIcon}" />
+                            </Border>
+                            
+                            <!--TEXTBOX-->
+                            <Border x:Name="TexBoxBorder" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Padding="{TemplateBinding Padding}" >
+                                <Grid >
+                                    <TextBlock  HorizontalAlignment="{TemplateBinding HintTextHorizontalAlignment}" VerticalAlignment="{TemplateBinding HintTextVerticalAlignment}" Foreground="{TemplateBinding HintTextColor}" FontFamily="{TemplateBinding FontFamily}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" Margin="3 0" Padding="{TemplateBinding HintTextPadding}" Text="{TemplateBinding HintText}" Visibility="{TemplateBinding IsEmpty,Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="{TemplateBinding VerticalAlignment}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" Cursor="IBeam"/>
+                                </Grid>
+                            </Border>
+
+                            
+
+                            <!--RIGHT ICON-->
+                            <Border Grid.Column="2" CornerRadius="0 4 4 0" Background="{TemplateBinding RightIconBackColor}" Padding="3">
+                                <ContentControl Content="{TemplateBinding RightIcon}" />
+                            </Border>
                         </Grid>
                     </Border>
 

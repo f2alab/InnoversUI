@@ -1,6 +1,8 @@
-﻿using System;
+﻿using InnoversUI.Utils;
+using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace InnoversUI.Controls
@@ -66,6 +68,65 @@ namespace InnoversUI.Controls
             set { SetValue(HintTextPaddingProperty, value); }
         }
 
+        //LEFT ICON
+        #region [LEFT ICON]
+
+        public Control LeftIcon
+        {
+            get { return (Control)GetValue(LeftIconProperty); }
+            set { SetValue(LeftIconProperty, value); }
+        }
+
+        
+        public static readonly DependencyProperty LeftIconProperty =
+            DependencyProperty.Register("LeftIcon", typeof(Control), typeof(TextField), new PropertyMetadata(null));
+
+
+
+        public Brush LeftIconBackColor
+        {
+            get { return (Brush)GetValue(LeftIconBackColorProperty); }
+            set { SetValue(LeftIconBackColorProperty, value); }
+        }
+
+        
+        public static readonly DependencyProperty LeftIconBackColorProperty =
+            DependencyProperty.Register("LeftIconBackColor", typeof(Brush), typeof(TextField), new PropertyMetadata(Brushes.Transparent));
+
+
+
+
+        #endregion [LEFT ICON]
+
+        //RIGHT ICON
+        #region [RIGHT ICON]
+
+        public FrameworkElement RightIcon
+        {
+            get { return (FrameworkElement)GetValue(RightIconProperty); }
+            set { SetValue(RightIconProperty, value); }
+        }
+
+
+        public static readonly DependencyProperty RightIconProperty =
+            DependencyProperty.Register("RightIcon", typeof(FrameworkElement), typeof(TextField), new PropertyMetadata(null));
+
+
+
+        public Brush RightIconBackColor
+        {
+            get { return (Brush)GetValue(RightIconBackColorProperty); }
+            set { SetValue(RightIconBackColorProperty, value); }
+        }
+
+
+        public static readonly DependencyProperty RightIconBackColorProperty =
+            DependencyProperty.Register("RightIconBackColor", typeof(Brush), typeof(TextField), new PropertyMetadata(Brushes.Transparent));
+
+
+
+
+        #endregion [RIGHT ICON]
 
         public static readonly DependencyProperty HintTextPaddingProperty =
             DependencyProperty.Register("HintTextPadding", typeof(Thickness), typeof(TextField), new PropertyMetadata(new Thickness(3)));
@@ -101,13 +162,11 @@ namespace InnoversUI.Controls
         public bool IsOnlyNumeric
         {
             get { return (bool)GetValue(IsOnlyNumericProperty); }
-            private set { SetValue(IsOnlyNumericPropertyKey, value); }
+            set { SetValue(IsOnlyNumericProperty, value); }
         }
 
-        private static readonly DependencyPropertyKey IsOnlyNumericPropertyKey =
-           DependencyProperty.RegisterReadOnly("IsOnlyNumeric", typeof(bool), typeof(TextField), new PropertyMetadata(false));
-
-        public static readonly DependencyProperty IsOnlyNumericProperty = IsOnlyNumericPropertyKey.DependencyProperty;
+        public static readonly DependencyProperty IsOnlyNumericProperty =
+           DependencyProperty.Register("IsOnlyNumeric", typeof(bool), typeof(TextField), new PropertyMetadata(false));
         #endregion [ISONLYNUMERIC]
 
         static TextField()
@@ -120,6 +179,17 @@ namespace InnoversUI.Controls
         {
             IsEmpty = string.IsNullOrEmpty(Text);
             base.OnTextChanged(e);
+
+            
+        }
+
+        protected override void OnPreviewTextInput(TextCompositionEventArgs e)
+        {
+            base.OnPreviewTextInput(e);
+            if(IsOnlyNumeric)
+            {
+                e.Handled = ControlsUtils.OnlyNumeric(Text: e.Text);
+            }
         }
     }
 }

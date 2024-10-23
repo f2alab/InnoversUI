@@ -20,7 +20,7 @@ namespace InnoversUITest
 
         private void TextField_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            ControlsUtils.TextBoxOnlyNumericInput(e);
+           
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)

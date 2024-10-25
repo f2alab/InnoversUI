@@ -75,9 +75,9 @@
         <Setter Property="Background" Value="White"/>
         <Setter Property="BorderBrush" Value="Gray"/>
         <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="FontSize" Value="12"/>
-        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="FontFamily" Value="Outfit Medium"/>
         <Setter Property="Height" Value="35"/>
         <Setter Property="MinWidth" Value="40"/>
         <Setter Property="Padding" Value="3"/>
@@ -93,7 +93,8 @@
                         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
                     </ControlTemplate.Resources>
 
-                    <Border x:Name="Border" Focusable="False" CornerRadius="{TemplateBinding CornerRadius}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" MinWidth="{TemplateBinding MinHeight}" MaxWidth="{TemplateBinding MaxWidth}" MinHeight="{TemplateBinding MinHeight}" MaxHeight="{TemplateBinding MaxHeight}">
+                    <Border x:Name="Border" FocusVisualStyle="{x:Null}" Focusable="False" IsEnabled="{TemplateBinding IsEnabled}" CornerRadius="{TemplateBinding CornerRadius}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" MinWidth="{TemplateBinding MinHeight}" MaxWidth="{TemplateBinding MaxWidth}" MinHeight="{TemplateBinding MinHeight}" MaxHeight="{TemplateBinding MaxHeight}">
+                        
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto"/>
@@ -101,23 +102,21 @@
                                 <ColumnDefinition Width="auto"/>
                             </Grid.ColumnDefinitions>
                             <!--LEFT ICON-->
-                            <Border Grid.Column="0" CornerRadius="4 0 0 4" Background="{TemplateBinding LeftIconBackColor}" Padding="3">
-                                <ContentControl Content="{TemplateBinding LeftIcon}" />
+                            <Border x:Name="LeftIconBorder" Grid.Column="0" CornerRadius="4 0 0 4" IsEnabled="{TemplateBinding IsEnabled}" Background="{TemplateBinding LeftIconBackColor}" Padding="3" Focusable="False">
+                                <ContentControl Content="{TemplateBinding LeftIcon}" Focusable="False"/>
                             </Border>
                             
                             <!--TEXTBOX-->
-                            <Border x:Name="TexBoxBorder" Grid.Column="1" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Padding="{TemplateBinding Padding}" >
+                            <Border x:Name="TexBoxBorder" Grid.Column="1" IsEnabled="{TemplateBinding IsEnabled}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Padding="{TemplateBinding Padding}" Focusable="False" VerticalAlignment="Center">
                                 <Grid >
-                                    <TextBlock  HorizontalAlignment="{TemplateBinding HintTextHorizontalAlignment}" VerticalAlignment="{TemplateBinding HintTextVerticalAlignment}" Foreground="{TemplateBinding HintTextColor}" FontFamily="{TemplateBinding FontFamily}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" Margin="3 0" Padding="{TemplateBinding HintTextPadding}" Text="{TemplateBinding HintText}" Visibility="{TemplateBinding IsEmpty,Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                                    <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="{TemplateBinding VerticalAlignment}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" Cursor="IBeam"/>
+                                    <TextBlock x:Name="HintText" IsEnabled="{TemplateBinding IsEnabled}" HorizontalAlignment="{TemplateBinding HintTextHorizontalAlignment}" VerticalAlignment="{TemplateBinding HintTextVerticalAlignment}" Foreground="{TemplateBinding HintTextColor}" FontFamily="{TemplateBinding FontFamily}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" Margin="3 0" Padding="{TemplateBinding HintTextPadding}" Text="{TemplateBinding HintText}" Visibility="{TemplateBinding IsEmpty,Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    <ScrollViewer x:Name="PART_ContentHost" VerticalAlignment="{TemplateBinding VerticalAlignment}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" Cursor="IBeam" IsEnabled="{TemplateBinding IsEnabled}"/>
                                 </Grid>
                             </Border>
 
-                            
-
                             <!--RIGHT ICON-->
-                            <Border Grid.Column="2" CornerRadius="0 4 4 0" Background="{TemplateBinding RightIconBackColor}" Padding="3">
-                                <ContentControl Content="{TemplateBinding RightIcon}" />
+                            <Border x:Name="RightIconBorder" Grid.Column="2" CornerRadius="0 4 4 0" IsEnabled="{TemplateBinding IsEnabled}" Background="{TemplateBinding RightIconBackColor}" Padding="3" Focusable="False">
+                                <ContentControl Content="{TemplateBinding RightIcon}" Focusable="False"/>
                             </Border>
                         </Grid>
                     </Border>
@@ -129,6 +128,13 @@
                         <Trigger Property="IsKeyboardFocused" Value="True">
                             <Setter TargetName="Border" Property="Border.BorderBrush" Value="{StaticResource MouseOverColor}"/>
                         </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="Silver"/>
+                            <Setter TargetName="LeftIconBorder" Property="Background" Value="Silver"/>
+                            <Setter TargetName="RightIconBorder" Property="Background" Value="Silver"/>
+                            <Setter TargetName="HintText" Property="Foreground" Value="Silver"/>
+                            <Setter TargetName="PART_ContentHost" Property="TextBlock.Foreground" Value="Silver"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
 
                 </ControlTemplate>
@@ -136,19 +142,6 @@
         </Setter>
     </Style>
     <!--#endregion TEXTFIELD-->
-
-
-    <!--#region ICON TEXTFIELD -->
-    <Style TargetType="{x:Type local:IconTextField}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:IconTextField}">
-
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <!--#endregion ICON TEXTFIELD-->
 
 
     <!--#region BUTTON -->

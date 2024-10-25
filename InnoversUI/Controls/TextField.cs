@@ -191,5 +191,7 @@ namespace InnoversUI.Controls
                 e.Handled = ControlsUtils.OnlyNumeric(Text: e.Text);
             }
         }
+
+        
     }
 }

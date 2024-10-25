@@ -12,7 +12,7 @@
             <Border Height="10" />
             <local:CircleImage  Size="10" BorderThickness="1" BorderBrush="BlueViolet" ImageSource="Assets/customer_80px.png"/>
             <Border Height="10" />
-            <local:TextField HintText="TextField" Text="" LeftIconBackColor="Teal" RightIconBackColor="Green">
+            <local:TextField HintText="TextField" Text="" IsEnabled="False" LeftIconBackColor="Teal" RightIconBackColor="Green">
                 <local:TextField.LeftIcon>
                     <local:CircleImage Size="20" BorderThickness="1" BorderBrush="BlueViolet" ImageSource="Assets/customer_80px.png"/>
                 </local:TextField.LeftIcon>
@@ -20,8 +20,6 @@
                     <local:CircleImage Size="20" BorderThickness="1" BorderBrush="BlueViolet" ImageSource="Assets/customer_80px.png"/>
                 </local:TextField.RightIcon>
             </local:TextField>
-            <Border Height="10" />
-            <local:IconTextField HintText="IconTextField" Text="" Height="35" BorderThickness="6"/>
             <Border Height="10" />
             <local:InnoButton  CornerRadius="10">
                 <Grid>

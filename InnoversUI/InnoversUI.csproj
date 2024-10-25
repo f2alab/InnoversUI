@@ -58,7 +58,6 @@
     <Compile Include="Controls\DateRange.cs" />
     <Compile Include="Controls\FavoriteCheckBox.cs" />
     <Compile Include="Controls\GifImage.cs" />
-    <Compile Include="Controls\IconTextField.cs" />
     <Compile Include="Controls\InnoButton.cs" />
     <Compile Include="Controls\InnoComboBox.cs" />
     <Compile Include="Controls\InnoDatePicker.cs" />

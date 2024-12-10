@@ -46,7 +46,7 @@ Height="50" Width="50" Fill="Red" HorizontalAlignment="Center" VerticalAlignment
                 </CheckBox.Style>
             </CheckBox>
 
-            <local:TextField x:Name="TF0" HintText="TextField"  IsPassTextField="True"  IsEnabled="True" LeftIconBackColor="Teal" RightIconBackColor="Green" CornerRadius="15">
+            <local:TextField x:Name="TF0" HintText="TextField"  IsPassTextField="True"  IsEnabled="True" LeftIconBackColor="Teal" RightIconBackColor="Green" CornerRadius="15" TextChanged="TF0_TextChanged">
                 <local:TextField.LeftIcon>
                     <local:CircleImage Size="20" BorderThickness="1" BorderBrush="BlueViolet" ImageSource="Assets/customer_80px.png"/>
                 </local:TextField.LeftIcon>

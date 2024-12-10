@@ -235,15 +235,12 @@ namespace InnoversUI.Controls
         static TextField()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(TextField), new FrameworkPropertyMetadata(typeof(TextField)));
-            
         }
 
 
         
         public override void OnApplyTemplate()
         {
-            //this.ApplyTemplate();
-            
             PasswordBox PassBox = (PasswordBox)Template.FindName(PassTextBoxString, this);
             
             PassBox.PasswordChanged += PassBoxPasswordChanged;
@@ -277,7 +274,8 @@ namespace InnoversUI.Controls
             IsEmailTextField = ControlsUtils.IsEmail(Email: Text);
 
             //DEFINIR PASS DANS PASSTEXTBOX
-            ((PasswordBox)Template.FindName(PassTextBoxString, this)).Password = Text;
+            if(((PasswordBox)Template.FindName(PassTextBoxString, this))!=null)
+                ((PasswordBox)Template.FindName(PassTextBoxString, this)).Password = Text;
 
             base.OnTextChanged(e);
 

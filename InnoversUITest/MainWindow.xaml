@@ -46,7 +46,7 @@
                     </CheckBox.Style>
                 </CheckBox>
 
-                <customs:TextField x:Name="TextField0" IsEnabled="True" IsPassTextField="True" Height="40" HintText="TextField 1" Text="" LeftIconBackColor="Teal" RightIconBackColor="Green">
+                <customs:TextField x:Name="TextField0" IsEnabled="True" IsPassTextField="True" Height="40" HintText="TextField 1" Text="" LeftIconBackColor="Teal" RightIconBackColor="Green" TextChanged="TextField0_TextChanged">
                     <customs:TextField.LeftIcon>
                         <customs:CircleImage Focusable="False" Size="20" BorderThickness="1" BorderBrush="BlueViolet" ImageSource="Assets/customer_80px.png"/>
                     </customs:TextField.LeftIcon>

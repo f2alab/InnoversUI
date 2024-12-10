@@ -75,5 +75,10 @@ namespace InnoversUITest
         {
             TextField0.IsPassTextField = true;
         }
+
+        private void TextField0_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Console.WriteLine("TF0 TEXT CHANGED");
+        }
     }
 }

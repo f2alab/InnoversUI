@@ -251,17 +251,20 @@ namespace InnoversUI.Controls
 
         private void PassBoxPasswordChanged(object sender, RoutedEventArgs e)
         {
-            string Pass = ((PasswordBox)Template.FindName(PassTextBoxString, this)).Password;
-            Text = Pass;
-
-            //CODE POUR QUE LE CURSUER SE AUTOMATIQUEMENT A LA FIN DU PASS
-            #region [CODE POUR QUE LE CURSUER SE AUTOMATIQUEMENT A LA FIN DU PASS]
-            var a = new KeyEventArgs(Keyboard.PrimaryDevice, Keyboard.PrimaryDevice.ActiveSource, 0, Key.End)
+            if (IsLoaded)
             {
-                RoutedEvent = Keyboard.KeyDownEvent
-            };
-            InputManager.Current.ProcessInput(a);
-            #endregion [CODE POUR QUE LE CURSUER SE AUTOMATIQUEMENT A LA FIN DU PASS]
+                string Pass = ((PasswordBox)Template.FindName(PassTextBoxString, this)).Password;
+                Text = Pass;
+                Console.WriteLine("PASSBOX CALL");
+                //CODE POUR QUE LE CURSUER SE AUTOMATIQUEMENT A LA FIN DU PASS
+                #region [CODE POUR QUE LE CURSUER SE AUTOMATIQUEMENT A LA FIN DU PASS]
+                var a = new KeyEventArgs(Keyboard.PrimaryDevice, Keyboard.PrimaryDevice.ActiveSource, 0, Key.End)
+                {
+                    RoutedEvent = Keyboard.KeyDownEvent
+                };
+                InputManager.Current.ProcessInput(a);
+                #endregion [CODE POUR QUE LE CURSUER SE AUTOMATIQUEMENT A LA FIN DU PASS]
+            }
 
         }
 
@@ -270,12 +273,16 @@ namespace InnoversUI.Controls
             //DEFINIR TEXTFIELD IS EMPTY
             IsEmpty = string.IsNullOrEmpty(Text);
 
-            //DEFINIR IS EMAIL
-            IsEmailTextField = ControlsUtils.IsEmail(Email: Text);
+            if (IsLoaded)
+            {
+                Console.WriteLine("NORMALBOX CALL");
+                //DEFINIR IS EMAIL
+                IsEmailTextField = ControlsUtils.IsEmail(Email: Text);
 
-            //DEFINIR PASS DANS PASSTEXTBOX
-            if(((PasswordBox)Template.FindName(PassTextBoxString, this))!=null)
-                ((PasswordBox)Template.FindName(PassTextBoxString, this)).Password = Text;
+                //DEFINIR PASS DANS PASSTEXTBOX
+                if (((PasswordBox)Template.FindName(PassTextBoxString, this)) != null)
+                    ((PasswordBox)Template.FindName(PassTextBoxString, this)).Password = Text;
+            }
 
             base.OnTextChanged(e);
 

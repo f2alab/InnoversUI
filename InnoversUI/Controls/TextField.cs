@@ -10,6 +10,7 @@ namespace InnoversUI.Controls
 
     public class TextField : TextBox
     {
+
         // HINT TEXT
         #region [HINTTEXT]
         public string HintText
@@ -144,7 +145,7 @@ namespace InnoversUI.Controls
         #endregion [CORNER RADIUS]
         //IS EMPTY
         #region [ISEMPTY]
-        public bool IsEmpty
+        public bool IsEmpty //QUE J'UPDATE DANS OnTextChanged
         {
             get { return (bool)GetValue(IsEmptyProperty); }
             private set { SetValue(IsEmptyPropertyKey, value); }
@@ -167,7 +168,69 @@ namespace InnoversUI.Controls
 
         public static readonly DependencyProperty IsOnlyNumericProperty =
            DependencyProperty.Register("IsOnlyNumeric", typeof(bool), typeof(TextField), new PropertyMetadata(false));
-        #endregion [ISONLYNUMERIC]
+        #endregion [ISONLYNUMERIC] 
+
+        // IS EMAIL
+        #region [IS EMAIL TEXTFIELD]
+        public bool IsEmailTextField //QUE J'UPDATE DANS OnTextChanged
+        {
+            get { return (bool)GetValue(IsEmailTextFieldProperty); }
+            set { SetValue(IsEmailTextFieldProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsEmailTextFieldProperty =
+           DependencyProperty.Register("IsEmailTextField", typeof(bool), typeof(TextField), new PropertyMetadata(false));
+        #endregion [IS EMAIL TEXTFIELD]
+
+        //IS PASS TEXTFIELD
+        #region [IS PASS TEXTFIELD]
+        public bool IsPassTextField //QUE J'UPDATE DANS OnTextChanged
+        {
+            get { return (bool)GetValue(IsPassTextFieldProperty); }
+            set { SetValue(IsPassTextFieldProperty, value); }
+        }
+
+        public static readonly DependencyProperty IsPassTextFieldProperty =
+           DependencyProperty.Register("IsPassTextField", typeof(bool), typeof(TextField), new PropertyMetadata(false));
+        #endregion [IS PASS TEXTFIELD]
+
+
+        //PASS CHAR
+        #region [PASS CHAR]
+        public string PasswordChar
+        {
+            get { return (string)GetValue(PasswordCharProperty); }
+            set { SetValue(PasswordCharProperty, value); }
+        }
+
+       
+        public static readonly DependencyProperty PasswordCharProperty =
+            DependencyProperty.Register("PasswordChar", typeof(string), typeof(TextField), new PropertyMetadata("•"));
+
+
+        #endregion [PASS CHAR]
+
+        #region [PASSWORD]
+
+
+        public string Password
+        {
+            get { return (string)GetValue(PasswordProperty); }
+            set { SetValue(PasswordProperty, value); }
+        }
+
+        public static readonly DependencyProperty PasswordProperty =
+            DependencyProperty.Register("Password", typeof(string), typeof(TextField), new PropertyMetadata(string.Empty));
+
+
+        #endregion [PASSWORD]
+
+
+
+        #region [PASSWORDBOX]
+        static readonly string PassTextBoxString = "PassTextBox";
+        //static PasswordBox PassBox;
+        #endregion [PASSWORDBOX]
 
         static TextField()
         {
@@ -175,12 +238,49 @@ namespace InnoversUI.Controls
             
         }
 
+
+        
+        public override void OnApplyTemplate()
+        {
+            //this.ApplyTemplate();
+            
+            PasswordBox PassBox = (PasswordBox)Template.FindName(PassTextBoxString, this);
+            
+            PassBox.PasswordChanged += PassBoxPasswordChanged;
+
+            base.OnApplyTemplate();
+        }
+
+
+        private void PassBoxPasswordChanged(object sender, RoutedEventArgs e)
+        {
+            string Pass = ((PasswordBox)Template.FindName(PassTextBoxString, this)).Password;
+            Text = Pass;
+
+            //CODE POUR QUE LE CURSUER SE AUTOMATIQUEMENT A LA FIN DU PASS
+            #region [CODE POUR QUE LE CURSUER SE AUTOMATIQUEMENT A LA FIN DU PASS]
+            var a = new KeyEventArgs(Keyboard.PrimaryDevice, Keyboard.PrimaryDevice.ActiveSource, 0, Key.End)
+            {
+                RoutedEvent = Keyboard.KeyDownEvent
+            };
+            InputManager.Current.ProcessInput(a);
+            #endregion [CODE POUR QUE LE CURSUER SE AUTOMATIQUEMENT A LA FIN DU PASS]
+
+        }
+
         protected override void OnTextChanged(TextChangedEventArgs e)
         {
+            //DEFINIR TEXTFIELD IS EMPTY
             IsEmpty = string.IsNullOrEmpty(Text);
+
+            //DEFINIR IS EMAIL
+            IsEmailTextField = ControlsUtils.IsEmail(Email: Text);
+
+            //DEFINIR PASS DANS PASSTEXTBOX
+            ((PasswordBox)Template.FindName(PassTextBoxString, this)).Password = Text;
+
             base.OnTextChanged(e);
 
-            
         }
 
         protected override void OnPreviewTextInput(TextCompositionEventArgs e)

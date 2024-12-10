@@ -64,8 +64,11 @@
     <Compile Include="Controls\NumericUpDown.cs" />
     <Compile Include="Controls\TextField.cs" />
     <Compile Include="Converters\ControlSizeToSplashSize.cs" />
+    <Compile Include="Converters\CornerRadiusToRightIcon.cs" />
     <Compile Include="Converters\CornerRadiusToLeftIcon.cs" />
     <Compile Include="Converters\DoubleToCornerRadius.cs" />
+    <Compile Include="Converters\PassBoxVisibilityToBoolean.cs" />
+    <Compile Include="Converters\StringToPasswordString.cs" />
     <Compile Include="Dialogs\DialogWait.xaml.cs">
       <DependentUpon>DialogWait.xaml</DependentUpon>
     </Compile>
@@ -131,6 +134,7 @@
     <Resource Include="Fonts\outfit_regular.ttf" />
     <Resource Include="Fonts\outfit_semi_bold.ttf" />
     <Resource Include="Fonts\outfit_thin.ttf" />
+    <Resource Include="Fonts\pass_dot.ttf" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

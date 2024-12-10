@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Media;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 using static System.Net.Mime.MediaTypeNames;
@@ -18,6 +19,12 @@ namespace InnoversUI.Utils
                 SystemSounds.Exclamation.Play();
             }
             return new Regex(RegString).IsMatch(Text);
+        }
+
+        //EMAIL PATTERN
+        public static bool IsEmail(string Email)
+        {
+            return Regex.IsMatch(Email, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace InnoversUI
 {
@@ -7,6 +9,7 @@ namespace InnoversUI
         public MainActivity()
         {
             InitializeComponent();
+
         }
     }
 }

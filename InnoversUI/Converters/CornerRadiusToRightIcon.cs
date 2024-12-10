@@ -9,14 +9,13 @@ using System.Windows.Data;
 
 namespace InnoversUI.Converters
 {
-    internal class CornerRadiusToLeftIconRadius : IValueConverter
+    internal class CornerRadiusToRightIconRadius : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             CornerRadius Radius = ((CornerRadius)value);
             double Plus = 1.5;
-
-            return new CornerRadius(topLeft: Radius.TopLeft - Plus, topRight: 0, bottomRight: 0, bottomLeft: Radius.BottomLeft - Plus);
+            return new CornerRadius(topLeft: 0, topRight: Radius.TopRight - Plus, bottomRight: Radius.BottomRight - Plus, bottomLeft: 0);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

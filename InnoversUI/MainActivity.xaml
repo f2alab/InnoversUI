@@ -12,14 +12,51 @@
             <Border Height="10" />
             <local:CircleImage  Size="10" BorderThickness="1" BorderBrush="BlueViolet" ImageSource="Assets/customer_80px.png"/>
             <Border Height="10" />
-            <local:TextField HintText="TextField" Text="" IsEnabled="False" LeftIconBackColor="Teal" RightIconBackColor="Green">
+
+            <Path x:Name="Icon" Data="m 629 -419 l -44 -44 q 26 -71 -27 -118 t -115 -24 l -44 -44 q 17 -11 38 -16 t 43 -5 q 71 0 120.5 49.5 T 650 -500 q 0 22 -5.5 43.5 T 629 -419 Z m 129 129 l -40 -40 q 49 -36 85.5 -80.5 T 857 -500 q -50 -111 -150 -175.5 T 490 -740 q -42 0 -86 8 t -69 19 l -46 -47 q 35 -16 89.5 -28 T 485 -800 q 143 0 261.5 81.5 T 920 -500 q -26 64 -67 117 t -95 93 Z m 58 226 L 648 -229 q -35 14 -79 21.5 t -89 7.5 q -146 0 -265 -81.5 T 40 -500 q 20 -52 55.5 -101.5 T 182 -696 L 56 -822 l 42 -43 l 757 757 l -39 44 Z M 223 -654 q -37 27 -71.5 71 T 102 -500 q 51 111 153.5 175.5 T 488 -260 q 33 0 65 -4 t 48 -12 l -64 -64 q -11 5 -27 7.5 t -30 2.5 q -70 0 -120 -49 t -50 -121 q 0 -15 2.5 -30 t 7.5 -27 l -97 -97 Z m 305 142 Z m -116 58 Z"
+Height="50" Width="50" Fill="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <CheckBox x:Name="HideShowPassCheckBox" Cursor="Hand">
+                <CheckBox.Style>
+                    <Style TargetType="CheckBox">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="CheckBox">
+                                    <Border x:Name="Splash" CornerRadius="50" Background="Transparent" Height="25" Width="25">
+                                        <Viewbox Width="20" Height="20">
+                                            <Path x:Name="Icon" Data="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z"
+                                      Height="50" Width="50" Fill="{TemplateBinding Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Viewbox>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter Property="Data" TargetName="Icon" Value="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z"/>
+                                        </Trigger>
+                                        <Trigger Property="IsChecked" Value="False">
+                                            <Setter Property="Data" TargetName="Icon" Value="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="LightGray" TargetName="Splash"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </CheckBox.Style>
+            </CheckBox>
+
+            <local:TextField x:Name="TF0" HintText="TextField"  IsPassTextField="True"  IsEnabled="True" LeftIconBackColor="Teal" RightIconBackColor="Green" CornerRadius="15">
                 <local:TextField.LeftIcon>
                     <local:CircleImage Size="20" BorderThickness="1" BorderBrush="BlueViolet" ImageSource="Assets/customer_80px.png"/>
                 </local:TextField.LeftIcon>
                 <local:TextField.RightIcon>
                     <local:CircleImage Size="20" BorderThickness="1" BorderBrush="BlueViolet" ImageSource="Assets/customer_80px.png"/>
                 </local:TextField.RightIcon>
-            </local:TextField>
+            </local:TextField >
+            <local:TextField />
+            <Border Height="10" />
+            <TextBox Text="TGFGFGFG" />
             <Border Height="10" />
             <local:InnoButton  CornerRadius="10">
                 <Grid>

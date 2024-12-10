@@ -47,11 +47,13 @@ namespace InnoversUITest
         private void InnoBtn_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine("INNO BUTTON CLICK");
+            Console.WriteLine("PASS: " + TextField0.Password);
         }
 
         private void DialogWithChildBtn_Click(object sender, RoutedEventArgs e)
         {
             DialogsUtils.ShowDialog(Parent: this, Child: new Child(), IsDismissible: true);
+            
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -62,6 +64,16 @@ namespace InnoversUITest
         private void CircleImageBtn_Click(object sender, RoutedEventArgs e)
         {
             ImagesUtils.OpenAndDisplayImage(ImageControl: CircleImageBtn);
+        }
+
+        private void CBX_CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            TextField0.IsPassTextField = false;
+        }
+
+        private void CBX_Unchecked(object sender, RoutedEventArgs e)
+        {
+            TextField0.IsPassTextField = true;
         }
     }
 }

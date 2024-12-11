@@ -185,12 +185,14 @@
     <!--#endregion TEXTFIELD-->
 
    
-
-
-
     <!--#region BUTTON -->
+    <DropShadowEffect x:Key="MouseOverBtnShadow" BlurRadius="5" ShadowDepth="1.5" Opacity="0.5"/>
+    <DropShadowEffect x:Key="PressBtnShadow" BlurRadius="5" ShadowDepth="3"/>
+    
+
     <Style TargetType="{x:Type local:InnoButton}" BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="Background" Value="Blue"/>
+        <Setter Property="Padding" Value="5"/>
         <Setter Property="Height" Value="35"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontWeight" Value="DemiBold"/>
@@ -200,22 +202,55 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:InnoButton}">
-                    <Border
-                        x:Name="Border"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="{TemplateBinding CornerRadius}"
-                        Height="{TemplateBinding Height}"
-                        Width="{TemplateBinding Width}"
-                        VerticalAlignment="Center">
-                        <Border Padding="3">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <ControlTemplate.Resources>
+                        <converters:BackColorToSplashColor x:Key="BackColorToSplashColor"/>
+                        <SolidColorBrush x:Key="SplashColor" Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}" Opacity="0.5"/>
+                    </ControlTemplate.Resources>
+
+                    <Grid>
+                        <Border
+                            x:Name="BtnContainer"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Height="{TemplateBinding Height}"
+                            Width="{TemplateBinding Width}"
+                            VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                            HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                            UseLayoutRounding="True"
+                            Padding="{TemplateBinding Padding}">
+                            <ContentPresenter  HorizontalAlignment="Center" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}"/>
+                            
                         </Border>
-                    </Border>
+                        <Border
+                            x:Name="Splash"
+                            Background="{StaticResource SplashColor}"
+                            Opacity="0.2"
+                            Visibility="Collapsed"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            Height="{TemplateBinding Height}"
+                            Width="{TemplateBinding Width}"
+                            VerticalAlignment="Center"
+                            UseLayoutRounding="True"/>
+                    </Grid>
 
                     <ControlTemplate.Triggers>
-                        <EventTrigger RoutedEvent="MouseEnter">
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="Gray" TargetName="BtnContainer"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Visibility" Value="Visible" TargetName="Splash"/>
+                            <Setter Property="Effect" Value="{StaticResource MouseOverBtnShadow}" TargetName="BtnContainer" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed" TargetName="Splash"/>
+                            <Setter Property="Effect" Value="{StaticResource PressBtnShadow}" TargetName="BtnContainer" />
+                        </Trigger>
+                        <!--<EventTrigger RoutedEvent="MouseEnter">
                             <BeginStoryboard>
                                 <Storyboard Storyboard.TargetName="Border">
                                     <DoubleAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.Background).(Brush.Opacity)" From="1" To="0.6" Duration="0:0:0.3" FillBehavior="HoldEnd"/>
@@ -229,7 +264,7 @@
                                     <DoubleAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.Background).(Brush.Opacity)" From="0.6" To="1" Duration="0:0:0.3" FillBehavior="HoldEnd"/>
                                 </Storyboard>
                             </BeginStoryboard>
-                        </EventTrigger>
+                        </EventTrigger>-->
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

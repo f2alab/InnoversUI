@@ -13,7 +13,7 @@
             <local:CircleImage  Size="10" BorderThickness="1" BorderBrush="BlueViolet" ImageSource="Assets/customer_80px.png"/>
             <Border Height="10" />
 
-            <Path x:Name="Icon" Data="m 629 -419 l -44 -44 q 26 -71 -27 -118 t -115 -24 l -44 -44 q 17 -11 38 -16 t 43 -5 q 71 0 120.5 49.5 T 650 -500 q 0 22 -5.5 43.5 T 629 -419 Z m 129 129 l -40 -40 q 49 -36 85.5 -80.5 T 857 -500 q -50 -111 -150 -175.5 T 490 -740 q -42 0 -86 8 t -69 19 l -46 -47 q 35 -16 89.5 -28 T 485 -800 q 143 0 261.5 81.5 T 920 -500 q -26 64 -67 117 t -95 93 Z m 58 226 L 648 -229 q -35 14 -79 21.5 t -89 7.5 q -146 0 -265 -81.5 T 40 -500 q 20 -52 55.5 -101.5 T 182 -696 L 56 -822 l 42 -43 l 757 757 l -39 44 Z M 223 -654 q -37 27 -71.5 71 T 102 -500 q 51 111 153.5 175.5 T 488 -260 q 33 0 65 -4 t 48 -12 l -64 -64 q -11 5 -27 7.5 t -30 2.5 q -70 0 -120 -49 t -50 -121 q 0 -15 2.5 -30 t 7.5 -27 l -97 -97 Z m 305 142 Z m -116 58 Z"
+            <Path x:Name="IconPath" Data="m 629 -419 l -44 -44 q 26 -71 -27 -118 t -115 -24 l -44 -44 q 17 -11 38 -16 t 43 -5 q 71 0 120.5 49.5 T 650 -500 q 0 22 -5.5 43.5 T 629 -419 Z m 129 129 l -40 -40 q 49 -36 85.5 -80.5 T 857 -500 q -50 -111 -150 -175.5 T 490 -740 q -42 0 -86 8 t -69 19 l -46 -47 q 35 -16 89.5 -28 T 485 -800 q 143 0 261.5 81.5 T 920 -500 q -26 64 -67 117 t -95 93 Z m 58 226 L 648 -229 q -35 14 -79 21.5 t -89 7.5 q -146 0 -265 -81.5 T 40 -500 q 20 -52 55.5 -101.5 T 182 -696 L 56 -822 l 42 -43 l 757 757 l -39 44 Z M 223 -654 q -37 27 -71.5 71 T 102 -500 q 51 111 153.5 175.5 T 488 -260 q 33 0 65 -4 t 48 -12 l -64 -64 q -11 5 -27 7.5 t -30 2.5 q -70 0 -120 -49 t -50 -121 q 0 -15 2.5 -30 t 7.5 -27 l -97 -97 Z m 305 142 Z m -116 58 Z"
 Height="50" Width="50" Fill="Red" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
             <CheckBox x:Name="HideShowPassCheckBox" Cursor="Hand">
@@ -71,7 +71,7 @@ Height="50" Width="50" Fill="Red" HorizontalAlignment="Center" VerticalAlignment
                 </Grid>
             </local:InnoButton>
             <Border Height="10" />
-            <local:InnoButton Content="AJOUTER UN PRODUT CLIENT" />
+            <local:InnoButton Content="AJOUTER UN PRODUT CLIENT" Height="25" FontSize="11" />
             <local:CircleButton  >
                 <TextBlock Text="GTF" HorizontalAlignment="Center"/>
             </local:CircleButton>

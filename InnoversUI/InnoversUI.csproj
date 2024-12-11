@@ -63,6 +63,7 @@
     <Compile Include="Controls\InnoDatePicker.cs" />
     <Compile Include="Controls\NumericUpDown.cs" />
     <Compile Include="Controls\TextField.cs" />
+    <Compile Include="Converters\BackColorToSplashColor.cs" />
     <Compile Include="Converters\ControlSizeToSplashSize.cs" />
     <Compile Include="Converters\CornerRadiusToRightIcon.cs" />
     <Compile Include="Converters\CornerRadiusToLeftIcon.cs" />

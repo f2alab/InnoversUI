@@ -54,7 +54,7 @@ Height="50" Width="50" Fill="Red" HorizontalAlignment="Center" VerticalAlignment
                     <local:CircleImage Size="20" BorderThickness="1" BorderBrush="BlueViolet" ImageSource="Assets/customer_80px.png"/>
                 </local:TextField.RightIcon>
             </local:TextField >
-            <local:TextField />
+            <local:TextField IsEnabled="False"/>
             <Border Height="10" />
             <TextBox Text="TGFGFGFG" />
             <Border Height="10" />

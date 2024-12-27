@@ -91,36 +91,37 @@
                     <ControlTemplate.Resources>
                         <SolidColorBrush x:Key="MouseOverColor">Cyan</SolidColorBrush>
                         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+                        <converters:NullToVisibility x:Key="NullToVisibility" />
                         <converters:CornerRadiusToLeftIconRadius x:Key="CornerRadiusToLeftIconRadius" />
                         <converters:CornerRadiusToRightIconRadius x:Key="CornerRadiusToRightIconRadius" />
                         <converters:PassBoxVisibilityToBoolean x:Key="PassBoxVisibilityToBoolean" />
                         <converters1:TemplateBindingExpressionConverter  x:Key="TemplateBindingExpressionConverter " />
                     </ControlTemplate.Resources>
 
-                    <Border x:Name="Border" FocusVisualStyle="{TemplateBinding FocusVisualStyle}" Focusable="{TemplateBinding Focusable}" IsEnabled="{TemplateBinding IsEnabled}" CornerRadius="{TemplateBinding CornerRadius}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" MinWidth="{TemplateBinding MinHeight}" MaxWidth="{TemplateBinding MaxWidth}" MinHeight="{TemplateBinding MinHeight}" MaxHeight="{TemplateBinding MaxHeight}">
-                        
-                        <Grid Focusable="False">
+                    <Border x:Name="Border" UseLayoutRounding="True" FocusVisualStyle="{TemplateBinding FocusVisualStyle}" Focusable="{TemplateBinding Focusable}" IsEnabled="{TemplateBinding IsEnabled}" CornerRadius="{TemplateBinding CornerRadius}" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" MinWidth="{TemplateBinding MinHeight}" MaxWidth="{TemplateBinding MaxWidth}" MinHeight="{TemplateBinding MinHeight}" MaxHeight="{TemplateBinding MaxHeight}">
+
+                        <Grid Focusable="False" UseLayoutRounding="True">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto" MinWidth="0"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto" MinWidth="0"/>
                             </Grid.ColumnDefinitions>
                             <!--LEFT ICON-->
-                            <Border x:Name="LeftIconBorder" Grid.Column="0" Cursor="Arrow" CornerRadius="{TemplateBinding CornerRadius, Converter= {StaticResource CornerRadiusToLeftIconRadius}}" IsEnabled="{TemplateBinding IsEnabled}" Background="{TemplateBinding LeftIconBackColor}" Padding="3" Focusable="False">
+                            <Border x:Name="LeftIconBorder" Grid.Column="0" MinWidth="0" UseLayoutRounding="True" Visibility="{TemplateBinding LeftIcon, Converter={StaticResource NullToVisibility}}" Cursor="Arrow" CornerRadius="{TemplateBinding CornerRadius, Converter= {StaticResource CornerRadiusToLeftIconRadius}}" IsEnabled="{TemplateBinding IsEnabled}" Background="{TemplateBinding LeftIconBackColor}" Padding="3" Focusable="False">
                                 <ContentControl Content="{TemplateBinding LeftIcon}" Focusable="False"/>
                             </Border>
                             
                             <!--TEXTBOX-->
-                            <Border x:Name="TexBoxBorder" Grid.Column="1" IsEnabled="{TemplateBinding IsEnabled}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Padding="{TemplateBinding Padding}" Focusable="False" VerticalAlignment="Center">
+                            <Border x:Name="TexBoxBorder" Grid.Column="1" UseLayoutRounding="True" IsEnabled="{TemplateBinding IsEnabled}" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Padding="{TemplateBinding Padding}" Focusable="False" VerticalAlignment="Center">
                                 <Grid Focusable="False">
                                     <TextBlock x:Name="HintText" Focusable="False" IsEnabled="{TemplateBinding IsEnabled}" HorizontalAlignment="{TemplateBinding HintTextHorizontalAlignment}" VerticalAlignment="{TemplateBinding HintTextVerticalAlignment}" Foreground="{TemplateBinding HintTextColor}" FontFamily="{TemplateBinding FontFamily}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" Margin="3 0" Padding="{TemplateBinding HintTextPadding}" Text="{TemplateBinding HintText}" Visibility="{TemplateBinding IsEmpty,Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                                    <PasswordBox x:Name="PassTextBox" PasswordChar="{TemplateBinding PasswordChar}"  Focusable="{TemplateBinding IsPassTextField}" Visibility="{TemplateBinding IsPassTextField, Converter={StaticResource BooleanToVisibilityConverter}}" Background="Transparent" BorderThickness="0" VerticalContentAlignment="Center" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" Cursor="IBeam" IsEnabled="{TemplateBinding IsEnabled}"/>
+                                    <PasswordBox x:Name="PassTextBox" PasswordChar="{TemplateBinding PasswordChar}"  Focusable="{TemplateBinding IsPassTextField}" Visibility="{TemplateBinding IsPassTextField, Converter={StaticResource BooleanToVisibilityConverter}}" Background="Transparent" BorderThickness="0" VerticalContentAlignment="Center" Foreground="{TemplateBinding Foreground}" FontFamily="{TemplateBinding FontFamily}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" Margin="3 0" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" Cursor="IBeam" IsEnabled="{TemplateBinding IsEnabled}"/>
                                     <ScrollViewer  x:Name="PART_ContentHost" Focusable="True" VerticalAlignment="{TemplateBinding VerticalAlignment}" Foreground="{TemplateBinding Foreground}" Visibility="{TemplateBinding IsPassTextField, Converter={StaticResource PassBoxVisibilityToBoolean}}" FontFamily="{TemplateBinding FontFamily}" FontStretch="{TemplateBinding FontStretch}" FontStyle="{TemplateBinding FontStyle}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" Cursor="IBeam" IsEnabled="{TemplateBinding IsEnabled}"/>
                                 </Grid>
                             </Border>
 
                             <!--RIGHT ICON-->
-                            <Border x:Name="RightIconBorder" Grid.Column="2" Cursor="Arrow" CornerRadius="{TemplateBinding CornerRadius, Converter= {StaticResource CornerRadiusToRightIconRadius}}" IsEnabled="{TemplateBinding IsEnabled}" Background="{TemplateBinding RightIconBackColor}" Padding="3" Focusable="False">
+                            <Border x:Name="RightIconBorder" Grid.Column="2" MinWidth="0" UseLayoutRounding="True" Visibility="{TemplateBinding RightIcon, Converter={StaticResource NullToVisibility}}" Cursor="Arrow" CornerRadius="{TemplateBinding CornerRadius, Converter= {StaticResource CornerRadiusToRightIconRadius}}" IsEnabled="{TemplateBinding IsEnabled}" Background="{TemplateBinding RightIconBackColor}" Padding="3" Focusable="False">
                                 
                                 <Grid>
                                     <!--<ContentControl Content="{TemplateBinding RightIcon}" Focusable="False" Visibility="{TemplateBinding IsPassTextField, Converter={StaticResource PassBoxVisibilityToBoolean}}"/>-->
@@ -199,6 +200,7 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Content" Value="Button"/>
         <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="UseLayoutRounding" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:InnoButton}">

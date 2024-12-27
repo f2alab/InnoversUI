@@ -255,7 +255,7 @@ namespace InnoversUI.Controls
             {
                 string Pass = ((PasswordBox)Template.FindName(PassTextBoxString, this)).Password;
                 Text = Pass;
-                Console.WriteLine("PASSBOX CALL");
+                
                 //CODE POUR QUE LE CURSUER SE AUTOMATIQUEMENT A LA FIN DU PASS
                 #region [CODE POUR QUE LE CURSUER SE AUTOMATIQUEMENT A LA FIN DU PASS]
                 var a = new KeyEventArgs(Keyboard.PrimaryDevice, Keyboard.PrimaryDevice.ActiveSource, 0, Key.End)
@@ -275,7 +275,6 @@ namespace InnoversUI.Controls
 
             if (IsLoaded)
             {
-                Console.WriteLine("NORMALBOX CALL");
                 //DEFINIR IS EMAIL
                 IsEmailTextField = ControlsUtils.IsEmail(Email: Text);
 

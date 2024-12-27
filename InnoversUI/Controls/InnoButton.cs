@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace InnoversUI.Controls
@@ -37,6 +38,9 @@ namespace InnoversUI.Controls
         static InnoButton()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(InnoButton), new FrameworkPropertyMetadata(typeof(InnoButton)));
+            
         }
+
+       
     }
 }

@@ -55,10 +55,7 @@
                     </customs:TextField.RightIcon>
                 </customs:TextField>
 
-                <PasswordBox x:Name="PassBox"  BorderBrush="Red" BorderThickness="1.5" Height="40" VerticalContentAlignment="Center" Password="344" PasswordChar="$"/>
-
-
-
+               
                 <Border Height="10" />
                 <TextBox />
                 <Border Height="10" />

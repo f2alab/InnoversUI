@@ -175,7 +175,7 @@
                             <Setter TargetName="LeftIconBorder" Property="Background" Value="Silver"/>
                             <Setter TargetName="RightIconBorder" Property="Background" Value="Silver"/>
                             <Setter TargetName="HintText" Property="Foreground" Value="Silver"/>
-                            <Setter TargetName="PART_ContentHost" Property="TextBlock.Foreground" Value="Silver"/>
+                            <Setter Property="Foreground" Value="Silver"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
 

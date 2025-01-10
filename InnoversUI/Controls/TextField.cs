@@ -244,10 +244,16 @@ namespace InnoversUI.Controls
             PasswordBox PassBox = (PasswordBox)Template.FindName(PassTextBoxString, this);
             
             PassBox.PasswordChanged += PassBoxPasswordChanged;
+            PassBox.FocusableChanged += PassBox_FocusableChanged;
 
             base.OnApplyTemplate();
         }
 
+        private void PassBox_FocusableChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            PasswordBox PassBox = (PasswordBox)Template.FindName(PassTextBoxString, this);
+            PassBox.Focusable = IsFocused;
+        }
 
         private void PassBoxPasswordChanged(object sender, RoutedEventArgs e)
         {

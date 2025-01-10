@@ -197,7 +197,7 @@
         <Setter Property="Padding" Value="5"/>
         <Setter Property="Height" Value="35"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="FontWeight" Value="Normal"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Content" Value="Button"/>
         <Setter Property="Cursor" Value="Hand"/>
@@ -208,10 +208,10 @@
 
                     <ControlTemplate.Resources>
                         <converters:BackColorToSplashColor x:Key="BackColorToSplashColor"/>
-                        <SolidColorBrush x:Key="SplashColor" Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}" Opacity="0.5"/>
+                        <!--<SolidColorBrush x:Key="SplashColor" Color="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}" Opacity="0.5"/>-->
                     </ControlTemplate.Resources>
 
-                    <Grid>
+                    <Grid UseLayoutRounding="True">
                         <Border
                             x:Name="BtnContainer"
                             Background="{TemplateBinding Background}"
@@ -224,10 +224,10 @@
                             HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
                             UseLayoutRounding="True"
                             Padding="{TemplateBinding Padding}">
-                            <ContentPresenter  HorizontalAlignment="Center" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}"/>
+                            <ContentPresenter UseLayoutRounding="True" HorizontalAlignment="Center" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Content="{TemplateBinding Content}"/>
                             
                         </Border>
-                        <Border
+                        <!--<Border
                             x:Name="Splash"
                             Background="{StaticResource SplashColor}"
                             Opacity="0.2"
@@ -238,7 +238,7 @@
                             Height="{TemplateBinding Height}"
                             Width="{TemplateBinding Width}"
                             VerticalAlignment="Center"
-                            UseLayoutRounding="True"/>
+                            UseLayoutRounding="True"/>-->
                     </Grid>
 
                     <ControlTemplate.Triggers>
@@ -246,11 +246,13 @@
                             <Setter Property="Background" Value="Gray" TargetName="BtnContainer"/>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Visibility" Value="Visible" TargetName="Splash"/>
+                            <!--<Setter Property="Visibility" Value="Visible" TargetName="Splash"/>-->
+                            <Setter Property="UseLayoutRounding" Value="True"/>
                             <Setter Property="Effect" Value="{StaticResource MouseOverBtnShadow}" TargetName="BtnContainer" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Visibility" Value="Collapsed" TargetName="Splash"/>
+                            <!--<Setter Property="Visibility" Value="Collapsed" TargetName="Splash"/>-->
+                            <Setter Property="UseLayoutRounding" Value="True"/>
                             <Setter Property="Effect" Value="{StaticResource PressBtnShadow}" TargetName="BtnContainer" />
                         </Trigger>
                         <!--<EventTrigger RoutedEvent="MouseEnter">

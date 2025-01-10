@@ -90,7 +90,7 @@
                     </Grid>
                 </customs:InnoButton>
                 <Border Height="10" />
-                <customs:InnoButton x:Name="DialogWithChildBtn" Content="Dialog With Child" Click="DialogWithChildBtn_Click"/>
+                <customs:InnoButton x:Name="DialogWithChildBtn" Content="Dialog With Child" UseLayoutRounding="True" FontWeight="Normal" Background="red" Click="DialogWithChildBtn_Click"/>
                 <Border Height="10" />
                 <customs:CircleButton>
                     <Viewbox  Width="24">

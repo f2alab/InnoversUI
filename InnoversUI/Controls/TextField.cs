@@ -245,7 +245,6 @@ namespace InnoversUI.Controls
             
             PassBox.PasswordChanged += PassBoxPasswordChanged;
             PassBox.FocusableChanged += PassBox_FocusableChanged;
-
             base.OnApplyTemplate();
         }
 

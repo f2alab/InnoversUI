@@ -61,7 +61,11 @@
     <Compile Include="Controls\InnoButton.cs" />
     <Compile Include="Controls\InnoComboBox.cs" />
     <Compile Include="Controls\InnoDatePicker.cs" />
+    <Compile Include="Controls\InnoIcon.cs" />
     <Compile Include="Controls\NumericUpDown.cs" />
+    <Compile Include="Controls\Test.xaml.cs">
+      <DependentUpon>Test.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TextField.cs" />
     <Compile Include="Converters\BackColorToSplashColor.cs" />
     <Compile Include="Converters\ControlSizeToSplashSize.cs" />
@@ -77,6 +81,7 @@
     <Compile Include="Dialogs\InnoDialog.xaml.cs">
       <DependentUpon>InnoDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Enums\Icons.cs" />
     <Compile Include="MainActivity.xaml.cs">
       <DependentUpon>MainActivity.xaml</DependentUpon>
     </Compile>
@@ -90,6 +95,10 @@
     <Compile Include="Utils\SystemUtils.cs" />
     <Compile Include="Utils\WindowUtils.cs" />
     <Page Include="Child.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Test.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

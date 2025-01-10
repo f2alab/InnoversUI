@@ -255,14 +255,17 @@ namespace InnoversUI.Controls
             {
                 string Pass = ((PasswordBox)Template.FindName(PassTextBoxString, this)).Password;
                 Text = Pass;
-                
+
                 //CODE POUR QUE LE CURSUER SE AUTOMATIQUEMENT A LA FIN DU PASS
                 #region [CODE POUR QUE LE CURSUER SE AUTOMATIQUEMENT A LA FIN DU PASS]
-                var a = new KeyEventArgs(Keyboard.PrimaryDevice, Keyboard.PrimaryDevice.ActiveSource, 0, Key.End)
+                if (IsPassTextField)
                 {
-                    RoutedEvent = Keyboard.KeyDownEvent
-                };
-                InputManager.Current.ProcessInput(a);
+                    var a = new KeyEventArgs(Keyboard.PrimaryDevice, Keyboard.PrimaryDevice.ActiveSource, 0, Key.End)
+                    {
+                        RoutedEvent = Keyboard.KeyDownEvent
+                    };
+                    InputManager.Current.ProcessInput(a);
+                }
                 #endregion [CODE POUR QUE LE CURSUER SE AUTOMATIQUEMENT A LA FIN DU PASS]
             }
 

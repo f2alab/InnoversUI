@@ -8,7 +8,13 @@
         Title="MainActivity" Height="450" Width="800" Padding="10">
     <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
         <StackPanel >
-            
+            <local:ExpanderTile Title="EXPANDER" CornerRadius="6" HeaderCornerRadius="6 6 0 0" BackColor="LightPink" IsExpanded="True" ShowSeparator="True" SeparatorMargin="6 0" HeaderBackgroundColor="LightBlue" SeparatorColor="Chocolate" BorderColor="Red" BorderWidth="1" IconColor="Red" TitleForeground="Teal">
+                <local:ExpanderTile.Child>
+                    <Border Background="Gainsboro" CornerRadius="0 0 6 6">
+                        <TextBlock Text="CONTENT" Margin="8" Background="Firebrick"/>
+                    </Border>
+                </local:ExpanderTile.Child>
+            </local:ExpanderTile>
             <local:CircleProgressBar IsLoading="True" Size="50"/>
             <Border Height="10" />
             <local:CircleImage  Size="10" BorderThickness="1" BorderBrush="BlueViolet" ImageSource="Assets/customer_80px.png"/>

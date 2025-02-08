@@ -35,7 +35,17 @@
 
                                     <!--TITLE-->
                                     <Border Grid.Column="0" Padding="5" VerticalAlignment="Center">
-                                        <TextBlock x:Name="HeaderTitleTextBlock"  FontSize="{Binding TitleFontSize}" Foreground="{Binding TitleForeground}" Text="{Binding Title}" d:Text="EXPANDER TILE" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" MinWidth="0"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Grid Grid.Column="0" >
+                                                <ContentPresenter Content="{Binding LeftIcon}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            </Grid>
+                                            <TextBlock x:Name="HeaderTitleTextBlock" Grid.Column="1" FontSize="{Binding TitleFontSize}" Foreground="{Binding TitleForeground}" Text="{Binding Title}" d:Text="EXPANDER TILE" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                                        </Grid>
                                     </Border>
 
                                     <!--ICON-->

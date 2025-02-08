@@ -69,7 +69,6 @@ namespace InnoversUI.Controls
 
         //ICON SIZE
 
-
         public double IconSize
         {
             get { return (double)GetValue(IconSizeProperty); }
@@ -90,6 +89,22 @@ namespace InnoversUI.Controls
 
         public static readonly DependencyProperty IconColorProperty =
             DependencyProperty.Register("IconColor", typeof(SolidColorBrush), typeof(ExpanderTile), new PropertyMetadata(Brushes.Black));
+
+
+        //LEFT ICON
+
+
+        public object LeftIcon
+        {
+            get { return (object)GetValue(LeftIconProperty); }
+            set { SetValue(LeftIconProperty, value); }
+        }
+
+        
+        public static readonly DependencyProperty LeftIconProperty =
+            DependencyProperty.Register("LeftIcon", typeof(object), typeof(ExpanderTile), new PropertyMetadata(null));
+
+
 
         //HEADER HEIGHT
         public double HeaderHeight
@@ -295,11 +310,13 @@ namespace InnoversUI.Controls
             if (IsExpanded) 
             { 
                 Icon = ChevronUp;
+                //ShowSeparator = false;
                 OpenAnimation();
             }
             else 
             { 
                 Icon = ChevronDown;
+                //ShowSeparator = default;
                 OpenAnimation();
             }
         }

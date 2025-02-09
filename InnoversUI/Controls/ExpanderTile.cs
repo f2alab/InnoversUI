@@ -46,14 +46,14 @@ namespace InnoversUI.Controls
             DependencyProperty.Register("TitleFontSize", typeof(double), typeof(ExpanderTile), new PropertyMetadata(12d));
 
         //TITLE FORGROUND
-        public SolidColorBrush TitleForeground
+        public SolidColorBrush TitleColor
         {
             get { return (SolidColorBrush)GetValue(TitleForegroundProperty); }
             set { SetValue(TitleForegroundProperty, value); }
         }
 
         public static readonly DependencyProperty TitleForegroundProperty =
-            DependencyProperty.Register("TitleForeground", typeof(SolidColorBrush), typeof(ExpanderTile), new PropertyMetadata(Brushes.Black));
+            DependencyProperty.Register("TitleColor", typeof(SolidColorBrush), typeof(ExpanderTile), new PropertyMetadata(Brushes.Black));
 
 
         //ICON

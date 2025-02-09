@@ -12,7 +12,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.ColumnSpan="2" >
-            <local:ExpanderTile Title="EXPANDER" CornerRadius="6" HeaderCornerRadius="6 6 0 0" BackColor="LightPink" IsExpanded="True" ShowSeparator="True" SeparatorMargin="6 0" HeaderBackgroundColor="LightBlue" SeparatorColor="Chocolate" BorderColor="Red" BorderWidth="1" IconColor="Red" TitleForeground="Teal">
+            <local:ExpanderTile Title="EXPANDER" CornerRadius="6" HeaderCornerRadius="6 6 0 0" BackColor="LightPink" IsExpanded="True" ShowSeparator="True" SeparatorMargin="6 0" HeaderBackgroundColor="LightBlue" SeparatorColor="Chocolate" BorderColor="Red" BorderWidth="1" IconColor="Red" TitleColor="Teal">
                 <local:ExpanderTile.Child>
                     <Border Background="Gainsboro" CornerRadius="0 0 6 6">
                         <TextBlock Text="CONTENT" Margin="8" Background="Firebrick"/>

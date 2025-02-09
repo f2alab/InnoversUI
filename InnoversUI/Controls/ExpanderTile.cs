@@ -283,6 +283,18 @@ namespace InnoversUI.Controls
             DependencyProperty.Register("Child", typeof(object), typeof(ExpanderTile), new PropertyMetadata(null));
 
 
+        //STATE CAN CHANGE
+        public bool StateCanChange
+        {
+            get { return (bool)GetValue(StateCanChangeProperty); }
+            set { SetValue(StateCanChangeProperty, value); }
+        }
+
+        public static readonly DependencyProperty StateCanChangeProperty =
+            DependencyProperty.Register("StateCanChange", typeof(bool), typeof(ExpanderTile), new PropertyMetadata(true));
+
+
+
         //IS EXPANDED
         public bool IsExpanded
         {
@@ -350,6 +362,10 @@ namespace InnoversUI.Controls
 
         private void HeaderToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
+            if (!StateCanChange)
+            {
+                return;
+            }
             IsExpanded = true;
             OpenAnimation();
             ChangeHeaderCornerRadius();
@@ -357,6 +373,10 @@ namespace InnoversUI.Controls
 
         private void HeaderToggleButton_Checked(object sender, RoutedEventArgs e)
         {
+            if (!StateCanChange)
+            {
+                return;
+            }
             IsExpanded = false;
             OpenAnimation();
             ChangeHeaderCornerRadius();

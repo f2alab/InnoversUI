@@ -18,6 +18,7 @@
         </Setter>
     </Style>-->
 
+    <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 
     <!--#region CIRCLEPROGRESSBAR -->
     <Style TargetType="{x:Type local:CircleProgressBar}">
@@ -459,5 +460,94 @@
     <!--#endregion INNOICON-->
 
 
-    
+    <Style TargetType="{x:Type local:ExpanderTile}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ExpanderTile}">
+                    <!--<ControlTemplate.Resources>
+                        <converters:ExpanderTileHeaderCornerRadius x:Key="ExpanderTileHeaderCornerRadius"/>
+                    </ControlTemplate.Resources>-->
+                    <Border CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderWidth}" BorderBrush="{TemplateBinding BorderColor}" Background="{TemplateBinding BackColor}">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <!--HEADER-->
+                            <Border x:Name="HeaderContainer" Grid.Row="0" Height="{TemplateBinding HeaderHeight}" >
+                                <ToggleButton x:Name="HeaderToggleButton" Cursor="Hand" Background="Teal" >
+                                    <ToggleButton.Template>
+                                        <ControlTemplate TargetType="ToggleButton">
+                                             <!--CornerRadius="{Binding HeaderCornerRadius, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}, Converter={StaticResource ExpanderTileHeaderCornerRadius}}"-->
+                                            <Border x:Name="HeaderMainBorder" Background="{Binding Path=HeaderBackgroundColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" 
+                                                    CornerRadius="{Binding HeaderCornerRadius, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" 
+                                                    BorderBrush="{Binding HeaderBorderColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" 
+                                                    BorderThickness="{Binding HeaderBorderThickness, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}">
+                                                <!--<Border.CornerRadius>
+                                                    <MultiBinding Converter="{StaticResource ExpanderTileHeaderCornerRadius}">
+                                                        <Binding Path="IsExpanded"/>
+                                                        <Binding Path="HeaderCornerRadius"/>
+                                                        <Binding Path="CornerRadius"/>
+                                                    </MultiBinding>
+                                                </Border.CornerRadius>-->
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <!--TITLE-->
+                                                    <Border Grid.Column="0" Padding="5" VerticalAlignment="Center">
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="Auto" MinWidth="0"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
+
+                                                            <Grid Grid.Column="0" >
+                                                                <ContentPresenter Content="{Binding LeftIcon, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                            </Grid>
+                                                            <TextBlock x:Name="HeaderTitleTextBlock" Grid.Column="1" FontSize="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}, Path=TitleFontSize}" Foreground="{Binding TitleColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" Text="{Binding Title, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                                                        </Grid>
+                                                    </Border>
+
+                                                    <!--ICON-->
+                                                    <Border Grid.Column="1" Padding="5 0 6 8">
+                                                        <Viewbox VerticalAlignment="Center" Width="{Binding IconSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" Height="{Binding IconSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}">
+                                                            <Path x:Name="Icon" Data="{Binding Icon, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" Fill="{Binding IconColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" VerticalAlignment="Center" />
+                                                        </Viewbox>
+                                                    </Border>
+                                                </Grid>
+
+                                            </Border>
+
+                                            <ControlTemplate.Triggers >
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="{Binding HeaderMouseOverColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" TargetName="HeaderMainBorder"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+
+                                        </ControlTemplate>
+                                    </ToggleButton.Template>
+                                </ToggleButton>
+
+                            </Border>
+
+                            <!--CONTENT-->
+                            <Border Grid.Row="1" Visibility="{TemplateBinding IsExpanded, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Border x:Name="Separator" Height="{TemplateBinding SeparatorHeight}" Background="{TemplateBinding SeparatorColor}" Margin="{TemplateBinding SeparatorMargin}"  Visibility="{Binding ShowSeparator, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    <ContentPresenter x:Name="ContentContainer" Grid.Row="1" Content="{TemplateBinding Child}"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

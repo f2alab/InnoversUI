@@ -56,9 +56,8 @@
     <Compile Include="Controls\CircleImageButton.cs" />
     <Compile Include="Controls\CircleProgressBar.cs" />
     <Compile Include="Controls\DateRange.cs" />
-    <Compile Include="Controls\ExpanderTile.xaml.cs">
-      <DependentUpon>ExpanderTile.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Controls\ExpanderTile.cs" />
+    <Compile Include="Converters\ExpanderTileHeaderCornerRadius.cs" />
     <Compile Include="Controls\FavoriteCheckBox.cs" />
     <Compile Include="Controls\GifImage.cs" />
     <Compile Include="Controls\InnoButton.cs" />
@@ -97,10 +96,6 @@
     <Page Include="Child.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\ExpanderTile.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Dialogs\DialogWait.xaml">
       <Generator>MSBuild:Compile</Generator>

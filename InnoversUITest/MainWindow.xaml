@@ -15,7 +15,10 @@
                 <customs:ExpanderTile Title="EXPANDER" HeaderMouseOverColor="Cyan" CornerRadius="6" HeaderCornerRadius="6 6 0 0" BackColor="LightPink" IsExpanded="True" ShowSeparator="True" SeparatorMargin="6 0" HeaderBackgroundColor="LightBlue" SeparatorColor="Chocolate" BorderColor="Red" BorderWidth="1" IconColor="Red" TitleForeground="Teal">
                     <customs:ExpanderTile.Child>
                         <Border Background="Gainsboro" CornerRadius="0 0 6 6">
-                            <TextBlock Text="CONTENT" Margin="8" Background="Firebrick"/>
+                            <StackPanel>
+                                <TextBlock Text="CONTENT" Margin="8" Background="Firebrick"/>
+                                <customs:TextField x:Name="XXXXXXXX"/>
+                            </StackPanel>
                         </Border>
                     </customs:ExpanderTile.Child>
                     <customs:ExpanderTile.LeftIcon>

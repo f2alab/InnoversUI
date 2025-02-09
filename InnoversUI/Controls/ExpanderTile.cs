@@ -1,5 +1,4 @@
-﻿
-using InnoversUI.Utils;
+﻿using InnoversUI.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -17,12 +17,12 @@ using System.Windows.Shapes;
 
 namespace InnoversUI.Controls
 {
-
-    public partial class ExpanderTile : UserControl
+    public class ExpanderTile : ContentControl
     {
         static readonly Geometry ChevronDown = Geometry.Parse("M 7.41 8.58 L 12 13.17 L 16.59 8.58 L 18 10 L 12 16 L 6 10 L 7.41 8.58 Z");
         static readonly Geometry ChevronUp = Geometry.Parse("M 7.41 15.41 L 12 10.83 L 16.59 15.41 L 18 14 L 12 8 L 6 14 L 7.41 15.41 Z");
 
+        #region [PROPRETIES]
         //TITLE
         public string Title
         {
@@ -41,7 +41,7 @@ namespace InnoversUI.Controls
             set { SetValue(TitleFontSizeProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty TitleFontSizeProperty =
             DependencyProperty.Register("TitleFontSize", typeof(double), typeof(ExpanderTile), new PropertyMetadata(12d));
 
@@ -100,7 +100,7 @@ namespace InnoversUI.Controls
             set { SetValue(LeftIconProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LeftIconProperty =
             DependencyProperty.Register("LeftIcon", typeof(object), typeof(ExpanderTile), new PropertyMetadata(null));
 
@@ -113,7 +113,7 @@ namespace InnoversUI.Controls
             set { SetValue(HeaderHeightProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty HeaderHeightProperty =
             DependencyProperty.Register("HeaderHeight", typeof(double), typeof(ExpanderTile), new PropertyMetadata(30d));
 
@@ -149,7 +149,7 @@ namespace InnoversUI.Controls
             set { SetValue(HeaderBorderProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty HeaderBorderProperty =
             DependencyProperty.Register("HeaderBorderThickness", typeof(Thickness), typeof(ExpanderTile), new PropertyMetadata(new Thickness(0)));
 
@@ -273,7 +273,6 @@ namespace InnoversUI.Controls
 
 
 
-
         //CHILD
         public object Child
         {
@@ -288,8 +287,8 @@ namespace InnoversUI.Controls
         public bool IsExpanded
         {
             get { return (bool)GetValue(IsExpandedProperty); }
-            set 
-            { SetValue(IsExpandedProperty, value);}
+            set
+            { SetValue(IsExpandedProperty, value); }
         }
 
         public static readonly DependencyProperty IsExpandedProperty =
@@ -299,7 +298,7 @@ namespace InnoversUI.Controls
         //ISEXPADED CALLBACK
         private static void OnIsExpandedChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if(d is ExpanderTile Expander)
+            if (d is ExpanderTile Expander)
             {
                 Expander.OnIsExpandedChanged();
             }
@@ -307,23 +306,14 @@ namespace InnoversUI.Controls
 
         private void OnIsExpandedChanged()
         {
-            if (IsExpanded) 
-            { 
+            if (IsExpanded)
+            {
                 Icon = ChevronUp;
-                //ShowSeparator = false;
-                OpenAnimation();
             }
-            else 
-            { 
+            else
+            {
                 Icon = ChevronDown;
-                //ShowSeparator = default;
-                OpenAnimation();
             }
-        }
-
-        private void OpenAnimation()
-        {
-            AnimationsUtils.RandomElementAnimation(Element: ContentContainer, Duration: AnimationDuration);
         }
 
 
@@ -339,23 +329,65 @@ namespace InnoversUI.Controls
         public static readonly DependencyProperty AnimationDurationProperty =
             DependencyProperty.Register("AnimationDuration", typeof(double), typeof(ExpanderTile), new PropertyMetadata(350d));
 
+        #endregion [PROPRETIES]
 
-
-        public ExpanderTile()
+        static ExpanderTile()
         {
-            DataContext = this;
-            InitializeComponent();
-
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(ExpanderTile), new FrameworkPropertyMetadata(typeof(ExpanderTile)));
         }
 
-        private void HeaderToggleButton_Checked(object sender, RoutedEventArgs e)
+        static readonly string HeaderToggleButtonIdString = "HeaderToggleButton";
+
+        public override void OnApplyTemplate()
         {
-            IsExpanded = true;
+            ToggleButton HeaderToggleButton = (ToggleButton)Template.FindName(HeaderToggleButtonIdString, this);
+            HeaderToggleButton.Checked += HeaderToggleButton_Checked;
+            HeaderToggleButton.Unchecked += HeaderToggleButton_Unchecked;
+            
+
+            base.OnApplyTemplate();
         }
 
         private void HeaderToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
+            IsExpanded = true;
+            OpenAnimation();
+            ChangeHeaderCornerRadius();
+        }
+
+        private void HeaderToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
             IsExpanded = false;
+            OpenAnimation();
+            ChangeHeaderCornerRadius();
+        }
+
+        private void OpenAnimation()
+        {
+            ContentPresenter ContentContainer = (ContentPresenter)Template.FindName("ContentContainer", this);
+            if (ContentContainer != null)
+            {
+                AnimationsUtils.RandomElementAnimation(Element: ContentContainer, Duration: AnimationDuration);
+            }
+        }
+
+        public void ChangeHeaderCornerRadius()
+        {
+            ToggleButton HeaderToggleButton = (ToggleButton)Template.FindName(HeaderToggleButtonIdString, this);
+            HeaderToggleButton.OnApplyTemplate();
+            Border HeaderMainBorder = (Border)Template.FindName("HeaderMainBorder", this);
+            if(HeaderMainBorder != null)
+            {
+                if (IsExpanded)
+                {
+                    HeaderMainBorder.CornerRadius = HeaderCornerRadius;
+                }
+                else
+                {
+                    HeaderMainBorder.CornerRadius = CornerRadius;
+                }
+            }
+            
         }
     }
 }

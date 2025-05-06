@@ -346,6 +346,7 @@ namespace InnoversUI.Controls
         static ExpanderTile()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ExpanderTile), new FrameworkPropertyMetadata(typeof(ExpanderTile)));
+
         }
 
         static readonly string HeaderToggleButtonIdString = "HeaderToggleButton";
@@ -355,7 +356,7 @@ namespace InnoversUI.Controls
             ToggleButton HeaderToggleButton = (ToggleButton)Template.FindName(HeaderToggleButtonIdString, this);
             HeaderToggleButton.Checked += HeaderToggleButton_Checked;
             HeaderToggleButton.Unchecked += HeaderToggleButton_Unchecked;
-            
+            Console.WriteLine($"ChangeHeL.aderCornerRadius TOO {IsExpanded}");
 
             base.OnApplyTemplate();
         }
@@ -395,19 +396,22 @@ namespace InnoversUI.Controls
         {
             ToggleButton HeaderToggleButton = (ToggleButton)Template.FindName(HeaderToggleButtonIdString, this);
             HeaderToggleButton.OnApplyTemplate();
-            Border HeaderMainBorder = (Border)Template.FindName("HeaderMainBorder", this);
-            if(HeaderMainBorder != null)
+            
+            if (IsExpanded)
             {
-                if (IsExpanded)
-                {
-                    HeaderMainBorder.CornerRadius = HeaderCornerRadius;
-                }
-                else
-                {
-                    HeaderMainBorder.CornerRadius = CornerRadius;
-                }
+                Console.WriteLine($"Change CornerRadius {IsExpanded}");
+                //HeaderMainBorder.CornerRadius = HeaderCornerRadius;
+                HeaderCornerRadius = new CornerRadius(topLeft: CornerRadius.TopLeft, topRight: CornerRadius.TopRight, bottomLeft: 0, bottomRight: 0);
+            }
+            else
+            {
+                Console.WriteLine($"Change CornerRadius {IsExpanded}");
+                HeaderCornerRadius = new CornerRadius(topLeft: CornerRadius.TopLeft, topRight: CornerRadius.TopRight, bottomLeft: CornerRadius.BottomLeft > 0 ? CornerRadius.BottomLeft - 1 : 0, bottomRight: CornerRadius.BottomRight > 0 ? CornerRadius.BottomRight - 1 : 0);
             }
             
+            Console.WriteLine($"HeaderMainBorder {HeaderToggleButton}");
+            Console.WriteLine($"ChangeHeL.aderCornerRadiusXX {IsExpanded}");
+
         }
     }
 }

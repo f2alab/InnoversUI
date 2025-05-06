@@ -12,7 +12,7 @@
         <ScrollViewer Padding="5">
             <StackPanel >
 
-                <customs:ExpanderTile Title="EXPANDER" HeaderMouseOverColor="Cyan" CornerRadius="6" HeaderCornerRadius="6 6 0 0" BackColor="LightPink" IsExpanded="False" ShowSeparator="True" SeparatorMargin="6 0" HeaderBackgroundColor="LightBlue" SeparatorColor="Chocolate" BorderColor="Red" BorderWidth="1" IconColor="Red" TitleColor="Teal" StateCanChange="True">
+                <customs:ExpanderTile Title="EXPANDER" HeaderMouseOverColor="PaleVioletRed" CornerRadius="6" HeaderCornerRadius="6" BackColor="LightPink" IsExpanded="False" ShowSeparator="True" SeparatorMargin="6 0" HeaderBackgroundColor="LightBlue" SeparatorColor="Chocolate" BorderColor="Red" BorderWidth="1" IconColor="Red" TitleColor="Teal" StateCanChange="True">
                     <customs:ExpanderTile.Child>
                         <Border Background="Gainsboro" CornerRadius="0 0 6 6">
                             <StackPanel>

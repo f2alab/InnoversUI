@@ -366,7 +366,7 @@ namespace InnoversUI.Controls
             {
                 return;
             }
-            IsExpanded = true;
+            IsExpanded = !IsExpanded;
             OpenAnimation();
             ChangeHeaderCornerRadius();
         }
@@ -377,7 +377,7 @@ namespace InnoversUI.Controls
             {
                 return;
             }
-            IsExpanded = false;
+            IsExpanded = !IsExpanded;
             OpenAnimation();
             ChangeHeaderCornerRadius();
         }

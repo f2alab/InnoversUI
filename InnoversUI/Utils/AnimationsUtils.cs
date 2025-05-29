@@ -1,8 +1,9 @@
 ﻿using InnoversUI.Properties;
+using System;
 using System.Collections.Generic;
 using System.Windows;
-using System;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 namespace InnoversUI.Utils
@@ -68,6 +69,42 @@ namespace InnoversUI.Utils
             };
 
             Element.BeginAnimation(UIElement.OpacityProperty, Animation);
+        }
+
+
+        public static void HorizontalSlideAnimation(FrameworkElement Element, double From = -50, double To = 0)
+        {
+            /// Use negative values to move left to right
+            /// and positive values to move right to left
+            var translateTransform = new TranslateTransform();
+            Element.RenderTransform = translateTransform;
+            var animation = new DoubleAnimation
+            {
+                From = From,
+                To = To,
+                Duration = new Duration(TimeSpan.FromSeconds(1)),
+                //AutoReverse = true,
+                //RepeatBehavior = RepeatBehavior.Forever
+            };
+            translateTransform.BeginAnimation(TranslateTransform.XProperty, animation);
+        }
+
+        public static void VerticalSlideAnimation(FrameworkElement Element, double From = -50, double To = 0, Action CompletedAction = null)
+        {
+            /// Use negative values to move up to down
+            /// and positive values to move down to up
+            var translateTransform = new TranslateTransform();
+            Element.RenderTransform = translateTransform;
+            var animation = new DoubleAnimation
+            {
+                From = From,
+                To = To,
+                Duration = new Duration(TimeSpan.FromSeconds(2)),
+                //AutoReverse = true,
+                //RepeatBehavior = RepeatBehavior.Forever
+            };
+            animation.Completed += (s, e) => CompletedAction?.Invoke();
+            translateTransform.BeginAnimation(TranslateTransform.YProperty, animation);
         }
     }
 }

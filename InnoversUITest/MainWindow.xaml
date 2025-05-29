@@ -8,7 +8,7 @@
         Title="MainWindow" Height="690" Width="500"
         KeyDown="Window_KeyDown"
         Loaded="Window_Loaded">
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Grid x:Name="MainGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
         <ScrollViewer Padding="5">
             <StackPanel >
 

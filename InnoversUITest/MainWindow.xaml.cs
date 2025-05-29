@@ -7,7 +7,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
+using System.Xml.Linq;
 
 namespace InnoversUITest
 {
@@ -16,7 +18,13 @@ namespace InnoversUITest
         public MainWindow()
         {
             InitializeComponent();
+
+            AnimationsUtils.VerticalSlideAnimation(Element: MainGrid, From: 100, CompletedAction: () => { Console.WriteLine("ANIMATION IS COMPLETED"); });
+
+
         }
+
+        
 
         private void TextField_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -48,6 +56,14 @@ namespace InnoversUITest
         {
             Console.WriteLine("INNO BUTTON CLICK");
             Console.WriteLine("PASS: " + TextField0.Password);
+
+            //AnimationsUtils.VerticalSlideAnimation(Element: MainGrid, From: 30);
+            AnimationsUtils.VerticalSlideAnimation(Element: MainGrid, From: 100,
+                CompletedAction: () => { 
+                    Console.WriteLine("ANIMATION IS COMPLETED");
+                    AnimationsUtils.HorizontalSlideAnimation(Element: MainGrid, From: -100);
+                }
+            );
         }
 
         private void DialogWithChildBtn_Click(object sender, RoutedEventArgs e)

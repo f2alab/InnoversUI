@@ -478,18 +478,21 @@
                                 <ToggleButton x:Name="HeaderToggleButton" Cursor="Hand" Background="Teal" >
                                     <ToggleButton.Template>
                                         <ControlTemplate TargetType="ToggleButton">
+                                            <ControlTemplate.Resources>
+                                                <converters:ExpanderTileHeaderCornerRadius x:Key="ExpanderTileHeaderCornerRadius"/>
+                                            </ControlTemplate.Resources>
                                              <!--CornerRadius="{Binding HeaderCornerRadius, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}, Converter={StaticResource ExpanderTileHeaderCornerRadius}}"-->
-                                            <Border x:Name="HeaderMainBorder" Background="{Binding Path=HeaderBackgroundColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" 
-                                                    CornerRadius="{Binding HeaderCornerRadius, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" 
+                                            <Border x:Name="HeaderMainBorder" Background="{Binding Path=HeaderBackgroundColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}"          
                                                     BorderBrush="{Binding HeaderBorderColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" 
                                                     BorderThickness="{Binding HeaderBorderThickness, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}">
-                                                <!--<Border.CornerRadius>
+
+                                                <Border.CornerRadius>
                                                     <MultiBinding Converter="{StaticResource ExpanderTileHeaderCornerRadius}">
-                                                        <Binding Path="IsExpanded"/>
-                                                        <Binding Path="HeaderCornerRadius"/>
-                                                        <Binding Path="CornerRadius"/>
+                                                        <Binding Path="CornerRadius" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}"/>
+                                                        <Binding Path="IsExpanded" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}"/>
                                                     </MultiBinding>
-                                                </Border.CornerRadius>-->
+                                                </Border.CornerRadius>
+                                                
                                                 <Grid>
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="*"/>
@@ -512,7 +515,7 @@
                                                     </Border>
 
                                                     <!--ICON-->
-                                                    <Border Grid.Column="1" Padding="5 0 6 8">
+                                                    <Border Grid.Column="1" Padding="5 0 6 8" Visibility="{Binding ShowIcon, Converter={StaticResource BooleanToVisibilityConverter},  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}">
                                                         <Viewbox VerticalAlignment="Center" Width="{Binding IconSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" Height="{Binding IconSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}">
                                                             <Path x:Name="Icon" Data="{Binding Icon, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" Fill="{Binding IconColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" VerticalAlignment="Center" />
                                                         </Viewbox>
@@ -540,7 +543,7 @@
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    <Border x:Name="Separator" Height="{TemplateBinding SeparatorHeight}" Background="{TemplateBinding SeparatorColor}" Margin="{TemplateBinding SeparatorMargin}"  Visibility="{TemplateBinding ShowSeparator, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    <Border x:Name="Separator"   Height="{TemplateBinding SeparatorHeight}" Background="{TemplateBinding SeparatorColor}" Margin="{TemplateBinding SeparatorMargin}"  Visibility="{TemplateBinding ShowSeparator, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                                     <ContentPresenter x:Name="ContentContainer" Grid.Row="1" Content="{TemplateBinding Child}"/>
                                 </Grid>
                             </Border>

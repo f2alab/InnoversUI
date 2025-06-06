@@ -1,19 +1,10 @@
 ﻿using InnoversUI.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace InnoversUI.Controls
 {
@@ -48,11 +39,11 @@ namespace InnoversUI.Controls
         //TITLE FORGROUND
         public SolidColorBrush TitleColor
         {
-            get { return (SolidColorBrush)GetValue(TitleForegroundProperty); }
-            set { SetValue(TitleForegroundProperty, value); }
+            get { return (SolidColorBrush)GetValue(TitleColorProperty); }
+            set { SetValue(TitleColorProperty, value); }
         }
 
-        public static readonly DependencyProperty TitleForegroundProperty =
+        public static readonly DependencyProperty TitleColorProperty =
             DependencyProperty.Register("TitleColor", typeof(SolidColorBrush), typeof(ExpanderTile), new PropertyMetadata(Brushes.Black));
 
 
@@ -91,9 +82,19 @@ namespace InnoversUI.Controls
             DependencyProperty.Register("IconColor", typeof(SolidColorBrush), typeof(ExpanderTile), new PropertyMetadata(Brushes.Black));
 
 
+        //DISPLAY ICON
+        public bool ShowIcon
+        {
+            get { return (bool)GetValue(ShowIconProperty); }
+            set { SetValue(ShowIconProperty, value); }
+        }
+
+        public static readonly DependencyProperty ShowIconProperty =
+            DependencyProperty.Register("ShowIcon", typeof(bool), typeof(ExpanderTile), new PropertyMetadata(true));
+
+
+
         //LEFT ICON
-
-
         public object LeftIcon
         {
             get { return (object)GetValue(LeftIconProperty); }
@@ -154,17 +155,17 @@ namespace InnoversUI.Controls
             DependencyProperty.Register("HeaderBorderThickness", typeof(Thickness), typeof(ExpanderTile), new PropertyMetadata(new Thickness(0)));
 
 
+
         //HEADER CORNER RADIUS
-
-
-        public CornerRadius HeaderCornerRadius
+        public CornerRadius CornerRadius
         {
-            get { return (CornerRadius)GetValue(HeaderCornerRadiusProperty); }
-            set { SetValue(HeaderCornerRadiusProperty, value); }
+            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
         }
 
-        public static readonly DependencyProperty HeaderCornerRadiusProperty =
-            DependencyProperty.Register("HeaderCornerRadius", typeof(CornerRadius), typeof(ExpanderTile), new PropertyMetadata(new CornerRadius(0)));
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(ExpanderTile), new PropertyMetadata(new CornerRadius(0)));
+
 
         //HEADER BORDER COLOR
         public SolidColorBrush HeaderBorderColor
@@ -216,16 +217,6 @@ namespace InnoversUI.Controls
         public static readonly DependencyProperty BorderColorProperty =
             DependencyProperty.Register("BorderColor", typeof(SolidColorBrush), typeof(ExpanderTile), new PropertyMetadata(Brushes.Black));
 
-
-        //HEADER CORNER RADIUS
-        public CornerRadius CornerRadius
-        {
-            get { return (CornerRadius)GetValue(CornerRadiusProperty); }
-            set { SetValue(CornerRadiusProperty, value); }
-        }
-
-        public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(ExpanderTile), new PropertyMetadata(new CornerRadius(0)));
 
         //SEPARATOR
         public bool ShowSeparator
@@ -339,7 +330,7 @@ namespace InnoversUI.Controls
         }
 
         public static readonly DependencyProperty AnimationDurationProperty =
-            DependencyProperty.Register("AnimationDuration", typeof(double), typeof(ExpanderTile), new PropertyMetadata(350d));
+            DependencyProperty.Register("AnimationDuration", typeof(double), typeof(ExpanderTile), new PropertyMetadata(300d));
 
         #endregion [PROPRETIES]
 
@@ -347,6 +338,7 @@ namespace InnoversUI.Controls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ExpanderTile), new FrameworkPropertyMetadata(typeof(ExpanderTile)));
 
+            
         }
 
         static readonly string HeaderToggleButtonIdString = "HeaderToggleButton";
@@ -367,9 +359,7 @@ namespace InnoversUI.Controls
             {
                 return;
             }
-            IsExpanded = !IsExpanded;
-            OpenAnimation();
-            ChangeHeaderCornerRadius();
+            OpenAnimation(OnAnimationEnd: () => { IsExpanded = !IsExpanded; });
         }
 
         private void HeaderToggleButton_Checked(object sender, RoutedEventArgs e)
@@ -378,40 +368,47 @@ namespace InnoversUI.Controls
             {
                 return;
             }
-            IsExpanded = !IsExpanded;
-            OpenAnimation();
-            ChangeHeaderCornerRadius();
+            OpenAnimation(OnAnimationEnd: () => { IsExpanded = !IsExpanded; });
         }
 
-        private void OpenAnimation()
+        private ContentPresenter ContentPresenterContainer => (ContentPresenter)Template.FindName("ContentContainer", this);
+        private double ContentContainerHeight = 0;
+        private void OpenAnimation(Action OnAnimationEnd)
         {
-            ContentPresenter ContentContainer = (ContentPresenter)Template.FindName("ContentContainer", this);
+            ContentPresenter ContentContainer = ContentPresenterContainer;
             if (ContentContainer != null)
             {
-                AnimationsUtils.RandomElementAnimation(Element: ContentContainer, Duration: AnimationDuration);
+                if (IsExpanded)
+                {
+                    Console.WriteLine("IS EXPANDED ANIMATION");
+                    ContentContainerHeight = ContentPresenterContainer.ActualHeight;
+                    AnimateElementHeight(Element: ContentContainer, Duration: AnimationDuration, FromHeight: ContentContainer.ActualHeight, ToHeight: 0, OnAnimationEnd: OnAnimationEnd);
+                }
+                else
+                {
+                    Console.WriteLine("IS NOT EXPANDED ANIMATION");
+                    IsExpanded = true; // IsExpanded = true et non IsExpanded = !IsExpanded (dans OnAnimationEnd), pour forcer l'animation
+                    AnimateElementHeight(Element: ContentContainer, Duration: AnimationDuration, FromHeight: 0, ToHeight: ContentContainerHeight);
+                }
             }
         }
 
-        public void ChangeHeaderCornerRadius()
+        
+
+        private static void AnimateElementHeight(FrameworkElement Element, double Duration = 250, double FromHeight = 0, double ToHeight = 0, Action OnAnimationEnd = null)
         {
-            ToggleButton HeaderToggleButton = (ToggleButton)Template.FindName(HeaderToggleButtonIdString, this);
-            HeaderToggleButton.OnApplyTemplate();
-            
-            if (IsExpanded)
+            DoubleAnimation Animation = new DoubleAnimation
             {
-                Console.WriteLine($"Change CornerRadius {IsExpanded}");
-                //HeaderMainBorder.CornerRadius = HeaderCornerRadius;
-                HeaderCornerRadius = new CornerRadius(topLeft: CornerRadius.TopLeft, topRight: CornerRadius.TopRight, bottomLeft: 0, bottomRight: 0);
-            }
-            else
-            {
-                Console.WriteLine($"Change CornerRadius {IsExpanded}");
-                HeaderCornerRadius = new CornerRadius(topLeft: CornerRadius.TopLeft, topRight: CornerRadius.TopRight, bottomLeft: CornerRadius.BottomLeft > 0 ? CornerRadius.BottomLeft - 1 : 0, bottomRight: CornerRadius.BottomRight > 0 ? CornerRadius.BottomRight - 1 : 0);
-            }
-            
-            Console.WriteLine($"HeaderMainBorder {HeaderToggleButton}");
-            Console.WriteLine($"ChangeHeL.aderCornerRadiusXX {IsExpanded}");
+                From = FromHeight,
+                To = ToHeight,
+                Duration = TimeSpan.FromMilliseconds(Duration),
 
+            };
+
+            Animation.Completed += (s, e) => OnAnimationEnd?.Invoke();
+
+            Element.BeginAnimation(FrameworkElement.HeightProperty, Animation);
         }
+
     }
 }

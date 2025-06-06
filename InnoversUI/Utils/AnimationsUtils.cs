@@ -71,6 +71,18 @@ namespace InnoversUI.Utils
             Element.BeginAnimation(UIElement.OpacityProperty, Animation);
         }
 
+        public static void AnimateElementWidth(FrameworkElement Element, double Duration = 0, double FromWidth = 0, double ToWidth = 0)
+        {
+            DoubleAnimation Animation = new DoubleAnimation
+            {
+                From = FromWidth,
+                To = Element.ActualWidth,
+                Duration = TimeSpan.FromMilliseconds(Duration == 0 ? DURATION : Duration)
+            };
+
+            Element.BeginAnimation(FrameworkElement.WidthProperty, Animation);
+        }
+
 
         public static void HorizontalSlideAnimation(FrameworkElement Element, double From = -50, double To = 0)
         {

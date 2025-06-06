@@ -4,6 +4,8 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 
 namespace InnoversUI.Converters
@@ -12,16 +14,28 @@ namespace InnoversUI.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            bool IsExpanded = (bool)values[0];
-            bool HeaderCornerRadius = (bool)values[1];
-            bool MainCornerRadius = (bool)values[2];
+            CornerRadius MainCornerRadius = (CornerRadius)values[0];
+            bool IsExpanded = (bool)values[1];
 
-            return IsExpanded ? HeaderCornerRadius : MainCornerRadius;
+            return HeaderCornerRadius(IsExpanded: IsExpanded, CornerRadius: MainCornerRadius);
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
+        }
+
+        public CornerRadius HeaderCornerRadius(bool IsExpanded, CornerRadius CornerRadius)
+        {
+            if (IsExpanded)
+            {
+                return new CornerRadius(topLeft: CornerRadius.TopLeft, topRight: CornerRadius.TopRight, bottomLeft: 0, bottomRight: 0);
+            }
+            else
+            {
+               return new CornerRadius(topLeft: CornerRadius.TopLeft, topRight: CornerRadius.TopRight, bottomLeft: CornerRadius.BottomLeft > 0 ? CornerRadius.BottomLeft - 1 : 0, bottomRight: CornerRadius.BottomRight > 0 ? CornerRadius.BottomRight - 1 : 0);
+            }
+
         }
     }
 }

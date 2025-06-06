@@ -4,7 +4,7 @@ using System.Windows.Media;
 
 namespace InnoversUI.Controls
 {
-    
+
     public class CircleImage : Control
     {
         //SIZE

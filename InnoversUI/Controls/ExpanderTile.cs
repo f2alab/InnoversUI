@@ -1,5 +1,4 @@
-﻿using InnoversUI.Utils;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -338,7 +337,7 @@ namespace InnoversUI.Controls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ExpanderTile), new FrameworkPropertyMetadata(typeof(ExpanderTile)));
 
-            
+
         }
 
         static readonly string HeaderToggleButtonIdString = "HeaderToggleButton";
@@ -393,7 +392,7 @@ namespace InnoversUI.Controls
             }
         }
 
-        
+
 
         private static void AnimateElementHeight(FrameworkElement Element, double Duration = 250, double FromHeight = 0, double ToHeight = 0, Action OnAnimationEnd = null)
         {

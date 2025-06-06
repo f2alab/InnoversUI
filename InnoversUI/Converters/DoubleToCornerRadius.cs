@@ -9,7 +9,7 @@ namespace InnoversUI.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if( !double.TryParse(value.ToString(), out double d) )
+            if (!double.TryParse(value.ToString(), out double d))
             {
                 throw new Exception("Value error! Except double but got " + value.GetType());
             }

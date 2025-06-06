@@ -1,9 +1,5 @@
-﻿using System;
-using System.Media;
-using System.Net.Mail;
+﻿using System.Media;
 using System.Text.RegularExpressions;
-using System.Windows.Input;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace InnoversUI.Utils
 {

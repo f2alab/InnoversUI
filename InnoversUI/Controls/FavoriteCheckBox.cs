@@ -3,7 +3,7 @@ using System.Windows.Controls;
 
 namespace InnoversUI.Controls
 {
-    
+
     public class FavoriteCheckBox : CheckBox
     {
         //SIZE

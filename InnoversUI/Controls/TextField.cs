@@ -1,5 +1,4 @@
 ﻿using InnoversUI.Utils;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -78,7 +77,7 @@ namespace InnoversUI.Controls
             set { SetValue(LeftIconProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LeftIconProperty =
             DependencyProperty.Register("LeftIcon", typeof(Control), typeof(TextField), new PropertyMetadata(null));
 
@@ -90,7 +89,7 @@ namespace InnoversUI.Controls
             set { SetValue(LeftIconBackColorProperty, value); }
         }
 
-        
+
         public static readonly DependencyProperty LeftIconBackColorProperty =
             DependencyProperty.Register("LeftIconBackColor", typeof(Brush), typeof(TextField), new PropertyMetadata(Brushes.Transparent));
 
@@ -203,7 +202,7 @@ namespace InnoversUI.Controls
             set { SetValue(PasswordCharProperty, value); }
         }
 
-       
+
         public static readonly DependencyProperty PasswordCharProperty =
             DependencyProperty.Register("PasswordChar", typeof(string), typeof(TextField), new PropertyMetadata("•"));
 
@@ -238,11 +237,11 @@ namespace InnoversUI.Controls
         }
 
 
-        
+
         public override void OnApplyTemplate()
         {
             PasswordBox PassBox = (PasswordBox)Template.FindName(PassTextBoxString, this);
-            
+
             PassBox.PasswordChanged += PassBoxPasswordChanged;
             PassBox.FocusableChanged += PassBox_FocusableChanged;
             base.OnApplyTemplate();
@@ -298,12 +297,12 @@ namespace InnoversUI.Controls
         protected override void OnPreviewTextInput(TextCompositionEventArgs e)
         {
             base.OnPreviewTextInput(e);
-            if(IsOnlyNumeric)
+            if (IsOnlyNumeric)
             {
                 e.Handled = ControlsUtils.OnlyNumeric(Text: e.Text);
             }
         }
 
-        
+
     }
 }

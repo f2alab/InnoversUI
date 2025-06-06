@@ -1,6 +1,4 @@
-﻿using InnoversUI.Dialogs;
-using InnoversUI.Utils;
-using System.Linq;
+﻿using InnoversUI.Utils;
 using System.Windows;
 using System.Windows.Controls;
 

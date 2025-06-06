@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 
 namespace InnoversUI.Converters
@@ -33,7 +28,7 @@ namespace InnoversUI.Converters
             }
             else
             {
-               return new CornerRadius(topLeft: CornerRadius.TopLeft, topRight: CornerRadius.TopRight, bottomLeft: CornerRadius.BottomLeft > 0 ? CornerRadius.BottomLeft - 1 : 0, bottomRight: CornerRadius.BottomRight > 0 ? CornerRadius.BottomRight - 1 : 0);
+                return new CornerRadius(topLeft: CornerRadius.TopLeft, topRight: CornerRadius.TopRight, bottomLeft: CornerRadius.BottomLeft > 0 ? CornerRadius.BottomLeft - 1 : 0, bottomRight: CornerRadius.BottomRight > 0 ? CornerRadius.BottomRight - 1 : 0);
             }
 
         }

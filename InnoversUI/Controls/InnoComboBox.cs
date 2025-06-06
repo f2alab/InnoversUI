@@ -3,8 +3,8 @@ using System.Windows.Controls;
 
 namespace InnoversUI.Controls
 {
-    
-    
+
+
     public class InnoComboBox : ComboBox
     {
         static InnoComboBox()

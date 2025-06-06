@@ -1,13 +1,9 @@
-﻿using Microsoft.Win32;
+﻿using InnoversUI.Controls;
+using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media.Imaging;
-using System.Windows.Media;
 using System.Windows.Controls;
-using InnoversUI.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace InnoversUI.Utils
 {
@@ -15,7 +11,7 @@ namespace InnoversUI.Utils
     {
 
         //OPEN AND DISPLAY IMAGE
-        public static void OpenAndDisplayImage(object ImageControl )
+        public static void OpenAndDisplayImage(object ImageControl)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -26,7 +22,7 @@ namespace InnoversUI.Utils
             if (openFileDialog.ShowDialog() == true)
             {
                 if (ImageControl is Image image)
-                   image.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                    image.Source = new BitmapImage(new Uri(openFileDialog.FileName));
                 else if (ImageControl is ImageBrush ib)
                     ib.ImageSource = new BitmapImage(new Uri(openFileDialog.FileName));
                 else if (ImageControl is CircleImageButton cib)

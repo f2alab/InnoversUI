@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace InnoversUI.Controls
 {
@@ -15,7 +16,7 @@ namespace InnoversUI.Controls
         }
 
         public static readonly DependencyProperty SizeProperty =
-            DependencyProperty.Register("Size", typeof(double), typeof(FavoriteCheckBox), new PropertyMetadata(80.0));
+            DependencyProperty.Register("Size", typeof(double), typeof(FavoriteCheckBox), new PropertyMetadata(24.0));
         #endregion [SIZE]
 
         static FavoriteCheckBox()

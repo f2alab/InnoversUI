@@ -12,6 +12,8 @@
         <ScrollViewer Padding="5">
             <StackPanel >
 
+                <customs:FavoriteCheckBox IsChecked="True" />
+
                 <customs:ExpanderTile Title="EXPANDER" HeaderMouseOverColor="PaleVioletRed" CornerRadius="6"  BackColor="LightPink" IsExpanded="False" ShowSeparator="False" SeparatorMargin="0" HeaderBackgroundColor="LightBlue" SeparatorColor="Chocolate" BorderColor="Red" BorderWidth="1" IconColor="Red" TitleColor="Teal" StateCanChange="True" ShowIcon="True" AnimationDuration="300">
                     <customs:ExpanderTile.Child>
                         <Border Background="Gainsboro" CornerRadius="0 0 6 6">
@@ -90,7 +92,7 @@
                 <Button x:Name="DialogWaitBtn" Content="Dialog Wait" Click="Button_Click"/>
                 <Button x:Name="DialogtBtn" Content="Dialog" Click="DialogtBtn_Click"/>
                 <Border Height="10" />
-                <customs:InnoButton x:Name="InnoBtn" Click="InnoBtn_Click" SplashColor="Red"/>
+                <customs:InnoButton x:Name="InnoBtn" Click="InnoBtn_Click" Width="100"/>
                 <Border Height="10" />
                 <customs:InnoButton  CornerRadius="10">
                     <Grid>

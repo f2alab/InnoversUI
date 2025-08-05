@@ -336,8 +336,6 @@ namespace InnoversUI.Controls
         static ExpanderTile()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ExpanderTile), new FrameworkPropertyMetadata(typeof(ExpanderTile)));
-
-
         }
 
         static readonly string HeaderToggleButtonIdString = "HeaderToggleButton";
@@ -377,6 +375,9 @@ namespace InnoversUI.Controls
             ContentPresenter ContentContainer = ContentPresenterContainer;
             if (ContentContainer != null)
             {
+                Console.WriteLine($"HEIGHT {ContentContainer.DesiredSize.Height}");
+                ContentContainer.Measure(new Size(MaxHeight, MaxHeight));
+                Console.WriteLine($"HEIGHT XX {ContentContainer.DesiredSize.Height}");
                 if (IsExpanded)
                 {
                     Console.WriteLine("IS EXPANDED ANIMATION");
@@ -385,8 +386,11 @@ namespace InnoversUI.Controls
                 }
                 else
                 {
-                    Console.WriteLine("IS NOT EXPANDED ANIMATION");
+                    Console.WriteLine("IS NOT EXPANDED ANIMATION x");
+                    Console.WriteLine($"HEIGHT {ContentContainer.DesiredSize.Height}");
                     IsExpanded = true; // IsExpanded = true et non IsExpanded = !IsExpanded (dans OnAnimationEnd), pour forcer l'animation
+                    
+                    Console.WriteLine($"HEIGHT2 {ContentContainer.DesiredSize.Height}"); Console.WriteLine($"HEIGHT {ContentContainer.DesiredSize.Height}");
                     AnimateElementHeight(Element: ContentContainer, Duration: AnimationDuration, FromHeight: 0, ToHeight: ContentContainerHeight);
                 }
             }
@@ -404,9 +408,11 @@ namespace InnoversUI.Controls
 
             };
 
+            //DoubleAnimation Animation = new DoubleAnimation(toValue: ToHeight, duration: TimeSpan.FromMilliseconds(Duration));
+
             Animation.Completed += (s, e) => OnAnimationEnd?.Invoke();
 
-            Element.BeginAnimation(FrameworkElement.HeightProperty, Animation);
+            Element.BeginAnimation(HeightProperty, Animation);
         }
 
     }

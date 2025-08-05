@@ -15,7 +15,7 @@ namespace InnoversUI.Dialogs
             InitializeComponent();
         }
 
-        public InnoDialog(Window Parent, Control Child, bool IsDismissible = false)
+        internal InnoDialog(Window Parent, FrameworkElement Child, bool IsDismissible = false)
         {
             InitializeComponent();
 
@@ -24,8 +24,15 @@ namespace InnoversUI.Dialogs
             //if (Parent != null)
             DialogsUtils.DialogBackgroudSize(Parent: Parent, Child: this);
 
+
             //ADD CHILD
-            MainBorder.Child = Child;
+            Child.MaxHeight = Parent.ActualHeight;
+            Child.MinWidth = Parent.ActualWidth;
+            Child.HorizontalAlignment = HorizontalAlignment.Center;
+            Child.VerticalAlignment = VerticalAlignment.Center;
+            MainBorder.Children.Add(Child);
+
+           
 
         }
 

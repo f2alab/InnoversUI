@@ -227,7 +227,7 @@ namespace InnoversUI.Controls
 
 
         #region [PASSWORDBOX]
-        static readonly string PassTextBoxString = "PassTextBox";
+        static readonly string PassTextBoxName = "PassTextBox";
         //static PasswordBox PassBox;
         #endregion [PASSWORDBOX]
 
@@ -240,7 +240,7 @@ namespace InnoversUI.Controls
 
         public override void OnApplyTemplate()
         {
-            PasswordBox PassBox = (PasswordBox)Template.FindName(PassTextBoxString, this);
+            PasswordBox PassBox = (PasswordBox)Template.FindName(PassTextBoxName, this);
 
             PassBox.PasswordChanged += PassBoxPasswordChanged;
             PassBox.FocusableChanged += PassBox_FocusableChanged;
@@ -249,7 +249,7 @@ namespace InnoversUI.Controls
 
         private void PassBox_FocusableChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            PasswordBox PassBox = (PasswordBox)Template.FindName(PassTextBoxString, this);
+            PasswordBox PassBox = (PasswordBox)Template.FindName(PassTextBoxName, this);
             PassBox.Focusable = IsFocused;
         }
 
@@ -257,7 +257,7 @@ namespace InnoversUI.Controls
         {
             if (IsLoaded)
             {
-                string Pass = ((PasswordBox)Template.FindName(PassTextBoxString, this)).Password;
+                string Pass = ((PasswordBox)Template.FindName(PassTextBoxName, this)).Password;
                 Text = Pass;
 
                 //CODE POUR QUE LE CURSUER SE AUTOMATIQUEMENT A LA FIN DU PASS
@@ -286,8 +286,8 @@ namespace InnoversUI.Controls
                 IsEmailTextField = ControlsUtils.IsEmail(Email: Text);
 
                 //DEFINIR PASS DANS PASSTEXTBOX
-                if (((PasswordBox)Template.FindName(PassTextBoxString, this)) != null)
-                    ((PasswordBox)Template.FindName(PassTextBoxString, this)).Password = Text;
+                if (((PasswordBox)Template.FindName(PassTextBoxName, this)) != null)
+                    ((PasswordBox)Template.FindName(PassTextBoxName, this)).Password = Text;
             }
 
             base.OnTextChanged(e);

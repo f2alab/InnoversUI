@@ -19,8 +19,7 @@ namespace InnoversUI.Controls
 
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(InnoButton), new PropertyMetadata(new CornerRadius(5)));
-
-
+        
 
         public Brush SplashColor
         {
@@ -56,12 +55,12 @@ namespace InnoversUI.Controls
 
         private void SetBackgroundColor(bool IsMouseLeave)
         {
-            SolidColorBrush BackColor = Background as SolidColorBrush;
-            Color Color = BackColor.Color;
-            if (IsMouseLeave) { Color.A = 255; }
-            else { Color.A = 220; }
+            //SolidColorBrush BackColor = Background as SolidColorBrush;
+            //Color Color = BackColor.Color;
+            //if (IsMouseLeave) { Color.A = 255; }
+            //else { Color.A = 220; }
 
-            Background = new SolidColorBrush(color: Color);
+            //Background = new SolidColorBrush(color: Color);
 
         }
 

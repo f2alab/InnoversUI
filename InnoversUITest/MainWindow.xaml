@@ -5,16 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:InnoversUITest" xmlns:customs="clr-namespace:InnoversUI.Controls;assembly=InnoversUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="690" Width="500"
+        Title="MainWindow"  Width="500"
         KeyDown="Window_KeyDown"
         Loaded="Window_Loaded">
+    
+    
     <Grid x:Name="MainGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
         <ScrollViewer Padding="5">
             <StackPanel >
 
                 <customs:FavoriteCheckBox IsChecked="True" />
 
-                <customs:ExpanderTile Title="EXPANDER" HeaderMouseOverColor="PaleVioletRed" CornerRadius="6"  BackColor="LightPink" IsExpanded="False" ShowSeparator="False" SeparatorMargin="0" HeaderBackgroundColor="LightBlue" SeparatorColor="Chocolate" BorderColor="Red" BorderWidth="1" IconColor="Red" TitleColor="Teal" StateCanChange="True" ShowIcon="True" AnimationDuration="300">
+                <customs:Switch  IsChecked="False" ThemeIconVisibility="Collapsed" />
+
+                <customs:InnoIcon IconData="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
+
+                <DataGrid Style="{DynamicResource DataGridStyles}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" />
+                        <DataGridTextColumn Header="Name" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+                <customs:ExpanderTile Title="EXPANDER" HeaderMouseOverColor="PaleVioletRed" CornerRadius="6"  BackColor="LightPink" IsExpanded="True" ShowSeparator="False" SeparatorMargin="0" HeaderBackgroundColor="LightBlue" SeparatorColor="Chocolate" BorderColor="Red" BorderWidth="1" IconColor="Red" TitleColor="Teal" StateCanChange="True" ShowIcon="True" AnimationDuration="300">
                     <customs:ExpanderTile.Child>
                         <Border Background="Gainsboro" CornerRadius="0 0 6 6">
                             <StackPanel>
@@ -89,10 +103,10 @@
                 <Border Height="10" />
                 <customs:TextField x:Name="TFL" HintTextHorizontalAlignment="Center" HintTextVerticalAlignment="Center" HintText="TextField" Height="120" MaxWidth="220" TextWrapping="Wrap" AcceptsReturn="True" MaxLines="5" />
                 <Border Height="10" />
-                <Button x:Name="DialogWaitBtn" Content="Dialog Wait" Click="Button_Click"/>
+                <Button x:Name="DialogWaitBtn" Content="Dialog Wait" Click="Button_Click"  />
                 <Button x:Name="DialogtBtn" Content="Dialog" Click="DialogtBtn_Click"/>
                 <Border Height="10" />
-                <customs:InnoButton x:Name="InnoBtn" Click="InnoBtn_Click" Width="100"/>
+                <customs:InnoButton x:Name="InnoBtn" Click="InnoBtn_Click" />
                 <Border Height="10" />
                 <customs:InnoButton  CornerRadius="10">
                     <Grid>

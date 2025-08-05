@@ -57,6 +57,7 @@
     <Compile Include="Controls\CircleProgressBar.cs" />
     <Compile Include="Controls\DateRange.cs" />
     <Compile Include="Controls\ExpanderTile.cs" />
+    <Compile Include="Controls\Switch.cs" />
     <Compile Include="Converters\ExpanderTileHeaderCornerRadius.cs" />
     <Compile Include="Controls\FavoriteCheckBox.cs" />
     <Compile Include="Controls\GifImage.cs" />
@@ -74,6 +75,8 @@
     <Compile Include="Converters\NullToVisibility.cs" />
     <Compile Include="Converters\PassBoxVisibilityToBoolean.cs" />
     <Compile Include="Converters\StringToPasswordString.cs" />
+    <Compile Include="Converters\SwitchSizeToCircleMargin.cs" />
+    <Compile Include="Converters\SwitchWidthToCircleSize.cs" />
     <Compile Include="Dialogs\DialogWait.xaml.cs">
       <DependentUpon>DialogWait.xaml</DependentUpon>
     </Compile>
@@ -109,11 +112,40 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\CheckBoxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\ComboBoxStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\DataGridStyles.xaml" />
+    <Page Include="Themes\DatePickerStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Dimensions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Converters\StrokeDashArrayConverter.cs" />
+    <Page Include="Themes\ScrollbarStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\TextBoxStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

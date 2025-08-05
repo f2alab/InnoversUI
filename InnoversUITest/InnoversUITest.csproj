@@ -35,8 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="InnoversUI">
-      <HintPath>..\InnoversUI\bin\Debug\InnoversUI.dll</HintPath>
+    <Reference Include="InnoversUI, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\InnoversUI\bin\Release\InnoversUI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

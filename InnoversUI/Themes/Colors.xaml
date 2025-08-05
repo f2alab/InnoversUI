@@ -1,0 +1,48 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--COULEURS-->
+    <Color x:Key="MenuColor" >#FF1C0337</Color>
+    <SolidColorBrush x:Key="Tst" Color="#BFD4DDE0"/>
+    <SolidColorBrush x:Key="MenuBackColor" Color="{DynamicResource MenuColor}"/>
+    <Color x:Key="MenuSelectedItemColor">DarkCyan</Color>
+    <SolidColorBrush x:Key="MenuSelectedItemBackColor" Color="{DynamicResource MenuSelectedItemColor}"/>
+    <!--<SolidColorBrush x:Key="SelectedMenuBackColor" Color="#3A454A"/>-->
+    <SolidColorBrush x:Key="SelectedTabBackColor" Color="Azure"/>
+    <Color x:Key="MenuBtnOverColor">#3A144A</Color>
+    <SolidColorBrush x:Key="MenuBtnOverBackColor" Color="{DynamicResource MenuBtnOverColor}"/>
+    <SolidColorBrush x:Key="DataGridDetailsIconColor" Color="Olive"/>
+    
+    <!--THEMES COLORS-->
+    <Color x:Key="LightBackColor" >Azure</Color>
+    <Color x:Key="LightForegroundColor" >#FF1C0337</Color>
+    <Color x:Key="LightDataGridAlternateRowBackColor" >#BFD4DDE0</Color>
+    <Color x:Key="LightScrollBarColor" >Gray</Color>
+    <Color x:Key="LightScrollBarMouseOverColor" >#FFB3A8A8</Color>
+    <Color x:Key="LightChartForegroundColor" >Black</Color>
+
+    <Color x:Key="DarkBackColor" >#FF37304C</Color>
+    <Color x:Key="DarkForegroundColor" >#FFFFFF</Color>
+    <Color x:Key="DarkDataGridAlternateRowBackColor" >#666A5C90</Color>
+    <Color x:Key="DarkScrollBarColor" >#FFB3A8A8</Color>
+    <Color x:Key="DarkScrollBarMouseOverColor" >#FF8C8787</Color>
+    <Color x:Key="DarkChartForegroundColor" >LightGray</Color>
+    
+    <Color x:Key="AntiDarkForegroundColor" >#FF1C0337</Color>
+    <Color x:Key="AntiLightForegroundColor" >#FFFFFF</Color>
+    <Color x:Key="AntiDarkBackColor" >Azure</Color>
+    <Color x:Key="AntiLightBackColor" >#FF37304C</Color>
+    
+    <SolidColorBrush x:Key="ScaffoldBackColor" Color="{DynamicResource LightBackColor}"/>
+    <SolidColorBrush x:Key="AntiScaffoldBackColor" Color="{DynamicResource AntiLightBackColor}"/>
+    <SolidColorBrush x:Key="ForegroundColor" Color="{DynamicResource LightForegroundColor}"/>
+    <SolidColorBrush x:Key="AntiForegroundColor" Color="{DynamicResource AntiLightForegroundColor}"/>
+    <SolidColorBrush x:Key="DataGridAlternateRowBackColor" Color="{DynamicResource DarkDataGridAlternateRowBackColor}"/>
+    <SolidColorBrush x:Key="ScrollBarColor" Color="{DynamicResource LightScrollBarColor}"/>
+    <SolidColorBrush x:Key="ScrollBarMouseOverColor" Color="{DynamicResource LightScrollBarMouseOverColor}"/>
+    <SolidColorBrush x:Key="ChartForegroundColor" Color="{DynamicResource LightChartForegroundColor}"/>
+    <!--END THEMES COLORS-->
+
+    <SolidColorBrush x:Key="ChildrenPageHeaderBlue" Color="#FF81A6D6"/>
+
+</ResourceDictionary>

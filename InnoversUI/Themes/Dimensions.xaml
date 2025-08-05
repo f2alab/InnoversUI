@@ -1,0 +1,41 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    
+    <!--CONTROL BAR-->
+    <GridLength x:Key="ControlBarHeight">30</GridLength>
+
+    <!--STATUS BAR-->
+    <GridLength x:Key="StatusBarHeight">25</GridLength>
+    
+    <!--TABCONTROL HEIGHT-->
+    <GridLength x:Key="TabControlHeight">40</GridLength>
+
+    <!--MAIN MENU-->
+    <sys:Double x:Key="MenuMinWidth">55</sys:Double>
+    <sys:Double x:Key="MenuMaxWidth" >180</sys:Double>
+    
+    <!--TEXTBOX RECHERCHE WIDTH AND MAX-WIDTH-->
+    <sys:Double x:Key="TextBoxRechercheWidth">190</sys:Double>
+
+    <!--MAIN CONTENT-->
+    <sys:Double x:Key="MainWindowChildMargin" >1</sys:Double>
+    <sys:Double x:Key="ContentPadding" >1</sys:Double>
+    
+    <!--<CornerRadius x:Key="MainWindowContentCorner">20</CornerRadius>-->
+    <CornerRadius x:Key="MainWindowPageCorner">17 0 0 0</CornerRadius>
+
+    <CornerRadius x:Key="MainWindowContentCorner">20 0 0 0</CornerRadius>
+    <CornerRadius x:Key="TabZindexBorderCornerRadius">15 0 8 8</CornerRadius>
+
+    <!--DATAGRID COLUMN WIDTH-->
+    <DataGridLength x:Key="DataGridIdColumnWidth" >80</DataGridLength>
+    <DataGridLength x:Key="DataGridDateColumnWidth" >115</DataGridLength>
+
+    <sys:Double x:Key="TitleHeight">35</sys:Double>
+    <sys:Double x:Key="TitleIconSize">33</sys:Double>
+    
+    <!--TEXTBOX RECHERCHE HEIGHT-->
+    <sys:Double x:Key="TextFieldHeight">38</sys:Double>
+
+</ResourceDictionary>

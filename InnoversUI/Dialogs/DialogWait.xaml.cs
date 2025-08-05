@@ -12,7 +12,7 @@ namespace InnoversUI.Dialogs
             InitializeComponent();
         }
 
-        public DialogWait(Window Parent, string Message = null)
+        internal DialogWait(Window Parent, string Message = null)
         {
             InitializeComponent();
 

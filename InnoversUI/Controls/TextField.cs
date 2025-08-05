@@ -6,10 +6,8 @@ using System.Windows.Media;
 
 namespace InnoversUI.Controls
 {
-
     public class TextField : TextBox
     {
-
         // HINT TEXT
         #region [HINTTEXT]
         public string HintText

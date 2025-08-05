@@ -72,6 +72,7 @@
     <Compile Include="Converters\CornerRadiusToRightIcon.cs" />
     <Compile Include="Converters\CornerRadiusToLeftIcon.cs" />
     <Compile Include="Converters\DoubleToCornerRadius.cs" />
+    <Compile Include="Converters\InnoComboBoxButtonRadius.cs" />
     <Compile Include="Converters\NullToVisibility.cs" />
     <Compile Include="Converters\PassBoxVisibilityToBoolean.cs" />
     <Compile Include="Converters\StringToPasswordString.cs" />

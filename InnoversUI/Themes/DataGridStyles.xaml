@@ -115,6 +115,7 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
 
     </Style>
 

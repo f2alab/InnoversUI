@@ -308,14 +308,14 @@ namespace InnoversUI.Controls
 
         private void OnIsExpandedChanged()
         {
-            if (IsExpanded)
-            {
-                Icon = ChevronUp;
-            }
-            else
-            {
-                Icon = ChevronDown;
-            }
+            //if (IsExpanded)
+            //{
+            //    Icon = ChevronUp;
+            //}
+            //else
+            //{
+            //    Icon = ChevronDown;
+            //}
         }
 
 
@@ -339,15 +339,21 @@ namespace InnoversUI.Controls
         }
 
         static readonly string HeaderToggleButtonIdString = "HeaderToggleButton";
-
+        private ContentPresenter ContentPresenterContainer => (ContentPresenter)Template.FindName("ContentContainer", this);
+        private double ContentContainerHeight = 0;
         public override void OnApplyTemplate()
         {
             ToggleButton HeaderToggleButton = (ToggleButton)Template.FindName(HeaderToggleButtonIdString, this);
             HeaderToggleButton.Checked += HeaderToggleButton_Checked;
             HeaderToggleButton.Unchecked += HeaderToggleButton_Unchecked;
-            Console.WriteLine($"ChangeHeL.aderCornerRadius TOO {IsExpanded}");
 
             base.OnApplyTemplate();
+
+            //
+            //CALCULER LA HAUTEUR DU CONTENT PRESENTER CONTAINER POUR L'ANIMATION SURTOUT QUAND IL EST COLLAPSE
+            // TRES IMPORTANT POUR EVITER UN BUG DANS L'ANIMATION DU GENRE HEIGHT = 0 QUAND IL EST COLLAPSE
+            ContentPresenterContainer.Measure(new Size(MaxHeight, MaxHeight));
+            ContentContainerHeight = ContentPresenterContainer.DesiredSize.Height;
         }
 
         private void HeaderToggleButton_Unchecked(object sender, RoutedEventArgs e)
@@ -368,29 +374,24 @@ namespace InnoversUI.Controls
             OpenAnimation(OnAnimationEnd: () => { IsExpanded = !IsExpanded; });
         }
 
-        private ContentPresenter ContentPresenterContainer => (ContentPresenter)Template.FindName("ContentContainer", this);
-        private double ContentContainerHeight = 0;
+        
         private void OpenAnimation(Action OnAnimationEnd)
         {
             ContentPresenter ContentContainer = ContentPresenterContainer;
             if (ContentContainer != null)
             {
-                Console.WriteLine($"HEIGHT {ContentContainer.DesiredSize.Height}");
-                ContentContainer.Measure(new Size(MaxHeight, MaxHeight));
-                Console.WriteLine($"HEIGHT XX {ContentContainer.DesiredSize.Height}");
+               
                 if (IsExpanded)
                 {
                     Console.WriteLine("IS EXPANDED ANIMATION");
-                    ContentContainerHeight = ContentPresenterContainer.ActualHeight;
-                    AnimateElementHeight(Element: ContentContainer, Duration: AnimationDuration, FromHeight: ContentContainer.ActualHeight, ToHeight: 0, OnAnimationEnd: OnAnimationEnd);
+                    
+                    AnimateElementHeight(Element: ContentContainer, Duration: AnimationDuration, FromHeight: ContentContainerHeight, ToHeight: 0, OnAnimationEnd: OnAnimationEnd);
                 }
                 else
                 {
-                    Console.WriteLine("IS NOT EXPANDED ANIMATION x");
-                    Console.WriteLine($"HEIGHT {ContentContainer.DesiredSize.Height}");
                     IsExpanded = true; // IsExpanded = true et non IsExpanded = !IsExpanded (dans OnAnimationEnd), pour forcer l'animation
                     
-                    Console.WriteLine($"HEIGHT2 {ContentContainer.DesiredSize.Height}"); Console.WriteLine($"HEIGHT {ContentContainer.DesiredSize.Height}");
+                    
                     AnimateElementHeight(Element: ContentContainer, Duration: AnimationDuration, FromHeight: 0, ToHeight: ContentContainerHeight);
                 }
             }

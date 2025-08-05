@@ -223,9 +223,7 @@
         <Style.Triggers>
         </Style.Triggers>
     </Style>
-
     
-
     <!--<Style x:Key="{x:Type ComboBoxItem}"
        TargetType="{x:Type ComboBoxItem}">
         <Setter Property="SnapsToDevicePixels" Value="true" />

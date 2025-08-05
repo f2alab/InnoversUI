@@ -1,6 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:Double x:Key="DefaultFieldHeight">35</sys:Double>
+    <CornerRadius x:Key="DefaultBorderRadius">5</CornerRadius>
     
     <!--CONTROL BAR-->
     <GridLength x:Key="ControlBarHeight">30</GridLength>

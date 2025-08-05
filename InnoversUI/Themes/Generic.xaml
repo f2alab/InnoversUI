@@ -11,6 +11,7 @@
         <ResourceDictionary Source="/InnoversUI;component/Themes/DataGridStyles.xaml"/>
         <ResourceDictionary Source="/InnoversUI;component/Themes/DatePickerStyles.xaml"/>
         <ResourceDictionary Source="/InnoversUI;component/Themes/ComboBoxStyles.xaml"/>
+        <ResourceDictionary Source="/InnoversUI;component/Themes/Dimensions.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <!--<Style TargetType="{x:Type local:CustomControl1}">
@@ -79,8 +80,7 @@
         </Setter>
     </Style>
     <!--#endregion CIRCLEPROGRESSBAR-->
-
-
+    
     <!--#region TEXTFIELD -->
     <Style TargetType="{x:Type local:TextField}" >
         <Setter Property="Background" Value="White"/>
@@ -196,12 +196,9 @@
         </Setter>
     </Style>
     <!--#endregion TEXTFIELD-->
-
-   
+    
     <!--#region INNOBUTTON -->
-   
-
-
+    
     <Style TargetType="{x:Type local:InnoButton}" BasedOn="{StaticResource {x:Type Button}}">
         <Setter Property="Background" Value="Blue"/>
         <Setter Property="Padding" Value="5"/>
@@ -222,9 +219,6 @@
                         <Duration x:Key="AnimationDuration">0:0:0.2</Duration>
                         <system:Double x:Key="MouseOverColorOpacity">0.75</system:Double>
                     </ControlTemplate.Resources>
-
-
-
                     <Border
                             x:Name="BtnContainer"
                             Background="{TemplateBinding Background}"
@@ -279,9 +273,9 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
     <!--#endregion INNOBUTTON-->
-
-
+    
     <!--#region CIRCLEBUTTON -->
     <Style TargetType="{x:Type local:CircleButton}">
 
@@ -327,8 +321,7 @@
         </Setter>
     </Style>
     <!--#endregion CIRCLEBUTTON-->
-
-
+    
     <!--#region CIRCLEIMAGE -->
     <Style TargetType="{x:Type local:CircleImage}">
         <Setter Property="BorderBrush" Value="Gray"/>
@@ -378,7 +371,7 @@
                     <Grid>
                         <Border x:Name="Border" ToolTip="{TemplateBinding ToolTip}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Cursor="{TemplateBinding Cursor}" Width="{TemplateBinding Size}" Height="{TemplateBinding Size}" CornerRadius="{TemplateBinding Size, Converter={StaticResource DoubleToCornerRadius}}">
                             <Border.Background>
-                                <ImageBrush Stretch="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Stretch}" ImageSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ImageSource}">
+                                <ImageBrush Stretch="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Stretch}" ImageSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ImageSource}" RenderOptions.BitmapScalingMode="HighQuality">
                                 </ImageBrush>
                             </Border.Background>
                         </Border>
@@ -405,58 +398,218 @@
     <!--#endregion CIRCLEIMAGE-->
 
     <!--#region INNOCOMBOBOX -->
-    <Style TargetType="{x:Type local:InnoComboBox}">
-        <Setter Property="Background" Value="Azure"/>
-        <Setter Property="BorderBrush" Value="Gray"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="Height" Value="35"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
+    <system:Double x:Key="ComboBoxFontSize">11</system:Double>
+    <system:Double x:Key="ComboxHeight" >35</system:Double>
+    <SolidColorBrush x:Key="ComboBoxDefaultBorderColor" Color="Teal"/>
+    <SolidColorBrush x:Key="ComboBoxMouseOverBorderColor" Color="Teal"/>
+    <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
+        <Grid>
+            <Border
+            x:Name="Border"
+            Width="23"
+            Grid.Column="0"
+            CornerRadius="0 3 3 0"
+            Background="Teal"
+            BorderBrush="Teal" 
+            SnapsToDevicePixels="False"/>
+
+            <Path 
+            x:Name="Arrow"
+            Grid.Column="0"     
+            Fill="White"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"/>
+        </Grid>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
+        <Border x:Name="PART_ContentHost" Cursor="IBeam"  Background="{TemplateBinding Background}" VerticalAlignment="Center"  BorderThickness="0" MaxWidth="{TemplateBinding MinWidth}" MinWidth="{TemplateBinding MaxWidth}"/>
+    </ControlTemplate>
+    
+    <Style  TargetType="{x:Type local:InnoComboBox}">
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <Setter Property="FontSize" Value="{DynamicResource ComboBoxFontSize}"/>
+        <Setter Property="FontWeight" Value="DemiBold"/>
+        <Setter Property="Background" Value="Azure" />
+        <Setter Property="MinHeight" Value="{DynamicResource DefaultFieldHeight}"/>
+        <Setter Property="BorderBrush" Value="LightGray"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:InnoComboBox}">
                     <ControlTemplate.Resources>
-                        <Geometry x:Key="ArrowDowIconData" >M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z</Geometry>
+                        <converters:InnoComboBoxButtonRadius  x:Key="InnoComboBoxButtonRadius"/>
                     </ControlTemplate.Resources>
                     
-                    <!--MAIN BORDER-->
-                    <Border>
-                        <Border x:Name="MainBorder" Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                Height="{TemplateBinding Height}"
-                                CornerRadius="{TemplateBinding CornerRadius}"
-                                Margin="{TemplateBinding Margin}"
-                                VerticalAlignment="{TemplateBinding VerticalAlignment}"
-                                HorizontalAlignment="{TemplateBinding HorizontalAlignment}">
-                            
-                            <!--CONTENT GRID-->
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                </Grid.ColumnDefinitions>
-                                
-                                <!--TEXTBOX-->
-                                <TextBox  Grid.Column="0"/>
-                                
-                                <!--BUTTON-->
-                                <Grid Grid.Column="1">
-                                    <Button Width="30" Grid.Column="1" Cursor="Hand"  >
-                                        <Button.Content>
-                                            <Viewbox Height="{TemplateBinding IconSize}" Width="{TemplateBinding IconSize}" >
-                                                <Path x:Name="Icon" VerticalAlignment="Center" HorizontalAlignment="Center" Data="{StaticResource ArrowDowIconData}" Fill="White" Height="{TemplateBinding IconSize}" Width="{TemplateBinding IconSize}"/>
-                                            </Viewbox>
-                                        </Button.Content>
-                                    </Button>
+                    <Border x:Name="Border" BorderThickness="2" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="{TemplateBinding CornerRadius}" Background="{TemplateBinding Background}" Width="{TemplateBinding Width}" MaxWidth="{TemplateBinding MaxWidth}" MinWidth="{TemplateBinding MinWidth}" Height="{TemplateBinding Height}" MinHeight="{TemplateBinding MinHeight}" MaxHeight="{TemplateBinding MaxHeight}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Column="0">
+                                <ContentPresenter x:Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}"
+                                    ContentTemplate="{TemplateBinding ItemTemplate}"
+                                    ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                    Margin="11 0 25 0"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    IsEnabled="True"/>
+                                <Label 
+                                    x:Name="HintText"
+                                    Style="{x:Null}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Visibility="Hidden"
+                                    Foreground="{TemplateBinding HintTextColor}"
+                                    Background="Transparent"
+                                    Padding="8 0 0 0"
+                                    Content="{TemplateBinding HintText}"
+                                    FontFamily="Outfit"
+                                    FontSize="{TemplateBinding FontSize}"/>
+                                <TextBox 
+                                        x:Name="PART_EditableTextBox"
+                                        Style="{x:Null}" 
+                                        Template="{StaticResource ComboBoxTextBox}" 
+                                        HorizontalAlignment="Left" 
+                                        VerticalAlignment="Center" 
+                                        Focusable="True"
+                                        Background="Transparent"
+                                        Margin="5 0"
+                                        IsInactiveSelectionHighlightEnabled="False"
+                                        FontFamily="{TemplateBinding FontFamily}"
+                                        FontSize="{TemplateBinding FontSize}"
+                                        FontWeight="{TemplateBinding FontWeight}"
+                                        MaxWidth="{TemplateBinding Width}"
+                                        Visibility="Hidden"
+                                        IsReadOnly="{TemplateBinding IsReadOnly}" />
+                                <!--SelectionBrush="Transparent"/>-->
 
-                                </Grid>
+                                <Popup 
+                                    x:Name="Popup"
+                                    Placement="Bottom"
+                                    PlacementTarget="{Binding ElementName=Border}"
+                                    IsOpen="{TemplateBinding IsDropDownOpen}"
+                                    AllowsTransparency="True" 
+                                    Focusable="False"
+                                    PopupAnimation="Slide">
+
+                                    <!--Background="#FFDED9E2"-->
+                                    <Border
+                                        x:Name="DropDownBorder"
+                                        Background="#FFDED9E2"
+                                        CornerRadius="8"
+                                        BorderThickness="1"
+                                        BorderBrush="RosyBrown"
+                                        Padding="5"
+                                        Margin="10"
+                                        MinWidth="{TemplateBinding ActualWidth}"
+                                        MaxWidth="{TemplateBinding ActualWidth}"
+                                        MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                        UseLayoutRounding="True">
+                                        <Grid Name="DropDown"
+                                        SnapsToDevicePixels="True"                
+                                        MinWidth="{TemplateBinding ActualWidth}"
+                                        MaxHeight="{TemplateBinding MaxDropDownHeight}" >
+
+                                            <ScrollViewer HorizontalAlignment="Center"  SnapsToDevicePixels="True" FontWeight="DemiBold" FontFamily="Outfit" FontSize="11" Cursor="Hand">
+
+                                            </ScrollViewer>
+                                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" Margin="3"/>
+                                        </Grid>
+                                    </Border>
+
+
+                                </Popup>
                             </Grid>
 
-                        </Border>
+                            <ToggleButton 
+                                x:Name="ToggleButton"
+                                Grid.Column="1" 
+                                Background="{TemplateBinding ButtonColor}"
+                                Focusable="False"
+                                IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                                ClickMode="Press">
+                                <ToggleButton.Style>
+                                    <Style TargetType="ToggleButton">
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ToggleButton">
+                                                    <Border
+                                                            x:Name="Border"
+                                                            Width="23"
+                                                            Grid.Column="0"
+                                                            CornerRadius="{Binding CornerRadius, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:InnoComboBox}, Converter={StaticResource InnoComboBoxButtonRadius}}"
+                                                            Background="{TemplateBinding Background}"
+                                                            BorderBrush="{TemplateBinding Background}" 
+                                                            SnapsToDevicePixels="False"
+                                                            Cursor="Hand">
+                                                        <Path x:Name="Arrow"  Grid.Column="0" Fill="White" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"/>
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ToggleButton.Style>
+                            </ToggleButton>
+                        </Grid>
                     </Border>
+
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Text" Value=""/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible" TargetName="HintText"/>
+                        </MultiTrigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="Border" Value="DeepSkyBlue"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True" SourceName="PART_EditableTextBox">
+                            <Setter Property="BorderBrush" TargetName="Border" Value="DeepSkyBlue"/>
+                        </Trigger>
+                        <Trigger Property="HasItems" Value="false">
+                            <Setter TargetName="DropDownBorder" Property="MinHeight" Value="25"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="Silver"/>
+                            <Setter Property="Background" Value="Silver" TargetName="ToggleButton"/>
+                        </Trigger>
+                        <Trigger Property="IsGrouping" Value="true">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                        </Trigger>
+                        <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
+                            <Setter TargetName="DropDownBorder" Property="CornerRadius" Value="5"/>
+                            <Setter TargetName="DropDownBorder" Property="Margin" Value="0,2,0,0"/>
+                        </Trigger>
+                        <Trigger Property="IsEditable"  Value="true">
+                            <Setter Property="IsTabStop" Value="false"/>
+                            <Setter TargetName="PART_EditableTextBox" Property="Visibility" Value="Visible"/>
+                            <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="MouseDown" SourceName="PART_EditableTextBox">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <BooleanAnimationUsingKeyFrames
+                                        Storyboard.TargetName="Popup" 
+                                        Storyboard.TargetProperty="IsOpen"
+                                        Duration="0:0:1" FillBehavior="HoldEnd">
+                                        <DiscreteBooleanKeyFrame Value="False" KeyTime="0:0:0" />
+                                        <DiscreteBooleanKeyFrame Value="True" KeyTime="0:0:1" />
+                                    </BooleanAnimationUsingKeyFrames>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+        </Style.Triggers>
     </Style>
     <!--#endregion INNOCOMBOBOX-->
 
@@ -532,9 +685,6 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:ExpanderTile}">
-                    <!--<ControlTemplate.Resources>
-                    <converters:ExpanderTileHeaderCornerRadius x:Key="ExpanderTileHeaderCornerRadius"/>
-                </ControlTemplate.Resources>-->
                     <Border CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderWidth}" BorderBrush="{TemplateBinding BorderColor}" Background="{TemplateBinding BackColor}">
                         <Grid>
                             <Grid.RowDefinitions>
@@ -548,8 +698,10 @@
                                         <ControlTemplate TargetType="ToggleButton">
                                             <ControlTemplate.Resources>
                                                 <converters:ExpanderTileHeaderCornerRadius x:Key="ExpanderTileHeaderCornerRadius"/>
+                                                <Duration x:Key="AnimationDuration">0:0:0.4</Duration>
+                                                <system:Double x:Key="RotationAngle">180</system:Double>
                                             </ControlTemplate.Resources>
-                                            <!--CornerRadius="{Binding HeaderCornerRadius, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}, Converter={StaticResource ExpanderTileHeaderCornerRadius}}"-->
+                                           
                                             <Border x:Name="HeaderMainBorder" Background="{Binding Path=HeaderBackgroundColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}"          
                                                 BorderBrush="{Binding HeaderBorderColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" 
                                                 BorderThickness="{Binding HeaderBorderThickness, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}">
@@ -583,11 +735,11 @@
                                                     </Border>
 
                                                     <!--ICON-->
-                                                    <Border Grid.Column="1" Padding="5 0 6 8" Visibility="{Binding ShowIcon, Converter={StaticResource BooleanToVisibilityConverter},  RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}">
-                                                        <Viewbox VerticalAlignment="Center" Width="{Binding IconSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" Height="{Binding IconSize, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}">
-                                                            <Path x:Name="Icon" Data="{Binding Icon, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" Fill="{Binding IconColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" VerticalAlignment="Center" />
-                                                        </Viewbox>
-                                                    </Border>
+                                                    <local:InnoIcon x:Name="Icon" Grid.Column="1" IconData="{Binding Icon, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" Fill="{Binding IconColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" RenderTransformOrigin="0.5,0.5">
+                                                        <local:InnoIcon.RenderTransform>
+                                                            <RotateTransform x:Name="RotateTransform" Angle="0"/>
+                                                        </local:InnoIcon.RenderTransform>
+                                                    </local:InnoIcon>
                                                 </Grid>
 
                                             </Border>
@@ -596,6 +748,22 @@
                                                 <Trigger Property="IsMouseOver" Value="True">
                                                     <Setter Property="Background" Value="{Binding HeaderMouseOverColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" TargetName="HeaderMainBorder"/>
                                                 </Trigger>
+
+                                                <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetName="RotateTransform" Storyboard.TargetProperty="Angle" From="0" To="{StaticResource RotationAngle}" Duration="{StaticResource AnimationDuration}" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger>
+
+                                                <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation Storyboard.TargetName="RotateTransform" Storyboard.TargetProperty="Angle" From="{StaticResource RotationAngle}" To="0" Duration="{StaticResource AnimationDuration}" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger>
                                             </ControlTemplate.Triggers>
 
                                         </ControlTemplate>
@@ -611,7 +779,7 @@
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    <Border x:Name="Separator"   Height="{TemplateBinding SeparatorHeight}" Background="{TemplateBinding SeparatorColor}" Margin="{TemplateBinding SeparatorMargin}"  Visibility="{TemplateBinding ShowSeparator, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    <Border x:Name="Separator" Height="{TemplateBinding SeparatorHeight}" Background="{TemplateBinding SeparatorColor}" Margin="{TemplateBinding SeparatorMargin}"  Visibility="{TemplateBinding ShowSeparator, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                                     <ContentPresenter x:Name="ContentContainer" Grid.Row="1" Content="{TemplateBinding Child}"/>
                                 </Grid>
                             </Border>

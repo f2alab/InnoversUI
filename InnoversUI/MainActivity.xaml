@@ -13,7 +13,11 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.ColumnSpan="2" >
 
-            <local:Switch ThemeIconVisibility="Visible" Content="SWITCH" Checked="Switch_Checked"/>
+            <local:Switch ThemeIconVisibility="Visible"  Checked="Switch_Checked">
+                <local:Switch.Content>
+                    SWITCH
+                </local:Switch.Content>
+            </local:Switch>
             
             <local:InnoComboBox CornerRadius="10" Height="40" HintText="Selection catégorie" />
 

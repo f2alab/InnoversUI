@@ -16,17 +16,18 @@
 
                 <customs:FavoriteCheckBox IsChecked="True" />
 
-                <customs:Switch  IsChecked="False" ThemeIconVisibility="Collapsed" Content="Switch" FontWeight="Bold" Foreground="red" VerticalContentAlignment="Bottom"/>
+                <customs:Switch IsChecked="False" Content="Switch" />
 
                 <customs:InnoIcon IconData="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
                 <customs:InnoIcon IconData="M12,0A10.011,10.011,0,0,0,2,10c0,5.282,8.4,12.533,9.354,13.343l.646.546.646-.546C13.6,22.533,22,15.282,22,10A10.011,10.011,0,0,0,12,0Zm0,15a5,5,0,1,1,5-5A5.006,5.006,0,0,1,12,15Z" />
-
-                <customs:InnoComboBox HintText="Catégorie" IsEditable="True">
+                <Border Height="8"/>
+                <customs:InnoComboBox HintText="Catégorie" IsEditable="True" Margin="8">
                     <ComboBoxItem Content="TG"/>
                     <ComboBoxItem Content="GH"/>
                     <ComboBoxItem Content="BF"/>
                 </customs:InnoComboBox>
-                <DataGrid Style="{DynamicResource DataGridStyles}">
+                <Border Height="8"/>
+                <DataGrid Style="{DynamicResource DataGridStyles}" Margin="8">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Id" />
                         <DataGridTextColumn Header="Name" />

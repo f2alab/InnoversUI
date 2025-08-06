@@ -36,9 +36,6 @@ namespace InnoversUI.Controls
         public static readonly DependencyProperty ThemeIconVisibilityProperty =
             DependencyProperty.Register("ThemeIconVisibility", typeof(Visibility), typeof(Switch), new PropertyMetadata(Visibility.Collapsed));
 
-        static readonly string MainBorderName= "MainBorder";
-
-
 
         public Thickness ContentMargin
         {
@@ -48,25 +45,29 @@ namespace InnoversUI.Controls
 
         public static readonly DependencyProperty ContentMarginProperty =
             DependencyProperty.Register("ContentMargin", typeof(Thickness), typeof(Switch), new PropertyMetadata(new Thickness(3, 0, 0, 0)));
-
-
+        
 
         static Switch()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Switch), new FrameworkPropertyMetadata(typeof(Switch)));
         }
 
+
+        static readonly string MainBorderName = "MainBorder";
+        static readonly string ContentName = "Content";
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
             
             Border MainBorder = (Border)Template.FindName(MainBorderName, this);
+            ContentPresenter ContentPresenter = (ContentPresenter)Template.FindName(ContentName, this);
            
 
             Storyboard ActivateAnimation = (Storyboard) MainBorder.FindResource(resourceKey: "ActiveAnimation");
             Storyboard DesactivateAnimation = (Storyboard) MainBorder.FindResource(resourceKey: "DesactiveAnimation");
             
+            //ANIMATION
             if(ActivateAnimation != null)
             {
                 Console.WriteLine("ACTIVATE ANIMATION IS NOT NULL");
@@ -83,6 +84,30 @@ namespace InnoversUI.Controls
             {
                 Console.WriteLine("ACTIVATE ANIMATION IS NULL");
             }
+
+
+            if (Content != null && !(Content is string))
+            {
+                throw new Exception("Content must be a string");
+            }
+
+            //SHOW OR HIDE TITLE
+            
+            if(Content != null)
+            {
+                string Title = (string)Content;
+
+                if (string.IsNullOrWhiteSpace(Title))
+                {
+                    ContentPresenter.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    ContentPresenter.Visibility = Visibility.Visible;
+                }
+            }
+
+            
 
 
         }

@@ -13,10 +13,8 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.ColumnSpan="2" >
 
-            <local:Switch ThemeIconVisibility="Visible"/>
-
-           
-
+            <local:Switch ThemeIconVisibility="Visible" Content="SWITCH" Checked="Switch_Checked"/>
+            
             <local:InnoComboBox CornerRadius="10" Height="40" HintText="Selection catégorie" />
 
             <local:ExpanderTile Title="EXPANDER" CornerRadius="6" BackColor="LightPink" IsExpanded="True" ShowSeparator="True" SeparatorMargin="6 0" HeaderBackgroundColor="LightBlue" SeparatorColor="Chocolate" BorderColor="Red" BorderWidth="1" IconColor="Red" TitleColor="Teal">

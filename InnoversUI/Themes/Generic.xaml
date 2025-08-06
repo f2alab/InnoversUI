@@ -802,16 +802,17 @@
     <Color x:Key="ActiveBorderBackColor" >#FF00FBEA</Color>
     <SolidColorBrush x:Key="DefaultBackgroundColor" Color="{StaticResource SemiTransaprentColor}" />
     <Style TargetType="{x:Type local:Switch}">
-        <Setter Property="Width" Value="{StaticResource SwitchWidth}"/>
-        <Setter Property="MaxWidth" Value="{StaticResource SwitchWidth}"/>
-        <Setter Property="Height" Value="{StaticResource SwitchHeight}"/>
-        <Setter Property="MaxHeight" Value="{StaticResource SwitchHeight}"/>
+        <!--<Setter Property="Width" Value="{StaticResource SwitchWidth}"/>
+        <Setter Property="Height" Value="{StaticResource SwitchHeight}"/>-->
+        <!--<Setter Property="MaxWidth" Value="{StaticResource SwitchWidth}"/>
+        <Setter Property="MaxHeight" Value="{StaticResource SwitchHeight}"/>-->
         <Setter Property="BorderBrush" Value="Gray" />
         <Setter Property="BorderThickness" Value="1.5" />
         <Setter Property="Background" Value="{StaticResource DefaultBackgroundColor}"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:Switch}">
+                <ControlTemplate TargetType="{x:Type local:Switch}" >
                     <ControlTemplate.Resources>
                         <Color x:Key="ActivateColor">Blue</Color>
                         <Color x:Key="DesactivateColor">Gray</Color>
@@ -822,9 +823,7 @@
                         <converters:SwitchWidthToCircleSize x:Key="SwitchWidthToCircleSize"/>
                         <converters:SwitchSizeToCircleMargin x:Key="SwitchSizeToCircleMargin"/>
                         <Duration x:Key="AnimationDuration">0:0:0.3</Duration>
-
                         <Geometry x:Key="LigthIconData">M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z</Geometry>
-
                         <Storyboard x:Key="ActiveAnimation">
                             <ColorAnimation Storyboard.TargetName="MainBorder" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="{StaticResource ActiveBorderBackColor}"  FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
                             <ColorAnimation Storyboard.TargetName="MainBorder" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="{StaticResource ActivateColor}"  FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
@@ -840,15 +839,21 @@
                             <ThicknessAnimation Storyboard.TargetName="ThemeIcon" Storyboard.TargetProperty="Margin" From="{StaticResource DesactivateMargin}" To="{StaticResource ActivateMargin}"  Duration="{StaticResource AnimationDuration}" />
                         </Storyboard>
                     </ControlTemplate.Resources>
-                    <Grid x:Name="MainGrid" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" MaxWidth="{TemplateBinding MaxWidth}" MaxHeight="{TemplateBinding MaxHeight}">
-                        <Border x:Name="MainBorder"  Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                    <!--<Grid x:Name="MainGrid" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" MaxWidth="{TemplateBinding MaxWidth}" MaxHeight="{TemplateBinding MaxHeight}">-->
+                    <Grid x:Name="MainGrid" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Border x:Name="MainBorder" Grid.Column="0" Width="{StaticResource SwitchWidth}" Height="{StaticResource SwitchHeight}" MaxWidth="{StaticResource SwitchWidth}" MaxHeight="{StaticResource SwitchHeight}" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
                             <Grid>
-                                <Border x:Name="Circle" Background="Gray" Height="{TemplateBinding Height}" Width="{TemplateBinding Height}" BorderThickness="2.5" CornerRadius="50"  VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                <Border x:Name="Circle" Background="Gray" Height="{StaticResource SwitchHeight}" Width="{StaticResource SwitchHeight}" BorderThickness="2.5" CornerRadius="50"  VerticalAlignment="Center" HorizontalAlignment="Left"/>
                                 <Viewbox x:Name="ThemeIcon" Height="10" Width="10" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="{TemplateBinding ThemeIconVisibility}">
                                     <Path Data="{StaticResource CalendarIconData }" Fill="{StaticResource DesactivateColorBrush}" Margin="5 0"/>
                                 </Viewbox>
                             </Grid>
                         </Border>
+                        <ContentPresenter Grid.Column="1" Content="{TemplateBinding Content}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding ContentMargin}"/>
                     </Grid>
 
                     <ControlTemplate.Triggers>

@@ -16,35 +16,6 @@ using System.Windows.Shapes;
 
 namespace InnoversUI.Controls
 {
-    /// <summary>
-    /// Suivez les étapes 1a ou 1b puis 2 pour utiliser ce contrôle personnalisé dans un fichier XAML.
-    ///
-    /// Étape 1a) Utilisation de ce contrôle personnalisé dans un fichier XAML qui existe dans le projet actif.
-    /// Ajoutez cet attribut XmlNamespace à l'élément racine du fichier de balisage où il doit 
-    /// être utilisé :
-    ///
-    ///     xmlns:MyNamespace="clr-namespace:InnoversUI.Controls"
-    ///
-    ///
-    /// Étape 1b) Utilisation de ce contrôle personnalisé dans un fichier XAML qui existe dans un autre projet.
-    /// Ajoutez cet attribut XmlNamespace à l'élément racine du fichier de balisage où il doit 
-    /// être utilisé :
-    ///
-    ///     xmlns:MyNamespace="clr-namespace:InnoversUI.Controls;assembly=InnoversUI.Controls"
-    ///
-    /// Vous devrez également ajouter une référence du projet contenant le fichier XAML
-    /// à ce projet et regénérer pour éviter des erreurs de compilation :
-    ///
-    ///     Cliquez avec le bouton droit sur le projet cible dans l'Explorateur de solutions, puis sur
-    ///     "Ajouter une référence"->"Projets"->[Recherchez et sélectionnez ce projet]
-    ///
-    ///
-    /// Étape 2)
-    /// Utilisez à présent votre contrôle dans le fichier XAML.
-    ///
-    ///     <MyNamespace:Switch/>
-    ///
-    /// </summary>
     public class Switch : CheckBox
     {
         public CornerRadius CornerRadius
@@ -57,9 +28,6 @@ namespace InnoversUI.Controls
 
 
 
-
-
-
         public Visibility ThemeIconVisibility
         {
             get { return (Visibility)GetValue(ThemeIconVisibilityProperty); }
@@ -68,11 +36,20 @@ namespace InnoversUI.Controls
         public static readonly DependencyProperty ThemeIconVisibilityProperty =
             DependencyProperty.Register("ThemeIconVisibility", typeof(Visibility), typeof(Switch), new PropertyMetadata(Visibility.Collapsed));
 
-
-
-
-
         static readonly string MainBorderName= "MainBorder";
+
+
+
+        public Thickness ContentMargin
+        {
+            get { return (Thickness)GetValue(ContentMarginProperty); }
+            set { SetValue(ContentMarginProperty, value); }
+        }
+
+        public static readonly DependencyProperty ContentMarginProperty =
+            DependencyProperty.Register("ContentMargin", typeof(Thickness), typeof(Switch), new PropertyMetadata(new Thickness(3, 0, 0, 0)));
+
+
 
         static Switch()
         {

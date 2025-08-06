@@ -18,5 +18,10 @@ namespace InnoversUI
         {
             Console.WriteLine("TF0 TEXT CHANGED");
         }
+
+        private void Switch_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

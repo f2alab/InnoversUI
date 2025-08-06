@@ -7,26 +7,6 @@
     <system:Double x:Key="ComboxHeight" >35</system:Double>
     <SolidColorBrush x:Key="ComboBoxDefaultBorderColor" Color="Teal"/>
     <SolidColorBrush x:Key="ComboBoxMouseOverBorderColor" Color="Teal"/>
-    <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
-        <Grid>
-            <Border
-                x:Name="Border"
-                Width="23"
-                Grid.Column="0"
-                CornerRadius="0 3 3 0"
-                Background="Teal"
-                BorderBrush="Teal" 
-                SnapsToDevicePixels="False"/>
-            
-            <Path 
-                x:Name="Arrow"
-                Grid.Column="0"     
-                Fill="White"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Data="M0,0 L0,2 L4,6 L8,2 L8,0 L4,4 z"/>
-        </Grid>
-    </ControlTemplate>
 
     <ControlTemplate x:Key="ComboBoxTextBox" TargetType="{x:Type TextBox}">
         <Border x:Name="PART_ContentHost"  Background="{TemplateBinding Background}" VerticalAlignment="Center"  BorderThickness="0" MaxWidth="{TemplateBinding MinWidth}" MinWidth="{TemplateBinding MaxWidth}"/>

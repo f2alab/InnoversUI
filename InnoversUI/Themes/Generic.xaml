@@ -809,7 +809,7 @@
         <Setter Property="BorderBrush" Value="Gray" />
         <Setter Property="BorderThickness" Value="1.5" />
         <Setter Property="Background" Value="{StaticResource DefaultBackgroundColor}"/>
-        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>

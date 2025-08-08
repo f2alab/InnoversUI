@@ -15,7 +15,7 @@
     
     <!--THEMES COLORS-->
     <Color x:Key="LightBackColor" >Azure</Color>
-    <Color x:Key="LightForegroundColor" >#FF1C0337</Color>
+    <Color x:Key="LightForegroundColor" >Black</Color>
     <Color x:Key="LightDataGridAlternateRowBackColor" >#BFD4DDE0</Color>
     <Color x:Key="LightScrollBarColor" >Gray</Color>
     <Color x:Key="LightScrollBarMouseOverColor" >#FFB3A8A8</Color>

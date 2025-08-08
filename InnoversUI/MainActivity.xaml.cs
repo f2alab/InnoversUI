@@ -21,6 +21,18 @@ namespace InnoversUI
 
         private void Switch_Checked(object sender, RoutedEventArgs e)
         {
+            Switch1.Content = "On";
+            Switch1.IsEnabled = true;
+        }
+
+        private void Switch_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Switch1.Content = "Off";
+            Switch1.IsEnabled = false;
+        }
+
+        private void Switch1_Checked(object sender, RoutedEventArgs e)
+        {
 
         }
     }

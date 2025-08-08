@@ -96,5 +96,28 @@ namespace InnoversUITest
         {
             Console.WriteLine("TF0 TEXT CHANGED");
         }
+
+        
+
+        private void Switch_Checked(object sender, RoutedEventArgs e)
+        {
+            //SwitchCBX.Content = "On";
+            //Switch.IsEnabled = true;
+        }
+
+        private void Switch_Unchecked(object sender, RoutedEventArgs e)
+        {
+            //Switch.Content = "Off";
+            //Switch.IsEnabled = false;
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

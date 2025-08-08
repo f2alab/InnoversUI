@@ -89,6 +89,7 @@
       <DependentUpon>MainActivity.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\AnimationsUtils.cs" />
+    <Compile Include="Utils\ColorsUtils.cs" />
     <Compile Include="Utils\Constantes.cs" />
     <Compile Include="Utils\ControlsUtils.cs" />
     <Compile Include="Utils\DialogsUtils.cs" />
@@ -147,6 +148,10 @@
     <Page Include="Themes\TextBoxStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\TextStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

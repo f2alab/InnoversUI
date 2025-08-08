@@ -7,11 +7,13 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/InnoversUI;component/Themes/Colors.xaml"/>
+        <ResourceDictionary Source="/InnoversUI;component/Themes/TextStyles.xaml"/>
         <ResourceDictionary Source="/InnoversUI;component/Themes/ScrollbarStyles.xaml"/>
         <ResourceDictionary Source="/InnoversUI;component/Themes/DataGridStyles.xaml"/>
         <ResourceDictionary Source="/InnoversUI;component/Themes/DatePickerStyles.xaml"/>
         <ResourceDictionary Source="/InnoversUI;component/Themes/ComboBoxStyles.xaml"/>
         <ResourceDictionary Source="/InnoversUI;component/Themes/Dimensions.xaml"/>
+        <ResourceDictionary Source="/InnoversUI;component/Themes/CheckBoxStyles.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 
     <!--<Style TargetType="{x:Type local:CustomControl1}">
@@ -797,18 +799,139 @@
 
     <!--#region SWITCH-->
 
-    <system:Double x:Key="SwitchWidth">35</system:Double>
-    <system:Double x:Key="SwitchHeight">16</system:Double>
-    <Color x:Key="ActiveBorderBackColor" >#FF00FBEA</Color>
-    <SolidColorBrush x:Key="DefaultBackgroundColor" Color="{StaticResource SemiTransaprentColor}" />
+
+
     <Style TargetType="{x:Type local:Switch}">
-        <!--<Setter Property="Width" Value="{StaticResource SwitchWidth}"/>
-        <Setter Property="Height" Value="{StaticResource SwitchHeight}"/>-->
-        <!--<Setter Property="MaxWidth" Value="{StaticResource SwitchWidth}"/>
-        <Setter Property="MaxHeight" Value="{StaticResource SwitchHeight}"/>-->
-        <Setter Property="BorderBrush" Value="Gray" />
+        <!--<Setter Property="Width" Value="35"/>-->
+        <!--<Setter Property="Height" Value="18"/>-->
+        <Setter Property="Background" Value="LightGray"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:Switch}">
+                    <ControlTemplate.Resources>
+                        <system:Double x:Key="SwitchWidth">35</system:Double>
+                        <system:Double x:Key="SwitchHeight">18</system:Double>
+                        <system:Double x:Key="ThemeIconHeight">12</system:Double>
+                        <Color x:Key="ActiveColor">#4CAF50</Color>
+                        <Color x:Key="InactiveColor">Gray</Color>
+                        <Color x:Key="DisableTrackColor">Silver</Color>
+                        <Color x:Key="DisableThumbColor">Silver</Color>
+                        <SolidColorBrush x:Key="DisableTrackColorBrush" Color="{StaticResource DisableTrackColor}"/>
+                        <SolidColorBrush x:Key="DisableThumbColorBrush" Color="{StaticResource DisableThumbColor}"/>
+                        <Thickness x:Key="ThemeIconMargin">3 0</Thickness>
+                        <Duration x:Key="AnimationDuration">0:0:0.3</Duration>
+                        <Geometry x:Key="LightIconData">M12,17c-2.76,0-5-2.24-5-5s2.24-5,5-5,5,2.24,5,5-2.24,5-5,5Zm1-13V1c0-.55-.45-1-1-1s-1,.45-1,1v3c0,.55,.45,1,1,1s1-.45,1-1Zm0,19v-3c0-.55-.45-1-1-1s-1,.45-1,1v3c0,.55,.45,1,1,1s1-.45,1-1ZM5,12c0-.55-.45-1-1-1H1c-.55,0-1,.45-1,1s.45,1,1,1h3c.55,0,1-.45,1-1Zm19,0c0-.55-.45-1-1-1h-3c-.55,0-1,.45-1,1s.45,1,1,1h3c.55,0,1-.45,1-1ZM6.71,6.71c.39-.39,.39-1.02,0-1.41l-2-2c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l2,2c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29Zm14,14c.39-.39,.39-1.02,0-1.41l-2-2c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l2,2c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29Zm-16,0l2-2c.39-.39,.39-1.02,0-1.41s-1.02-.39-1.41,0l-2,2c-.39,.39-.39,1.02,0,1.41,.2,.2,.45,.29,.71,.29s.51-.1,.71-.29ZM18.71,6.71l2-2c.39-.39,.39-1.02,0-1.41s-1.02-.39-1.41,0l-2,2c-.39,.39-.39,1.02,0,1.41,.2,.2,.45,.29,.71,.29s.51-.1,.71-.29Z</Geometry>
+                        <Geometry x:Key="DarkIconData">M14,24A12.013,12.013,0,0,1,2,12C1.847,3.044,12.031-2.985,19.791,1.509l1.553.862-1.543.88c-6.7,3.688-6.21,13.87.8,16.906l1.621.731-1.467,1.006A11.921,11.921,0,0,1,14,24Z</Geometry>
+                    </ControlTemplate.Resources>
+                    <Grid HorizontalAlignment="Center" ToolTip="{TemplateBinding ToolTip}" Cursor="Hand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Grid Width="{StaticResource SwitchWidth}" Height="{StaticResource SwitchHeight}" Grid.Column="0">
+                            <!-- Track -->
+                            <Border x:Name="SwitchTrack"
+                                CornerRadius="10"
+                                Background="{TemplateBinding Background}"/>
+
+                            <!-- Thumb -->
+                            <Border x:Name="SwitchThumb"
+                                Width="13" Height="13"
+                                CornerRadius="10"
+                                Background="White"
+                                Margin="2"
+                                HorizontalAlignment="Left"
+                                RenderTransformOrigin="0.5,0.5">
+                                <Border.RenderTransform>
+                                    <TranslateTransform x:Name="ThumbTranslate"/>
+                                </Border.RenderTransform>
+                                <Border.Effect>
+                                    <DropShadowEffect Color="#40000000" BlurRadius="2" ShadowDepth="1"/>
+                                </Border.Effect>
+                            </Border>
+
+                            <local:InnoIcon x:Name="LightIcon" Visibility="{TemplateBinding ThemeIconVisibility}" Fill="{TemplateBinding Foreground}"  Width="{StaticResource ThemeIconHeight}" Height="{StaticResource ThemeIconHeight}" MaxWidth="{StaticResource ThemeIconHeight}" MaxHeight="{StaticResource ThemeIconHeight}" IconData="{StaticResource LightIconData}" HorizontalAlignment="Right" Margin="{StaticResource ThemeIconMargin}"/>
+                            <local:InnoIcon x:Name="DarkIcon" Visibility="{TemplateBinding ThemeIconVisibility}" Fill="{TemplateBinding Foreground}" Width="{StaticResource ThemeIconHeight}" Height="{StaticResource ThemeIconHeight}" MaxWidth="{StaticResource ThemeIconHeight}" MaxHeight="{StaticResource ThemeIconHeight}" IconData="{StaticResource DarkIconData}" HorizontalAlignment="Left" Margin="{StaticResource ThemeIconMargin}"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1" Visibility="{TemplateBinding ThemeIconVisibility}">
+                            <!--<local:InnoIcon x:Name="LightIcon" Fill="{TemplateBinding Foreground}"  Width="{StaticResource SwitchWidth}" Height="{StaticResource SwitchHeight}" MaxWidth="{StaticResource SwitchWidth}" MaxHeight="{StaticResource SwitchHeight}" IconData="{StaticResource LightIconData}"/>
+                            <local:InnoIcon x:Name="DarkIcon" Fill="{TemplateBinding Foreground}" Width="{StaticResource DarkIconHeight}" Height="{StaticResource DarkIconHeight}" MaxWidth="{StaticResource DarkIconHeight}" MaxHeight="{StaticResource DarkIconHeight}" IconData="{StaticResource DarkIconData}"/>-->
+                        </Grid>
+
+                        <ContentPresenter x:Name="Content" Grid.Column="2" Content="{TemplateBinding Content}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding ContentMargin}"/>
+
+
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+
+                        <!-- ON -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="SwitchTrack"
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="{StaticResource ActiveColor}" Duration="{StaticResource AnimationDuration}"/>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ThumbTranslate"
+                                            Storyboard.TargetProperty="X"
+                                            To="16" Duration="{StaticResource AnimationDuration}"/>
+                                        <DoubleAnimation Storyboard.TargetName="LightIcon" Storyboard.TargetProperty="Opacity" From="1" To="0" FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
+                                        <DoubleAnimation Storyboard.TargetName="DarkIcon" Storyboard.TargetProperty="Opacity" From="0" To="1" FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
+
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="SwitchTrack"
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="{StaticResource InactiveColor}" Duration="{StaticResource AnimationDuration}"/>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="ThumbTranslate"
+                                            Storyboard.TargetProperty="X"
+                                            To="0" Duration="{StaticResource AnimationDuration}"/>
+                                        <DoubleAnimation Storyboard.TargetName="LightIcon" Storyboard.TargetProperty="Opacity" From="0" To="1" FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
+                                        <DoubleAnimation Storyboard.TargetName="DarkIcon" Storyboard.TargetProperty="Opacity" From="1" To="0" FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                        <!-- Disabled -->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="SwitchTrack" Property="Background" Value="{StaticResource DisableTrackColorBrush}"/>
+                            <Setter TargetName="SwitchThumb" Property="Background" Value="{StaticResource DisableThumbColorBrush}"/>
+                            <Setter TargetName="SwitchThumb" Property="Opacity" Value="0.7"/>
+                            <Setter TargetName="LightIcon" Property="Fill" Value="{StaticResource DisableThumbColorBrush}"/>
+                            <Setter TargetName="DarkIcon" Property="Fill" Value="{StaticResource DisableThumbColorBrush}"/>
+                            <Setter TargetName="Content" Property="TextElement.Foreground" Value="{StaticResource DisableThumbColorBrush}"/>
+                        </Trigger>
+
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <!--<system:Double x:Key="SwitchWidth">35</system:Double>
+    <system:Double x:Key="SwitchHeight">16</system:Double>
+    <system:Double x:Key="DarkIconHeight">12</system:Double>-->
+
+    
+
+    <!--<Style TargetType="{x:Type local:Switch}">
         <Setter Property="BorderThickness" Value="1.5" />
-        <Setter Property="Background" Value="{StaticResource DefaultBackgroundColor}"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -817,65 +940,154 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Switch}" >
                     <ControlTemplate.Resources>
+                        <Color x:Key="TransaprentColor" >#02985555</Color>
+                        <SolidColorBrush x:Key="DefaultBackgroundColor" Color="{StaticResource TransaprentColor}" />
                         <Color x:Key="ActivateColor">Blue</Color>
                         <Color x:Key="DesactivateColor">Gray</Color>
-                        <SolidColorBrush x:Key="ActivateColorBrush" Color="{StaticResource ActivateColor}"/>
-                        <SolidColorBrush x:Key="DesactivateColorBrush" Color="{StaticResource DesactivateColor}"/>
+                        <SolidColorBrush x:Key="ActiveBorderColor" Color="{StaticResource ActivateColor}"/>
+                        <SolidColorBrush x:Key="DesactivateBorderColor" Color="{StaticResource DesactivateColor}"/>
+                        <Color x:Key="ActiveBorderBackColor" >#FF00FBEA</Color>
+                        <SolidColorBrush x:Key="ActiveBorderBackColorBrush" Color="{StaticResource ActiveBorderBackColor}"/>
                         <Thickness x:Key="ActivateMargin">16 0 0 0</Thickness>
                         <Thickness x:Key="DesactivateMargin">0 0 0 0</Thickness>
                         <converters:SwitchWidthToCircleSize x:Key="SwitchWidthToCircleSize"/>
                         <converters:SwitchSizeToCircleMargin x:Key="SwitchSizeToCircleMargin"/>
                         <Duration x:Key="AnimationDuration">0:0:0.3</Duration>
-                        <Geometry x:Key="LigthIconData">M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z</Geometry>
+                        <Geometry x:Key="LightIconData">M12,17c-2.76,0-5-2.24-5-5s2.24-5,5-5,5,2.24,5,5-2.24,5-5,5Zm1-13V1c0-.55-.45-1-1-1s-1,.45-1,1v3c0,.55,.45,1,1,1s1-.45,1-1Zm0,19v-3c0-.55-.45-1-1-1s-1,.45-1,1v3c0,.55,.45,1,1,1s1-.45,1-1ZM5,12c0-.55-.45-1-1-1H1c-.55,0-1,.45-1,1s.45,1,1,1h3c.55,0,1-.45,1-1Zm19,0c0-.55-.45-1-1-1h-3c-.55,0-1,.45-1,1s.45,1,1,1h3c.55,0,1-.45,1-1ZM6.71,6.71c.39-.39,.39-1.02,0-1.41l-2-2c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l2,2c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29Zm14,14c.39-.39,.39-1.02,0-1.41l-2-2c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l2,2c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29Zm-16,0l2-2c.39-.39,.39-1.02,0-1.41s-1.02-.39-1.41,0l-2,2c-.39,.39-.39,1.02,0,1.41,.2,.2,.45,.29,.71,.29s.51-.1,.71-.29ZM18.71,6.71l2-2c.39-.39,.39-1.02,0-1.41s-1.02-.39-1.41,0l-2,2c-.39,.39-.39,1.02,0,1.41,.2,.2,.45,.29,.71,.29s.51-.1,.71-.29Z</Geometry>
+                        <Geometry x:Key="DarkIconData">M14,24A12.013,12.013,0,0,1,2,12C1.847,3.044,12.031-2.985,19.791,1.509l1.553.862-1.543.88c-6.7,3.688-6.21,13.87.8,16.906l1.621.731-1.467,1.006A11.921,11.921,0,0,1,14,24Z</Geometry>
                         <Storyboard x:Key="ActiveAnimation">
                             <ColorAnimation Storyboard.TargetName="MainBorder" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="{StaticResource ActiveBorderBackColor}"  FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
                             <ColorAnimation Storyboard.TargetName="MainBorder" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="{StaticResource ActivateColor}"  FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
                             <ColorAnimation Storyboard.TargetName="Circle" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="{StaticResource ActivateColor}"  FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
                             <ThicknessAnimation Storyboard.TargetName="Circle" Storyboard.TargetProperty="Margin" From="{StaticResource DesactivateMargin}" To="{StaticResource ActivateMargin}"  Duration="{StaticResource AnimationDuration}"/>
-                            <ThicknessAnimation Storyboard.TargetName="ThemeIcon" Storyboard.TargetProperty="Margin" From="{StaticResource ActivateMargin}" To="{StaticResource DesactivateMargin}"  Duration="{StaticResource AnimationDuration}"/>
+                            <DoubleAnimation Storyboard.TargetName="LightIcon" Storyboard.TargetProperty="Opacity" From="1" To="0" FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
+                            <DoubleAnimation Storyboard.TargetName="DarkIcon" Storyboard.TargetProperty="Opacity" From="0" To="1" FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
                         </Storyboard>
-                        <Storyboard x:Key="DesactiveAnimation">
-                            <ColorAnimation Storyboard.TargetName="MainBorder" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="{StaticResource SemiTransaprentColor}"  FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
+                        <Storyboard x:Key="InactiveAnimation">
+                            <ColorAnimation Storyboard.TargetName="MainBorder" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="{StaticResource TransaprentColor}"  FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
                             <ColorAnimation Storyboard.TargetName="MainBorder" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" To="{StaticResource DesactivateColor}"  FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
                             <ColorAnimation Storyboard.TargetName="Circle" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" To="{StaticResource DesactivateColor}"  FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
                             <ThicknessAnimation Storyboard.TargetName="Circle" Storyboard.TargetProperty="Margin" From="{StaticResource ActivateMargin}" To="{StaticResource DesactivateMargin}"  Duration="{StaticResource AnimationDuration}" />
-                            <ThicknessAnimation Storyboard.TargetName="ThemeIcon" Storyboard.TargetProperty="Margin" From="{StaticResource DesactivateMargin}" To="{StaticResource ActivateMargin}"  Duration="{StaticResource AnimationDuration}" />
+                            <DoubleAnimation Storyboard.TargetName="LightIcon" Storyboard.TargetProperty="Opacity" From="0" To="1" FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
+                            <DoubleAnimation Storyboard.TargetName="DarkIcon" Storyboard.TargetProperty="Opacity" From="1" To="0" FillBehavior="HoldEnd" Duration="{StaticResource AnimationDuration}" />
                         </Storyboard>
+                        
                     </ControlTemplate.Resources>
-                    <!--<Grid x:Name="MainGrid" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" MaxWidth="{TemplateBinding MaxWidth}" MaxHeight="{TemplateBinding MaxHeight}">-->
-                    <Grid x:Name="MainGrid" HorizontalAlignment="Center">
+                    
+                    <Grid x:Name="MainGrid" HorizontalAlignment="Center" ToolTip="{TemplateBinding ToolTip}" Cursor="Hand">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
-                        <Border x:Name="MainBorder" Grid.Column="0" Width="{StaticResource SwitchWidth}" Height="{StaticResource SwitchHeight}" MaxWidth="{StaticResource SwitchWidth}" MaxHeight="{StaticResource SwitchHeight}" Background="{TemplateBinding Background}" CornerRadius="{TemplateBinding CornerRadius}"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <Grid>
-                                <Border x:Name="Circle" Background="Gray" Height="{StaticResource SwitchHeight}" Width="{StaticResource SwitchHeight}" BorderThickness="2.5" CornerRadius="50"  VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                                <Viewbox x:Name="ThemeIcon" Height="10" Width="10" HorizontalAlignment="Right" VerticalAlignment="Center" Visibility="{TemplateBinding ThemeIconVisibility}">
-                                    <Path Data="{StaticResource CalendarIconData }" Fill="{StaticResource DesactivateColorBrush}" Margin="5 0"/>
-                                </Viewbox>
-                            </Grid>
+                        --><!--BORDER AND CIRCLE--><!--
+                        <Border x:Name="MainBorder" Grid.Column="0" Width="{StaticResource SwitchWidth}" Height="{StaticResource SwitchHeight}" MaxWidth="{StaticResource SwitchWidth}" MaxHeight="{StaticResource SwitchHeight}" CornerRadius="{TemplateBinding CornerRadius}"  BorderThickness="{TemplateBinding BorderThickness}">
+                            <Border.Background>
+                                <SolidColorBrush Color="{StaticResource TransaprentColor}"/>
+                            </Border.Background>
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="{StaticResource DesactivateColor}"/>
+                            </Border.BorderBrush>
+                            <Border x:Name="Circle" Height="{StaticResource SwitchHeight}" Width="{StaticResource SwitchHeight}" BorderThickness="3.5" CornerRadius="50"  VerticalAlignment="Center" HorizontalAlignment="Left">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{StaticResource DesactivateColor}"/>
+                                </Border.Background>
+                            </Border>
                         </Border>
-                        <ContentPresenter x:Name="Content" Grid.Column="1" Content="{TemplateBinding Content}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding ContentMargin}"/>
+                        
+                        --><!--THEME ICONS--><!--
+                        <Grid Grid.Column="1" Visibility="{TemplateBinding ThemeIconVisibility}">
+                            <local:InnoIcon x:Name="LightIcon" Fill="{TemplateBinding Foreground}"  Width="{StaticResource SwitchWidth}" Height="{StaticResource SwitchHeight}" MaxWidth="{StaticResource SwitchWidth}" MaxHeight="{StaticResource SwitchHeight}" IconData="{StaticResource LightIconData}"/>
+                            <local:InnoIcon x:Name="DarkIcon" Fill="{TemplateBinding Foreground}" Width="{StaticResource DarkIconHeight}" Height="{StaticResource DarkIconHeight}" MaxWidth="{StaticResource DarkIconHeight}" MaxHeight="{StaticResource DarkIconHeight}" IconData="{StaticResource DarkIconData}"/>
+                        </Grid>
+                        
+                        --><!--TITLE / CONTENT--><!--
+                        <ContentPresenter x:Name="Content" Grid.Column="2" Content="{TemplateBinding Content}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Margin="{TemplateBinding ContentMargin}"/>
                     </Grid>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True" >
-                            <Setter Property="Cursor" Value="Hand" />
-                        </Trigger>
+                       
+                        --><!--<Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="BorderBrush" Value="Silver" TargetName="MainBorder"/>
+                            <Setter Property="Background" Value="Transparent" TargetName="MainBorder"/>
+                            <Setter Property="Background" Value="Silver" TargetName="Circle"/>
+                            <Setter Property="TextElement.Foreground" Value="Silver" TargetName="Content"/>
+                            <Setter Property="local:InnoIcon.Fill" Value="Silver" TargetName="LightIcon"/>
+                            <Setter Property="local:InnoIcon.Fill" Value="Silver" TargetName="DarkIcon"/>
+                        </Trigger>--><!--
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True"/>
+                                <Condition Property="IsEnabled" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="BorderBrush" Value="{StaticResource ActiveBorderColor}" TargetName="MainBorder"/>
+                            <Setter Property="Background" Value="{StaticResource ActiveBorderBackColorBrush}" TargetName="MainBorder"/>
+                            <Setter Property="Background" Value="{StaticResource ActiveBorderColor}" TargetName="Circle"/>
+                            --><!--<MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="ASB" Storyboard="{StaticResource ActiveAnimation}"/>
+                            </MultiTrigger.EnterActions>--><!--
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False"/>
+                                <Condition Property="IsEnabled" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="BorderBrush" Value="Silver" TargetName="MainBorder"/>
+                            <Setter Property="Background" Value="Transparent" TargetName="MainBorder"/>
+                            <Setter Property="Background" Value="Silver" TargetName="Circle"/>
+                            <Setter Property="TextElement.Foreground" Value="Silver" TargetName="Circle"/>
+                            <Setter Property="local:InnoIcon.Fill" Value="Silver" TargetName="LightIcon"/>
+                            <Setter Property="local:InnoIcon.Fill" Value="Silver" TargetName="DarkIcon"/>
+                            --><!--<MultiTrigger.ExitActions>
+                                    <BeginStoryboard x:Name="DSB" Storyboard="{StaticResource InactiveAnimation}"/>
+                            </MultiTrigger.ExitActions>--><!--
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="False"/>
+                                <Condition Property="IsEnabled" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="BorderBrush" Value="{StaticResource DesactivateBorderColor}" TargetName="MainBorder"/>
+                            <Setter Property="Background" Value="{StaticResource DefaultBackgroundColor}" TargetName="MainBorder"/>
+                            <Setter Property="Background" Value="{StaticResource DesactivateBorderColor}" TargetName="Circle"/>
+                            <Setter Property="Margin" Value="{StaticResource DesactivateMargin}" TargetName="Circle"/>
+
+                            --><!--<MultiTrigger.EnterActions>
+                                <BeginStoryboard x:Name="ISB" Storyboard="{StaticResource InactiveAnimation}"/>
+                            </MultiTrigger.EnterActions>--><!--
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True"/>
+                                <Condition Property="IsEnabled" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="BorderBrush" Value="Silver" TargetName="MainBorder"/>
+                            <Setter Property="Background" Value="Transparent" TargetName="MainBorder"/>
+                            <Setter Property="Background" Value="Silver" TargetName="Circle"/>
+                            <Setter Property="TextElement.Foreground" Value="Silver" TargetName="Circle"/>
+                            <Setter Property="local:InnoIcon.Fill" Value="Silver" TargetName="LightIcon"/>
+                            <Setter Property="local:InnoIcon.Fill" Value="Silver" TargetName="DarkIcon"/>
+                            <Setter Property="Margin" Value="{StaticResource ActivateMargin}" TargetName="Circle"/>
+
+                        </MultiTrigger>
                         
-                        <EventTrigger RoutedEvent="Checked">
-                            <BeginStoryboard Storyboard="{StaticResource ActiveAnimation}"/>
+                        
+                        <EventTrigger RoutedEvent="Checked" >
+                            <BeginStoryboard x:Name="AA" Storyboard="{StaticResource ActiveAnimation}" />
                         </EventTrigger>
 
                         <EventTrigger RoutedEvent="Unchecked">
-                            <BeginStoryboard Storyboard="{StaticResource DesactiveAnimation}"/>
+                            <BeginStoryboard x:Name="DA" Storyboard="{StaticResource InactiveAnimation}"/>
                         </EventTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
     <!--#endregion SWITCH-->
     
     

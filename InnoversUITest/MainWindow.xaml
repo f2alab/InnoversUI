@@ -8,18 +8,37 @@
         Title="MainWindow"  Width="500"
         KeyDown="Window_KeyDown"
         Loaded="Window_Loaded">
-    
-    
-    <Grid x:Name="MainGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="BackColor" Color="{DynamicResource DarkBackColor}"/>
+    </Window.Resources>
+
+        <Grid x:Name="MainGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{StaticResource BackColor}">
         <ScrollViewer Padding="5">
             <StackPanel >
 
-                <customs:FavoriteCheckBox IsChecked="True" />
+                <customs:FavoriteCheckBox  IsChecked="True" ToolTip="Favorite"/>
 
-                <customs:Switch IsChecked="False" Content="Switch" />
-
+                <CheckBox IsChecked="False" IsEnabled="False" Content="Switch"  ToolTip="Theme" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+                <customs:Switch Name="SwitchCBX" ThemeIconVisibility="Visible" Foreground="blue" IsChecked="True" IsEnabled="True" Checked="Switch_Checked" Unchecked="Switch_Unchecked"/>
+                <customs:Switch ThemeIconVisibility="Visible" Foreground="blue" IsChecked="True" IsEnabled="False" Content="Theme" />
                 <customs:InnoIcon IconData="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
                 <customs:InnoIcon IconData="M12,0A10.011,10.011,0,0,0,2,10c0,5.282,8.4,12.533,9.354,13.343l.646.546.646-.546C13.6,22.533,22,15.282,22,10A10.011,10.011,0,0,0,12,0Zm0,15a5,5,0,1,1,5-5A5.006,5.006,0,0,1,12,15Z" />
+                <customs:InnoIcon IconData="M3.55 19.09L4.96 20.5L6.76 18.71L5.34 17.29M12 6C8.69 6 6 8.69 6 12S8.69 18 12 18 18 15.31 18 12C18 8.68 15.31 6 12 6M20 13H23V11H20M17.24 18.71L19.04 20.5L20.45 19.09L18.66 17.29M20.45 5L19.04 3.6L17.24 5.39L18.66 6.81M13 1H11V4H13M6.76 5.39L4.96 3.6L3.55 5L5.34 6.81L6.76 5.39M1 13H4V11H1M13 20H11V23H13" />
+                <customs:InnoIcon IconData="M14,24A12.013,12.013,0,0,1,2,12C1.847,3.044,12.031-2.985,19.791,1.509l1.553.862-1.543.88c-6.7,3.688-6.21,13.87.8,16.906l1.621.731-1.467,1.006A11.921,11.921,0,0,1,14,24Z" />
+                <customs:InnoIcon IconData="M12,17c-2.76,0-5-2.24-5-5s2.24-5,5-5,5,2.24,5,5-2.24,5-5,5Zm1-13V1c0-.55-.45-1-1-1s-1,.45-1,1v3c0,.55,.45,1,1,1s1-.45,1-1Zm0,19v-3c0-.55-.45-1-1-1s-1,.45-1,1v3c0,.55,.45,1,1,1s1-.45,1-1ZM5,12c0-.55-.45-1-1-1H1c-.55,0-1,.45-1,1s.45,1,1,1h3c.55,0,1-.45,1-1Zm19,0c0-.55-.45-1-1-1h-3c-.55,0-1,.45-1,1s.45,1,1,1h3c.55,0,1-.45,1-1ZM6.71,6.71c.39-.39,.39-1.02,0-1.41l-2-2c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l2,2c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29Zm14,14c.39-.39,.39-1.02,0-1.41l-2-2c-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41l2,2c.2,.2,.45,.29,.71,.29s.51-.1,.71-.29Zm-16,0l2-2c.39-.39,.39-1.02,0-1.41s-1.02-.39-1.41,0l-2,2c-.39,.39-.39,1.02,0,1.41,.2,.2,.45,.29,.71,.29s.51-.1,.71-.29ZM18.71,6.71l2-2c.39-.39,.39-1.02,0-1.41s-1.02-.39-1.41,0l-2,2c-.39,.39-.39,1.02,0,1.41,.2,.2,.45,.29,.71,.29s.51-.1,.71-.29Z" />
+                <customs:InnoIcon IconData="M23.954,5.542,15.536,13.96a5.007,5.007,0,0,1-7.072,0L.046,5.542C.032,5.7,0,5.843,0,6V18a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V6C24,5.843,23.968,5.7,23.954,5.542Z M14.122,12.546l9.134-9.135A4.986,4.986,0,0,0,19,1H5A4.986,4.986,0,0,0,.744,3.411l9.134,9.135A3.007,3.007,0,0,0,14.122,12.546Z" />
+
+                <Viewbox Height="24" Width="24">
+                    <Path  StrokeThickness="1" Fill="Orange" Stroke="Orange">
+                        <Path.Data> 
+                            <CombinedGeometry GeometryCombineMode="Union"
+                          Geometry1="M23.954,5.542,15.536,13.96a5.007,5.007,0,0,1-7.072,0L.046,5.542C.032,5.7,0,5.843,0,6V18a5.006,5.006,0,0,0,5,5H19a5.006,5.006,0,0,0,5-5V6C24,5.843,23.968,5.7,23.954,5.542Z"
+                          Geometry2="M14.122,12.546l9.134-9.135A4.986,4.986,0,0,0,19,1H5A4.986,4.986,0,0,0,.744,3.411l9.134,9.135A3.007,3.007,0,0,0,14.122,12.546Z" />
+                        </Path.Data>
+                    </Path>
+                </Viewbox>
+                
                 <Border Height="8"/>
                 <customs:InnoComboBox HintText="Catégorie" IsEditable="True" Margin="8">
                     <ComboBoxItem Content="TG"/>

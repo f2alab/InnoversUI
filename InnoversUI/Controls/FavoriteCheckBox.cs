@@ -1,7 +1,9 @@
-﻿using System;
+﻿using InnoversUI.Utils;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 namespace InnoversUI.Controls
@@ -20,6 +22,23 @@ namespace InnoversUI.Controls
         public static readonly DependencyProperty SizeProperty =
             DependencyProperty.Register("Size", typeof(double), typeof(FavoriteCheckBox), new PropertyMetadata(24.0));
         #endregion [SIZE]
+
+
+
+
+
+        //public SolidColorBrush ActiveColor
+        //{
+        //    get { return (SolidColorBrush)GetValue(ActiveColorProperty); }
+        //    set { SetValue(ActiveColorProperty, value); }
+        //}
+
+        //// Using a DependencyProperty as the backing store for ActiveColor.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty ActiveColorProperty =
+        //    DependencyProperty.Register("ActiveColor", typeof(SolidColorBrush), typeof(FavoriteCheckBox), new PropertyMetadata(ColorsUtils.ColorFromHex("#FFC107")));
+
+
+
 
         static FavoriteCheckBox()
         {

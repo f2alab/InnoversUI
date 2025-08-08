@@ -7,29 +7,30 @@ namespace InnoversUI.Utils
     public class ResourcesUtils
     {
         //CHANGE RESOURCE COLOR
-        public static void ChangeSolidBrushResourceColor(string ResourceKey, Brush NewSolidBrushColor)
+        internal static void ChangeSolidBrushResourceColor(string ResourceKey, Brush NewSolidBrushColor)
         {
             Application.Current.Resources[ResourceKey] = NewSolidBrushColor;
         }
 
-        public static void ChangeColorResourceColor(string ResourceKey, Color NewColor)
+        internal static void ChangeColorResourceColor(string ResourceKey, Color NewColor)
         {
             Application.Current.Resources[ResourceKey] = NewColor;
         }
 
-        public static SolidColorBrush GetResourceSolidBrushColor(Control Control, string ResourceKey)
+        internal static SolidColorBrush GetResourceSolidBrushColor(FrameworkElement Element, string ResourceKey)
         {
-            return Control.FindResource(ResourceKey) as SolidColorBrush;
+            return Element.FindResource(ResourceKey) as SolidColorBrush;
         }
 
-        public static Color GetResourceColor(Control Control, string ResourceKey)
+        internal static Color GetResourceColor(FrameworkElement Element, string ResourceKey)
         {
-            return (Color)Control.FindResource(ResourceKey);
+            return (Color)Element.FindResource(ResourceKey);
         }
 
-        public static double GetResourceDouble(Control Control, string ResourceKey)
+
+        public static double GetResourceDouble(FrameworkElement Element, string ResourceKey)
         {
-            return (double)Control.FindResource(ResourceKey);
+            return (double)Element.FindResource(ResourceKey);
         }
     }
 }

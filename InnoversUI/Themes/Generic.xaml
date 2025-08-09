@@ -802,8 +802,6 @@
 
 
     <Style TargetType="{x:Type local:Switch}">
-        <!--<Setter Property="Width" Value="35"/>-->
-        <!--<Setter Property="Height" Value="18"/>-->
         <Setter Property="Background" Value="LightGray"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
@@ -853,8 +851,8 @@
                                 </Border.Effect>
                             </Border>
 
-                            <local:InnoIcon x:Name="LightIcon" Visibility="{TemplateBinding ThemeIconVisibility}" Fill="{TemplateBinding Foreground}"  Width="{StaticResource ThemeIconHeight}" Height="{StaticResource ThemeIconHeight}" MaxWidth="{StaticResource ThemeIconHeight}" MaxHeight="{StaticResource ThemeIconHeight}" IconData="{StaticResource LightIconData}" HorizontalAlignment="Right" Margin="{StaticResource ThemeIconMargin}"/>
-                            <local:InnoIcon x:Name="DarkIcon" Visibility="{TemplateBinding ThemeIconVisibility}" Fill="{TemplateBinding Foreground}" Width="{StaticResource ThemeIconHeight}" Height="{StaticResource ThemeIconHeight}" MaxWidth="{StaticResource ThemeIconHeight}" MaxHeight="{StaticResource ThemeIconHeight}" IconData="{StaticResource DarkIconData}" HorizontalAlignment="Left" Margin="{StaticResource ThemeIconMargin}"/>
+                            <local:InnoIcon x:Name="LightIcon" Visibility="{TemplateBinding ThemeIconVisibility}" Fill="White"  Width="{StaticResource ThemeIconHeight}" Height="{StaticResource ThemeIconHeight}" MaxWidth="{StaticResource ThemeIconHeight}" MaxHeight="{StaticResource ThemeIconHeight}" IconData="{StaticResource LightIconData}" HorizontalAlignment="Right" Margin="{StaticResource ThemeIconMargin}"/>
+                            <local:InnoIcon x:Name="DarkIcon" Visibility="{TemplateBinding ThemeIconVisibility}" Fill="White" Width="{StaticResource ThemeIconHeight}" Height="{StaticResource ThemeIconHeight}" MaxWidth="{StaticResource ThemeIconHeight}" MaxHeight="{StaticResource ThemeIconHeight}" IconData="{StaticResource DarkIconData}" HorizontalAlignment="Left" Margin="{StaticResource ThemeIconMargin}"/>
                         </Grid>
 
                         <Grid Grid.Column="1" Visibility="{TemplateBinding ThemeIconVisibility}">

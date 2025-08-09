@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace InnoversUI.Controls
 {
@@ -49,15 +37,15 @@ namespace InnoversUI.Controls
 
 
 
-        public Color ActiveBorderColor
-        {
-            get { return (Color)GetValue(ActiveBorderColorProperty); }
-            set { SetValue(ActiveBorderColorProperty, value); }
-        }
+        //public Color ActiveBorderColor
+        //{
+        //    get { return (Color)GetValue(ActiveBorderColorProperty); }
+        //    set { SetValue(ActiveBorderColorProperty, value); }
+        //}
 
-        // Using a DependencyProperty as the backing store for ActiveBorderColor.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty ActiveBorderColorProperty =
-            DependencyProperty.Register("ActiveBorderColor", typeof(Color), typeof(Switch), new PropertyMetadata(Colors.Blue));
+        //// Using a DependencyProperty as the backing store for ActiveBorderColor.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty ActiveBorderColorProperty =
+        //    DependencyProperty.Register("ActiveBorderColor", typeof(Color), typeof(Switch), new PropertyMetadata(Colors.Blue));
 
         //public Color InactiveBorderColor
         //{
@@ -76,9 +64,9 @@ namespace InnoversUI.Controls
         }
 
 
-        static readonly string MainBorderName = "MainBorder";
-        static readonly string CircleName = "Circle";
-        static readonly string ContentName = "Content";
+        //static readonly string MainBorderName = "MainBorder";
+        //static readonly string CircleName = "Circle";
+        //static readonly string ContentName = "Content";
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();

@@ -98,6 +98,7 @@
     <Compile Include="Utils\InnoIcons.cs" />
     <Compile Include="Utils\ResourcesUtils.cs" />
     <Compile Include="Utils\SystemUtils.cs" />
+    <Compile Include="Utils\ThemesUtils.cs" />
     <Compile Include="Utils\WindowUtils.cs" />
     <Page Include="Child.xaml">
       <SubType>Designer</SubType>
@@ -115,6 +116,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\Brushes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\CheckBoxStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -126,6 +131,18 @@
     <Page Include="Themes\ComboBoxStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\CurrentTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Dark\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Dark\Theme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Themes\DataGridStyles.xaml" />
     <Page Include="Themes\DatePickerStyles.xaml">
@@ -141,6 +158,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="Converters\StrokeDashArrayConverter.cs" />
+    <Page Include="Themes\Light\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Light\Theme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\ScrollbarStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

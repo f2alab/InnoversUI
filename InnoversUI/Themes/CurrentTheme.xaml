@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/InnoversUI;component/Themes/Light/Theme.xaml"/>
+        <!--<ResourceDictionary Source="/InnoversUI;component/Themes/Dark/Theme.xaml"/>-->
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -13,7 +14,6 @@ namespace InnoversUI.Controls
         }
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(CornerRadius), typeof(Switch), new PropertyMetadata(new CornerRadius(8)));
-
 
 
         public Visibility ThemeIconVisibility
@@ -33,6 +33,7 @@ namespace InnoversUI.Controls
 
         public static readonly DependencyProperty ContentMarginProperty =
             DependencyProperty.Register("ContentMargin", typeof(Thickness), typeof(Switch), new PropertyMetadata(new Thickness(3, 0, 0, 0)));
+
 
 
 
@@ -67,6 +68,8 @@ namespace InnoversUI.Controls
         //static readonly string MainBorderName = "MainBorder";
         //static readonly string CircleName = "Circle";
         //static readonly string ContentName = "Content";
+        static readonly string LightIconName = "LightIcon";
+        static readonly string DarkIconName = "DarkIcon";
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
@@ -85,6 +88,19 @@ namespace InnoversUI.Controls
             //Thickness ActivateMargin = (Thickness) MainBorder.FindResource(resourceKey: "ActivateMargin");
             //Thickness InactivateMargin = (Thickness) MainBorder.FindResource(resourceKey: "DesactivateMargin");
 
+            //InnoIcon LightIcon = (InnoIcon)Template.FindName(LightIconName, this);
+            //InnoIcon DarkIcon = (InnoIcon)Template.FindName(DarkIconName, this);
+
+            //if(IsChecked == true)
+            //{
+            //    LightIcon.Visibility = Visibility.Collapsed;
+            //    DarkIcon.Visibility = Visibility.Visible;
+            //}
+            //else
+            //{
+            //    LightIcon.Visibility = Visibility.Visible;
+            //    DarkIcon.Visibility = Visibility.Collapsed;
+            //}
             
 
             //if (IsEnabled == false)
@@ -151,6 +167,26 @@ namespace InnoversUI.Controls
             
 
 
+        }
+
+        private void ThemeIconState(bool IsChecked)
+        {
+            InnoIcon LightIcon = (InnoIcon)Template.FindName(LightIconName, this);
+            InnoIcon DarkIcon = (InnoIcon)Template.FindName(DarkIconName, this);
+
+           if(LightIcon  != null && DarkIcon != null)
+           {
+                if (IsChecked)
+                {
+                    LightIcon.Visibility = Visibility.Collapsed;
+                    DarkIcon.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    LightIcon.Visibility = Visibility.Visible;
+                    DarkIcon.Visibility = Visibility.Collapsed;
+                }
+           }
         }
     }
 }

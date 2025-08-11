@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    
+    <SolidColorBrush x:Key="MenuBackColor" Color="{DynamicResource MenuColor}"/>
+    <SolidColorBrush x:Key="ScaffoldBackColor" Color="{DynamicResource BackColor}"/>
+    <SolidColorBrush x:Key="AntiScaffoldBackColor" Color="{DynamicResource AntiLightBackColor}"/>
+    <SolidColorBrush x:Key="ForegroundColor" Color="{DynamicResource ForegroundColor}"/>
+    <SolidColorBrush x:Key="AntiForegroundColor" Color="{DynamicResource AntiLightForegroundColor}"/>
+    <SolidColorBrush x:Key="DataGridAlternateRowBackColor" Color="{DynamicResource DarkDataGridAlternateRowBackColor}"/>
+    <SolidColorBrush x:Key="ScrollBarColor" Color="{DynamicResource ScrollBarColor}"/>
+    <SolidColorBrush x:Key="ScrollBarMouseOverColor" Color="{DynamicResource ScrollBarMouseOverColor}"/>
+    <SolidColorBrush x:Key="ChartForegroundColor" Color="{DynamicResource ChartForegroundColor}"/>
+    <SolidColorBrush x:Key="ChildrenPageHeaderBlue" Color="#FF81A6D6"/>
+    <SolidColorBrush x:Key="MenuSelectedItemBackColor" Color="{DynamicResource MenuSelectedItemColor}"/>
+
+    <SolidColorBrush x:Key="SelectedTabBackColor" Color="Azure"/>
+    <SolidColorBrush x:Key="MenuBtnOverBackColor" Color="{DynamicResource MenuBtnOverColor}"/>
+    <SolidColorBrush x:Key="DataGridDetailsIconColor" Color="Olive"/>
+
+</ResourceDictionary>

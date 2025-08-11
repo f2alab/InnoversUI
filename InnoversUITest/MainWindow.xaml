@@ -13,15 +13,17 @@
         <SolidColorBrush x:Key="BackColor" Color="{DynamicResource DarkBackColor}"/>
     </Window.Resources>
 
-        <Grid x:Name="MainGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{StaticResource BackColor}">
+        <Grid x:Name="MainGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource ScaffoldBackColor}">
         <ScrollViewer Padding="5">
             <StackPanel >
 
+                <Border x:Name="CollapsedBorder" Width="200" Height="50" Background="Teal" CornerRadius="8" d:Visibility="Visible" Visibility="Collapsed"/>
                 <customs:FavoriteCheckBox  IsChecked="True" ToolTip="Favorite"/>
 
                 <CheckBox IsChecked="False" IsEnabled="True" Content="Switch"  ToolTip="Theme" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
                 <customs:Switch Name="SwitchCBX" ThemeIconVisibility="Visible" Foreground="blue" IsChecked="True" IsEnabled="True" Checked="Switch_Checked" Unchecked="Switch_Unchecked"/>
-                <customs:Switch ThemeIconVisibility="Visible" Foreground="blue" IsChecked="True" IsEnabled="False" Content="Theme" />
+                <customs:Switch x:Name="SW1" ThemeIconVisibility="Visible" Foreground="blue" IsChecked="True" IsEnabled="True" Content="Theme" />
+                <customs:Switch ThemeIconVisibility="Visible" Foreground="blue" IsChecked="False"  IsEnabled="True" Content="Theme" />
                 <customs:InnoIcon IconData="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" />
                 <customs:InnoIcon IconData="M12,0A10.011,10.011,0,0,0,2,10c0,5.282,8.4,12.533,9.354,13.343l.646.546.646-.546C13.6,22.533,22,15.282,22,10A10.011,10.011,0,0,0,12,0Zm0,15a5,5,0,1,1,5-5A5.006,5.006,0,0,1,12,15Z" />
                 <customs:InnoIcon IconData="M3.55 19.09L4.96 20.5L6.76 18.71L5.34 17.29M12 6C8.69 6 6 8.69 6 12S8.69 18 12 18 18 15.31 18 12C18 8.68 15.31 6 12 6M20 13H23V11H20M17.24 18.71L19.04 20.5L20.45 19.09L18.66 17.29M20.45 5L19.04 3.6L17.24 5.39L18.66 6.81M13 1H11V4H13M6.76 5.39L4.96 3.6L3.55 5L5.34 6.81L6.76 5.39M1 13H4V11H1M13 20H11V23H13" />
@@ -147,7 +149,7 @@
                     </Grid>
                 </customs:InnoButton>
                 <Border Height="10" />
-                <customs:InnoButton x:Name="DialogWithChildBtn" Content="Dialog With Child" UseLayoutRounding="True" FontWeight="Normal" Background="red" Click="DialogWithChildBtn_Click"/>
+                <customs:InnoButton x:Name="DialogWithChildBtn" Content="Dialog With Child" UseLayoutRounding="True" FontWeight="Normal" CornerRadius="20" Margin="10" Background="red" Click="DialogWithChildBtn_Click"/>
                 <Border Height="10" />
                 <customs:CircleButton>
                     <Viewbox  Width="24">

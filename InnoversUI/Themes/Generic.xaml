@@ -829,7 +829,8 @@
                         <system:Double x:Key="SwitchWidth">35</system:Double>
                         <system:Double x:Key="SwitchHeight">18</system:Double>
                         <system:Double x:Key="ThemeIconHeight">12</system:Double>
-                        <Color x:Key="ActiveColor">#4CAF50</Color>
+                        <!--<Color x:Key="ActiveColor">#4CAF50</Color>-->
+                        <Color x:Key="ActiveColor">Teal</Color>
                         <Color x:Key="InactiveColor">Gray</Color>
                         <Color x:Key="DisableTrackColor">Silver</Color>
                         <Color x:Key="DisableThumbColor">Silver</Color>
@@ -902,7 +903,7 @@
                         <!-- ON -->
                         <Trigger Property="IsChecked" Value="True">
                             
-                            <Setter Property="Background" Value="White" TargetName="SwitchThumb"/>
+                            <!--<Setter Property="Background" Value="White" TargetName="SwitchThumb"/>-->
                             
                             <Trigger.EnterActions>
 
@@ -910,31 +911,40 @@
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
 
-                            <Trigger.ExitActions>
+                            <!--<Trigger.ExitActions>
                                 <BeginStoryboard Storyboard="{StaticResource ActiveExitStoryBoard}">
                                 </BeginStoryboard>
-                            </Trigger.ExitActions>
+                            </Trigger.ExitActions>-->
                         </Trigger>
 
 
                         <!--OFF-->
                         <Trigger Property="IsChecked" Value="False">
 
-                            <Setter Property="Background" Value="White" TargetName="SwitchThumb"/>
+                            <!--<Setter Property="Background" Value="White" TargetName="SwitchThumb"/>-->
 
-                            <Trigger.ExitActions>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard Storyboard="{StaticResource ActiveExitStoryBoard}">
+
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+
+                            <!--<Trigger.ExitActions>
                                 
                                 <BeginStoryboard Storyboard="{StaticResource ActiveExitStoryBoard}">
 
                                 </BeginStoryboard>
-                            </Trigger.ExitActions>
+                            </Trigger.ExitActions>-->
 
-                            <Trigger.EnterActions>
-                                <BeginStoryboard Storyboard="{StaticResource ActiveEnterStoryBoard}">
-
-                                </BeginStoryboard>
-                            </Trigger.EnterActions>
+                           
                         </Trigger>
+
+                        <EventTrigger RoutedEvent="Checked">
+                            <BeginStoryboard Storyboard="{StaticResource ActiveEnterStoryBoard}"/>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Unchecked">
+                            <BeginStoryboard Storyboard="{StaticResource ActiveExitStoryBoard}"/>
+                        </EventTrigger>
 
                         <!-- DISABLED -->
                         <Trigger Property="IsEnabled" Value="False">

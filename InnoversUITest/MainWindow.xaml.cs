@@ -22,7 +22,7 @@ namespace InnoversUITest
             AnimationsUtils.VerticalSlideAnimation(Element: MainGrid, From: 100, CompletedAction: () => { Console.WriteLine("ANIMATION IS COMPLETED"); });
 
 
-            SW1.IsChecked = false;
+            //SW1.IsChecked = false;
 
             Console.WriteLine($"WIDTH: {ControlsUtils.CollapseControlWidth(Element: CollapsedBorder)}");
             Console.WriteLine($"");
@@ -106,18 +106,20 @@ namespace InnoversUITest
 
         private void Switch_Checked(object sender, RoutedEventArgs e)
         {
-            //SwitchCBX.Content = "On";
+            if(IsLoaded)
+                SwitchCBX.Content = "On";
             //Switch.IsEnabled = true;
 
-            ThemesUtils.SetTheme(ThemesUtils.Theme.Dark);
+            //ThemesUtils.SetTheme(ThemesUtils.Theme.Dark);
         }
 
         private void Switch_Unchecked(object sender, RoutedEventArgs e)
         {
-            //Switch.Content = "Off";
+            if(IsLoaded)
+             SwitchCBX.Content = "Off";
             //Switch.IsEnabled = false;
 
-            ThemesUtils.SetTheme(ThemesUtils.Theme.Light);
+            //ThemesUtils.SetTheme(ThemesUtils.Theme.Light);
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)

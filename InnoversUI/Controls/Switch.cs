@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 
 namespace InnoversUI.Controls
 {
@@ -35,9 +37,6 @@ namespace InnoversUI.Controls
             DependencyProperty.Register("ContentMargin", typeof(Thickness), typeof(Switch), new PropertyMetadata(new Thickness(3, 0, 0, 0)));
 
 
-
-
-
         //public Color ActiveBorderColor
         //{
         //    get { return (Color)GetValue(ActiveBorderColorProperty); }
@@ -65,9 +64,9 @@ namespace InnoversUI.Controls
         }
 
 
-        //static readonly string MainBorderName = "MainBorder";
-        //static readonly string CircleName = "Circle";
-        //static readonly string ContentName = "Content";
+        static readonly string MainBorderName = "SwitchTrack";
+        static readonly string CircleName = "Circle";
+        static readonly string ContentName = "Content";
         static readonly string LightIconName = "LightIcon";
         static readonly string DarkIconName = "DarkIcon";
         public override void OnApplyTemplate()
@@ -169,24 +168,6 @@ namespace InnoversUI.Controls
 
         }
 
-        private void ThemeIconState(bool IsChecked)
-        {
-            InnoIcon LightIcon = (InnoIcon)Template.FindName(LightIconName, this);
-            InnoIcon DarkIcon = (InnoIcon)Template.FindName(DarkIconName, this);
-
-           if(LightIcon  != null && DarkIcon != null)
-           {
-                if (IsChecked)
-                {
-                    LightIcon.Visibility = Visibility.Collapsed;
-                    DarkIcon.Visibility = Visibility.Visible;
-                }
-                else
-                {
-                    LightIcon.Visibility = Visibility.Visible;
-                    DarkIcon.Visibility = Visibility.Collapsed;
-                }
-           }
-        }
+       
     }
 }

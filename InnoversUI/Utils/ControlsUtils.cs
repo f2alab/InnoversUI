@@ -27,7 +27,7 @@ namespace InnoversUI.Utils
         //CALCULER HAUTEUR/WIDTH D'UN ELEMENT COLLAPSEED
         public static double CollapseControlWidth(FrameworkElement Element)
         {
-            Element.Measure(new Size(Element.MaxWidth, Element.MaxHeight));
+            Element.Measure(new Size(double.PositiveInfinity, double.PositiveInfinity));
             return Element.DesiredSize.Width;
         }
 

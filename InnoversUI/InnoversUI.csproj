@@ -94,6 +94,7 @@
     <Compile Include="Utils\ControlsUtils.cs" />
     <Compile Include="Utils\DialogsUtils.cs" />
     <Compile Include="Utils\Enums.cs" />
+    <Compile Include="Utils\FilesUtils.cs" />
     <Compile Include="Utils\ImagesUtils.cs" />
     <Compile Include="Utils\InnoIcons.cs" />
     <Compile Include="Utils\ResourcesUtils.cs" />

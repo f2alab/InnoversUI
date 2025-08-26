@@ -209,7 +209,8 @@
         <!--<Setter Property="Padding" Value="5"/>-->
         <Setter Property="Height" Value="35"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontFamily" Value="Arial"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Content" Value="Button"/>
         <Setter Property="Cursor" Value="Hand"/>

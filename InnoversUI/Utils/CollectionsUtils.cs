@@ -42,7 +42,7 @@ namespace InnoversUI.Utils
             }
         }
 
-        public static void LoadObservableCollectionWithoutClear<T, TKey>(
+        public static void LoadObservableCollectionOptimalWithoutClear<T, TKey>(
             IList<T> Source,
             ObservableCollection<T> Cible,
             Func<T, TKey> IdSelector,

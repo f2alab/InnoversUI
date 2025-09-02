@@ -720,13 +720,19 @@
                             </Grid.RowDefinitions>
                             <!--HEADER-->
                             <Border x:Name="HeaderContainer" Grid.Row="0" Height="{TemplateBinding HeaderHeight}" >
-                                <ToggleButton x:Name="HeaderToggleButton" Cursor="Hand" Background="Teal" >
+                                <ToggleButton x:Name="HeaderToggleButton" Cursor="Hand" Background="Teal" IsChecked="{TemplateBinding IsExpanded}">
                                     <ToggleButton.Template>
                                         <ControlTemplate TargetType="ToggleButton">
                                             <ControlTemplate.Resources>
                                                 <converters:ExpanderTileHeaderCornerRadius x:Key="ExpanderTileHeaderCornerRadius"/>
                                                 <Duration x:Key="AnimationDuration">0:0:0.4</Duration>
                                                 <system:Double x:Key="RotationAngle">180</system:Double>
+                                                <Storyboard x:Key="ExpandedEnterStoryBoard" >
+                                                    <DoubleAnimation Storyboard.TargetName="RotateTransform" Storyboard.TargetProperty="Angle" From="0" To="{StaticResource RotationAngle}" Duration="{StaticResource AnimationDuration}" />
+                                                </Storyboard>
+                                                <Storyboard x:Key="ExpandedExitStoryBoard">
+                                                    <DoubleAnimation Storyboard.TargetName="RotateTransform" Storyboard.TargetProperty="Angle" From="{StaticResource RotationAngle}" To="0" Duration="{StaticResource AnimationDuration}" />
+                                                </Storyboard>
                                             </ControlTemplate.Resources>
                                            
                                             <Border x:Name="HeaderMainBorder" Background="{Binding Path=HeaderBackgroundColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}"          
@@ -776,19 +782,39 @@
                                                     <Setter Property="Background" Value="{Binding HeaderMouseOverColor, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ExpanderTile}}" TargetName="HeaderMainBorder"/>
                                                 </Trigger>
 
+                                                <!-- ON -->
+                                                <Trigger Property="IsChecked" Value="True">
+                                                    <Trigger.EnterActions>
+
+                                                        <BeginStoryboard Storyboard="{StaticResource ExpandedEnterStoryBoard}">
+                                                        </BeginStoryboard>
+                                                    </Trigger.EnterActions>
+                                                </Trigger>
+
+
+                                                <!--OFF-->
+                                                <Trigger Property="IsChecked" Value="False">
+                                                    <Trigger.EnterActions>
+                                                        <BeginStoryboard Storyboard="{StaticResource ExpandedExitStoryBoard}">
+
+                                                        </BeginStoryboard>
+                                                    </Trigger.EnterActions>
+                                                </Trigger>
+
                                                 <EventTrigger RoutedEvent="ToggleButton.Checked">
-                                                    <BeginStoryboard>
-                                                        <Storyboard>
+
+                                                    <BeginStoryboard Storyboard="{StaticResource ExpandedEnterStoryBoard}">
+                                                        <!--<Storyboard >
                                                             <DoubleAnimation Storyboard.TargetName="RotateTransform" Storyboard.TargetProperty="Angle" From="0" To="{StaticResource RotationAngle}" Duration="{StaticResource AnimationDuration}" />
-                                                        </Storyboard>
+                                                        </Storyboard>-->
                                                     </BeginStoryboard>
                                                 </EventTrigger>
 
                                                 <EventTrigger RoutedEvent="ToggleButton.Unchecked">
-                                                    <BeginStoryboard>
-                                                        <Storyboard>
+                                                    <BeginStoryboard Storyboard="{StaticResource ExpandedExitStoryBoard}">
+                                                        <!--<Storyboard>
                                                             <DoubleAnimation Storyboard.TargetName="RotateTransform" Storyboard.TargetProperty="Angle" From="{StaticResource RotationAngle}" To="0" Duration="{StaticResource AnimationDuration}" />
-                                                        </Storyboard>
+                                                        </Storyboard>-->
                                                     </BeginStoryboard>
                                                 </EventTrigger>
                                             </ControlTemplate.Triggers>
@@ -907,41 +933,21 @@
                         
                         <!-- ON -->
                         <Trigger Property="IsChecked" Value="True">
-                            
-                            <!--<Setter Property="Background" Value="White" TargetName="SwitchThumb"/>-->
-                            
                             <Trigger.EnterActions>
 
                                 <BeginStoryboard Storyboard="{StaticResource ActiveEnterStoryBoard}">
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
-
-                            <!--<Trigger.ExitActions>
-                                <BeginStoryboard Storyboard="{StaticResource ActiveExitStoryBoard}">
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>-->
                         </Trigger>
 
 
                         <!--OFF-->
                         <Trigger Property="IsChecked" Value="False">
-
-                            <!--<Setter Property="Background" Value="White" TargetName="SwitchThumb"/>-->
-
                             <Trigger.EnterActions>
                                 <BeginStoryboard Storyboard="{StaticResource ActiveExitStoryBoard}">
 
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
-
-                            <!--<Trigger.ExitActions>
-                                
-                                <BeginStoryboard Storyboard="{StaticResource ActiveExitStoryBoard}">
-
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>-->
-
-                           
                         </Trigger>
 
                         <EventTrigger RoutedEvent="Checked">

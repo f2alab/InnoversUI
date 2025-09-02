@@ -78,6 +78,7 @@
     <Compile Include="Converters\StringToPasswordString.cs" />
     <Compile Include="Converters\SwitchSizeToCircleMargin.cs" />
     <Compile Include="Converters\SwitchWidthToCircleSize.cs" />
+    <Compile Include="Converters\TextCapitalize.cs" />
     <Compile Include="Dialogs\DialogWait.xaml.cs">
       <DependentUpon>DialogWait.xaml</DependentUpon>
     </Compile>

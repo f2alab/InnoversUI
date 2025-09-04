@@ -80,7 +80,13 @@
                 <customs:CircleImageButton x:Name="CircleImageBtn" Size="150" BorderThickness="1" SplashColor="SkyBlue" Click="CircleImageBtn_Click"/>
                 <customs:CircleProgressBar IsLoading="True" Size="50" ProgressColor="Red"/>
 
-                
+                <customs:CircleImage Size="200" ImageSource="/Assets/firme.png" BorderColor="Blue" BorderWidth="4">
+                    <!--<customs:CircleImage.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="5"/>
+                    </customs:CircleImage.Effect>-->
+                </customs:CircleImage>
+
+
 
                 <CheckBox x:Name="HideShowPassCheckBox" Cursor="Hand">
                     <CheckBox.Style>

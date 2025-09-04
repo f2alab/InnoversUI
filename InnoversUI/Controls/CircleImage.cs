@@ -40,7 +40,7 @@ namespace InnoversUI.Controls
         }
 
         public static readonly DependencyProperty StretchProperty =
-            DependencyProperty.Register("Stretch", typeof(Stretch), typeof(CircleImage), new PropertyMetadata(Stretch.Uniform));
+            DependencyProperty.Register("Stretch", typeof(Stretch), typeof(CircleImage), new PropertyMetadata(Stretch.UniformToFill));
         #endregion [IMAGE STRETCH]
 
         //BORDER COLOR 
@@ -54,9 +54,48 @@ namespace InnoversUI.Controls
         public static readonly DependencyProperty BorderColorProperty =
             DependencyProperty.Register("BorderColor", typeof(Brush), typeof(CircleImage), new PropertyMetadata(Brushes.Gray));
         #endregion [BORDER COLOR]
+
+        #region [BORDER THICKNESS]
+
+
+        public double BorderWidth
+        {
+            get { return (double)GetValue(BorderWidthProperty); }
+            set { SetValue(BorderWidthProperty, value); }
+        }
+
+        public static readonly DependencyProperty BorderWidthProperty =
+            DependencyProperty.Register("BorderWidth", typeof(double), typeof(CircleImage), new PropertyMetadata(0d));
+
+
+        #endregion [BORDER THICKNESS]
+
         static CircleImage()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CircleImage), new FrameworkPropertyMetadata(typeof(CircleImage)));
+        }
+
+        private Image _image;
+        private EllipseGeometry _clip;
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            _image = GetTemplateChild("PART_Image") as Image;
+            _clip = _image?.Clip as EllipseGeometry;
+
+            if (_image != null && _clip != null)
+            {
+                _image.SizeChanged += (s, e) =>
+                {
+                    double radiusX = _image.ActualWidth / 2;
+                    double radiusY = _image.ActualHeight / 2;
+                    _clip.Center = new Point(radiusX, radiusY);
+                    _clip.RadiusX = radiusX;
+                    _clip.RadiusY = radiusY;
+                };
+            }
         }
     }
 }

@@ -354,94 +354,87 @@
                     <ControlTemplate.Resources>
                         <converters:DoubleToCornerRadius x:Key="DoubleToCornerRadius"/>
                     </ControlTemplate.Resources>
-                    <Grid>
-                        <Image x:Name="PART_Image" Width="{TemplateBinding Size}" Height="{TemplateBinding Size}" Source="{TemplateBinding ImageSource}" Stretch="{TemplateBinding Stretch}" ToolTip="{TemplateBinding ToolTip}" RenderOptions.BitmapScalingMode="HighQuality">
-                            <Image.Clip>
-                                <EllipseGeometry x:Name="PART_Clip"/>
-                            </Image.Clip>
+                    <Grid x:Name="RootGrid" ClipToBounds="True" Width="{TemplateBinding Size}" Height="{TemplateBinding Size}" Background="Transparent">
+                        <Image x:Name="PART_Image"  MaxHeight="{TemplateBinding Size}" MaxWidth="{TemplateBinding Size}" Source="{TemplateBinding ImageSource}" Stretch="{TemplateBinding Stretch}" ToolTip="{TemplateBinding ToolTip}" RenderOptions.BitmapScalingMode="HighQuality" >
+                            <Image.RenderTransform>
+                                <ScaleTransform x:Name="ImageScale" ScaleX="1" ScaleY="1" />
+                            </Image.RenderTransform>
                         </Image>
-                        <Ellipse Width="{TemplateBinding Size}" Height="{TemplateBinding Size}" Stroke="{TemplateBinding BorderColor}" StrokeThickness="{TemplateBinding BorderWidth}"/>
+                        <Ellipse />
+                        <Ellipse x:Name="PART_Splash" Fill="{TemplateBinding SplashColor}" Opacity="0" Width="{TemplateBinding Size}" Height="{TemplateBinding Size}" IsHitTestVisible="False"/>
+                        <Ellipse x:Name="PART_Border" Width="{TemplateBinding Size}" Height="{TemplateBinding Size}" Stroke="{TemplateBinding BorderColor}" StrokeThickness="{TemplateBinding BorderWidth}" IsHitTestVisible="False"/>
                     </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Zoom au survol -->
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ImageScale"
+                                                     Storyboard.TargetProperty="ScaleX"
+                                                     To="1.1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="ImageScale"
+                                                     Storyboard.TargetProperty="ScaleY"
+                                                     To="1.1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="ImageScale"
+                                                     Storyboard.TargetProperty="ScaleX"
+                                                     To="1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="ImageScale"
+                                                     Storyboard.TargetProperty="ScaleY"
+                                                     To="1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsClickable" Value="True"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <!--Entree : apparition splash-->
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Splash"
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     To="0.4"
+                                                     Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+
+                            <!-- Sortie : disparition splash -->
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Splash"
+                                                     Storyboard.TargetProperty="Opacity"
+                                                     To="0"
+                                                     Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
 
     
-    <!--<Style TargetType="{x:Type local:CircleImage}">
-        <Setter Property="BorderBrush" Value="Gray"/>
-        <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="Template">
-
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:CircleImage}">
-
-                    <ControlTemplate.Resources>
-                        <converters:DoubleToCornerRadius x:Key="DoubleToCornerRadius"/>
-                        <ImageBrush ImageSource="{TemplateBinding ImageSource}" x:Key="IS"/>
-                    </ControlTemplate.Resources>
-
-                    <Grid>
-                        <Border x:Name="Border" Padding="3" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Width="{TemplateBinding Size}" Height="{TemplateBinding Size}" CornerRadius="{TemplateBinding Size, Converter={StaticResource DoubleToCornerRadius}}">
-                            <Border.Background>
-                                <ImageBrush Stretch="{TemplateBinding Stretch}" ImageSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ImageSource}" RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased"/>
-                            </Border.Background>
-                        </Border>
-
-                    </Grid>
-
-
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>-->
     <!--#endregion CIRCLEIMAGE-->
 
-    <!--#region CIRCLEIMAGEBUTTON -->
     
-    <Style TargetType="{x:Type local:CircleImageButton}">
-        <Setter Property="BorderBrush" Value="Gray"/>
-        <Setter Property="BorderThickness" Value="2"/>
-        <Setter Property="Cursor" Value="Hand"/>
-       
-        <Setter Property="Template">
-
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:CircleImageButton}">
-
-                    <ControlTemplate.Resources>
-                        <converters:DoubleToCornerRadius x:Key="DoubleToCornerRadius"/>
-                        <converters:ControlSizeToSplashSize x:Key="ControlSizeToSplashSize"/>
-                    </ControlTemplate.Resources>
-
-                    <Grid>
-                        <Border x:Name="Border" ToolTip="{TemplateBinding ToolTip}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Cursor="{TemplateBinding Cursor}" Width="{TemplateBinding Size}" Height="{TemplateBinding Size}" CornerRadius="{TemplateBinding Size, Converter={StaticResource DoubleToCornerRadius}}">
-                            <Border.Background>
-                                <ImageBrush Stretch="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Stretch}" ImageSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ImageSource}" RenderOptions.BitmapScalingMode="HighQuality">
-                                </ImageBrush>
-                            </Border.Background>
-                        </Border>
-
-                        <Border x:Name="Splash" ToolTip="{TemplateBinding ToolTip}" Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=SplashColor}" Opacity="0.4" Visibility="Hidden" Width="{TemplateBinding Size, Converter={StaticResource ControlSizeToSplashSize}}" Height="{TemplateBinding Size, Converter={StaticResource ControlSizeToSplashSize}}" CornerRadius="{TemplateBinding Size, Converter={StaticResource DoubleToCornerRadius}}">
-
-                        </Border>
-                    </Grid>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Visibility" Value="Visible" TargetName="Splash"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Visibility" Value="Visible" TargetName="Splash"/>
-                            <Setter Property="Opacity" Value="0.7" TargetName="Splash"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-
-
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-    <!--#endregion CIRCLEIMAGEBUTTON-->
 
     <!--#region INNOCOMBOBOX -->
     <system:Double x:Key="ComboBoxFontSize">11</system:Double>

@@ -64,11 +64,11 @@ namespace InnoversUI.Controls
         }
 
 
-        static readonly string MainBorderName = "SwitchTrack";
-        static readonly string CircleName = "Circle";
-        static readonly string ContentName = "Content";
-        static readonly string LightIconName = "LightIcon";
-        static readonly string DarkIconName = "DarkIcon";
+        //static readonly string MainBorderName = "SwitchTrack";
+        //static readonly string CircleName = "Circle";
+        //static readonly string ContentName = "Content";
+        //static readonly string LightIconName = "LightIcon";
+        //static readonly string DarkIconName = "DarkIcon";
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();

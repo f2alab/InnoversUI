@@ -82,10 +82,7 @@ namespace InnoversUITest
             
         }
 
-        private void CircleImageBtn_Click(object sender, RoutedEventArgs e)
-        {
-            ImagesUtils.OpenAndDisplayImage(ImageControl: CircleImageBtn);
-        }
+       
 
         private void CBX_CheckBox_Checked(object sender, RoutedEventArgs e)
         {

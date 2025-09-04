@@ -27,7 +27,7 @@ namespace InnoversUI.Utils
                     image.Source = new BitmapImage(new Uri(openFileDialog.FileName));
                 else if (ImageControl is ImageBrush ib)
                     ib.ImageSource = new BitmapImage(new Uri(openFileDialog.FileName));
-                else if (ImageControl is CircleImageButton cib)
+                else if (ImageControl is CircleImage cib)
                     cib.ImageSource = new BitmapImage(new Uri(openFileDialog.FileName));
                 else { return; }
             }

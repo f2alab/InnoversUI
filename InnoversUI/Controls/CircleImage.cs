@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -70,30 +71,68 @@ namespace InnoversUI.Controls
 
         #endregion [BORDER THICKNESS]
 
+        #region [IS CLICKABLE]
+        public bool IsClickable
+        {
+            get => (bool)GetValue(IsClickableProperty);
+            set => SetValue(IsClickableProperty, value);
+        }
+        public static readonly DependencyProperty IsClickableProperty =
+        DependencyProperty.Register(nameof(IsClickable), typeof(bool), typeof(CircleImage), new PropertyMetadata(false));
+
+        #endregion [IS CLICKABLE]
+
+        #region [SPLASH COLOR]
+        public Brush SplashColor
+        {
+            get => (Brush)GetValue(SplashColorProperty);
+            set => SetValue(SplashColorProperty, value);
+        }
+        public static readonly DependencyProperty SplashColorProperty =
+        DependencyProperty.Register(nameof(SplashColor), typeof(Brush), typeof(CircleImage), new PropertyMetadata(Brushes.LightGray));
+
+        #endregion [SPLASH COLOR]
+
+        #region [SPLASH OPACITY]
+        //public double SplashOpacity
+        //{
+        //    get => (double)GetValue(SplashOpacityProperty);
+        //    set => SetValue(SplashOpacityProperty, value);
+        //}
+        //public static readonly DependencyProperty SplashOpacityProperty =
+        //DependencyProperty.Register(nameof(SplashOpacity), typeof(double), typeof(CircleImage),new PropertyMetadata(0.5));
+
+        #endregion [SPLASH OPACITY]
+
         static CircleImage()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CircleImage), new FrameworkPropertyMetadata(typeof(CircleImage)));
         }
 
-        private Image _image;
+        
+        private Grid _root;
         private EllipseGeometry _clip;
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
-            _image = GetTemplateChild("PART_Image") as Image;
-            _clip = _image?.Clip as EllipseGeometry;
+            _root = GetTemplateChild("RootGrid") as Grid;
 
-            if (_image != null && _clip != null)
+            if (_root != null)
             {
-                _image.SizeChanged += (s, e) =>
+                _clip = new EllipseGeometry();
+                _root.Clip = _clip;
+
+                _root.SizeChanged += (s, e) =>
                 {
-                    double radiusX = _image.ActualWidth / 2;
-                    double radiusY = _image.ActualHeight / 2;
-                    _clip.Center = new Point(radiusX, radiusY);
-                    _clip.RadiusX = radiusX;
-                    _clip.RadiusY = radiusY;
+                    double size = Math.Min(_root.ActualWidth, _root.ActualHeight);
+                    double radius = size / 2;
+
+                    // ✅ Centrage sur le conteneur (pas sur l’image)
+                    _clip.Center = new Point(_root.ActualWidth / 2, _root.ActualHeight / 2);
+                    _clip.RadiusX = radius;
+                    _clip.RadiusY = radius;
                 };
             }
         }

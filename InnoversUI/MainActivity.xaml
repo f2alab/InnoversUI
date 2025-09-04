@@ -36,7 +36,10 @@
 
             <local:CircleImage ImageSource="/InnoversUI;component/Assets/customer_80px.png" />
             <Border Height="10" />
-            <local:CircleImage  Size="10" BorderThickness="1" BorderBrush="BlueViolet" ImageSource="Assets/customer_80px.png"/>
+            <local:CircleImage  Size="40" BorderWidth="1" BorderColor="BlueViolet" ImageSource="Assets/customer_80px.png"/>
+            <Border Height="10" />
+
+            <local:RoundedImage ImageSource="/Assets/customer_80px.png"/>
             <Border Height="10" />
 
             <Viewbox Height="20" Width="20">

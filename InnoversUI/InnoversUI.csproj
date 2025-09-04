@@ -57,7 +57,9 @@
     <Compile Include="Controls\CircleProgressBar.cs" />
     <Compile Include="Controls\DateRange.cs" />
     <Compile Include="Controls\ExpanderTile.cs" />
+    <Compile Include="Controls\RoundedImage.cs" />
     <Compile Include="Controls\Switch.cs" />
+    <Compile Include="Converters\CornerRadiusToRectangeRadius.cs" />
     <Compile Include="Converters\DoubleToBorderThickness.cs" />
     <Compile Include="Converters\ExpanderTileHeaderCornerRadius.cs" />
     <Compile Include="Controls\FavoriteCheckBox.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="Converters\CornerRadiusToLeftIcon.cs" />
     <Compile Include="Converters\DoubleToCornerRadius.cs" />
     <Compile Include="Converters\CircleImageSize.cs" />
+    <Compile Include="Converters\ImageSizeToRect.cs" />
     <Compile Include="Converters\InnoComboBoxButtonRadius.cs" />
     <Compile Include="Converters\NullToVisibility.cs" />
     <Compile Include="Converters\PassBoxVisibilityToBoolean.cs" />

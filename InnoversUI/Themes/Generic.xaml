@@ -347,7 +347,7 @@
     
     <!--#region CIRCLEIMAGE -->
     <Style TargetType="{x:Type local:CircleImage}">
-        
+
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:CircleImage}">
@@ -430,10 +430,41 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-    
     <!--#endregion CIRCLEIMAGE-->
 
+    <!--#region ROUNDEDIMAGE-->
+    <Style TargetType="{x:Type local:RoundedImage}">
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Height" Value="150"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:RoundedImage}">
+                    <ControlTemplate.Resources>
+                        <converters:ImageSizeToRect x:Key="ImageSizeToRect"/>
+                        <converters:CornerRadiusToRectangeRadius x:Key="CornerRadiusToRectangeRadius"/>
+                    </ControlTemplate.Resources>
+                    <Grid x:Name="RootGrid" Width="{TemplateBinding Size}" Height="{TemplateBinding Size}">
+                        <Image x:Name="PART_Image"  Source="{TemplateBinding ImageSource}" Stretch="{TemplateBinding Stretch}" >
+                            <Image.Clip>
+                                <RectangleGeometry 
+                                    Rect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Size, Converter={StaticResource ImageSizeToRect}}"
+                RadiusX="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CornerRadius, Converter={StaticResource CornerRadiusToRectangeRadius}}"
+                RadiusY="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CornerRadius, Converter={StaticResource CornerRadiusToRectangeRadius}}"/>
+                            </Image.Clip>
+                        </Image>
+                        <Border x:Name="PART_Spalsh" Opacity="0" CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderWidth}" Background="{TemplateBinding SplashColor}" SnapsToDevicePixels="True" ClipToBounds="True">
+
+                        </Border>
+                        <Border x:Name="PART_Border" CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderWidth}" BorderBrush="{TemplateBinding BorderColor}" SnapsToDevicePixels="True" ClipToBounds="True">
+
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--#endregion ROUNDEDIMAGE-->
     
 
     <!--#region INNOCOMBOBOX -->

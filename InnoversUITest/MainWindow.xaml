@@ -90,6 +90,19 @@
                    
                 </customs:CircleImage>
 
+                <Grid Width="100" Height="100">
+                    <Image  Source="/Assets/customer_80px.png" Stretch="UniformToFill">
+                        <Image.Clip>
+                            <RectangleGeometry Rect="0,0,100,100" RadiusX="30" RadiusY="30"/>
+                        </Image.Clip>
+                    </Image>
+
+                    <Border  CornerRadius="28" BorderThickness="5" BorderBrush="DodgerBlue" SnapsToDevicePixels="True" ClipToBounds="True">
+
+                    </Border>
+                </Grid>
+                
+
 
                 <CheckBox x:Name="HideShowPassCheckBox" Cursor="Hand">
                     <CheckBox.Style>
@@ -167,6 +180,8 @@
                 </customs:CircleButton>
                 <Border Height="10" />
                 <customs:CircleImage x:Name="CircleImg" ImageSource="/Gifs/customer_80px.png" />
+                <Border Height="10" />
+                <customs:RoundedImage ImageSource="/Assets/tourteau soja.jpg" CornerRadius="20" />
                 <Border Height="10" /> 
                
 

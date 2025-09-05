@@ -90,20 +90,15 @@
                    
                 </customs:CircleImage>
 
-                <Grid Width="100" Height="100">
-                    <Image  Source="/Assets/customer_80px.png" Stretch="UniformToFill">
-                        <Image.Clip>
-                            <RectangleGeometry Rect="0,0,100,100" RadiusX="30" RadiusY="30"/>
-                        </Image.Clip>
-                    </Image>
-
-                    <Border  CornerRadius="28" BorderThickness="5" BorderBrush="DodgerBlue" SnapsToDevicePixels="True" ClipToBounds="True">
-
-                    </Border>
-                </Grid>
                 
 
+                <customs:RoundedImage ImageSource="/Assets/tourteau soja.jpg" Width="200" Height="150" BorderWidth="1" BorderColor="Teal" CornerRadius="20" IsClickable="True"/>
+                
+                <Border Height="10" />
+                
+                <customs:RoundedImage ImageSource="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQCp1Dj9di3VskxnFZUpne-R9TO6yjaL3szTYGjNzDVF3iU8xPYfOI-WrDAuNpWyB6li251HurxlTmbXVbjXpHiminXDOJ_jzxbBUMcIA" Width="200" Height="150" BorderWidth="5" BorderColor="GreenYellow" CornerRadius="20"/>
 
+                
                 <CheckBox x:Name="HideShowPassCheckBox" Cursor="Hand">
                     <CheckBox.Style>
                         <Style TargetType="CheckBox">

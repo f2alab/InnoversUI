@@ -33,14 +33,14 @@ namespace InnoversUI.Controls
 
         //SIZE
         #region [SIZE]
-        public double Size
-        {
-            get { return (double)GetValue(SizeProperty); }
-            set { SetValue(SizeProperty, value); }
-        }
+        //public double Size
+        //{
+        //    get { return (double)GetValue(SizeProperty); }
+        //    set { SetValue(SizeProperty, value); }
+        //}
 
-        public static readonly DependencyProperty SizeProperty =
-            DependencyProperty.Register("Size", typeof(double), typeof(RoundedImage), new PropertyMetadata(80.0));
+        //public static readonly DependencyProperty SizeProperty =
+        //    DependencyProperty.Register("Size", typeof(double), typeof(RoundedImage), new PropertyMetadata(80.0));
         #endregion [SIZE]
 
         //IMAGE SOURCE
@@ -117,9 +117,47 @@ namespace InnoversUI.Controls
         #endregion [SPLASH COLOR]
 
 
+        #region [ANIMATE ON MOUSE OVER]
+        public bool AnimateOnMouseOver
+        {
+            get => (bool)GetValue(AnimateOnMouseOverProperty);
+            set => SetValue(AnimateOnMouseOverProperty, value);
+        }
+
+        public static readonly DependencyProperty AnimateOnMouseOverProperty =
+            DependencyProperty.Register(nameof(AnimateOnMouseOver),
+                typeof(bool), typeof(RoundedImage),
+                new PropertyMetadata(true));
+        #endregion [ANIMATE ON MOUSE OVER]
+
+
         static RoundedImage()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(RoundedImage), new FrameworkPropertyMetadata(typeof(RoundedImage)));
         }
+
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+
+            if (GetTemplateChild("PART_Image") is Image img &&
+                GetTemplateChild("RootGrid") is Grid grid &&
+                GetTemplateChild("PART_Border") is Border border)
+            {
+                grid.SizeChanged += (s, e) =>
+                {
+                    RectangleGeometry Rect = new RectangleGeometry
+                    {
+                        Rect = new Rect(0, 0, grid.ActualWidth, grid.ActualHeight),
+                        RadiusX = CornerRadius.TopLeft + 3,
+                        RadiusY = CornerRadius.TopLeft + 3
+                    };
+                    img.Clip = Rect;
+                    grid.Clip = Rect;
+                    //border.Clip = Rect;
+                };
+            }
+        }
+
     }
 }

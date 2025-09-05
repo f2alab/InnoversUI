@@ -13,7 +13,7 @@ namespace InnoversUI.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return ((CornerRadius)value).TopLeft + 2.5 ;
+            return ((CornerRadius)value).TopLeft + 3 ;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

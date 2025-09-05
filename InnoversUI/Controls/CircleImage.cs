@@ -104,6 +104,19 @@ namespace InnoversUI.Controls
 
         #endregion [SPLASH OPACITY]
 
+        #region [ANIMATE ON MOUSE OVER]
+        public bool AnimateOnMouseOver
+        {
+            get => (bool)GetValue(AnimateOnMouseOverProperty);
+            set => SetValue(AnimateOnMouseOverProperty, value);
+        }
+
+        public static readonly DependencyProperty AnimateOnMouseOverProperty =
+            DependencyProperty.Register(nameof(AnimateOnMouseOver),
+                typeof(bool), typeof(CircleImage),
+                new PropertyMetadata(false));
+        #endregion [ANIMATE ON MOUSE OVER]
+
         static CircleImage()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(CircleImage), new FrameworkPropertyMetadata(typeof(CircleImage)));

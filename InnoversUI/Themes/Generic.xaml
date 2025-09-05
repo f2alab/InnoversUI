@@ -355,7 +355,9 @@
                         <converters:DoubleToCornerRadius x:Key="DoubleToCornerRadius"/>
                     </ControlTemplate.Resources>
                     <Grid x:Name="RootGrid" ClipToBounds="True" Width="{TemplateBinding Size}" Height="{TemplateBinding Size}" Background="Transparent">
-                        <Image x:Name="PART_Image"  MaxHeight="{TemplateBinding Size}" MaxWidth="{TemplateBinding Size}" Source="{TemplateBinding ImageSource}" Stretch="{TemplateBinding Stretch}" ToolTip="{TemplateBinding ToolTip}" RenderOptions.BitmapScalingMode="HighQuality" >
+                        <Image x:Name="PART_Image"  MaxHeight="{TemplateBinding Size}" MaxWidth="{TemplateBinding Size}" Source="{TemplateBinding ImageSource}" Stretch="{TemplateBinding Stretch}" ToolTip="{TemplateBinding ToolTip}"
+                               RenderOptions.BitmapScalingMode="HighQuality" 
+                               RenderTransformOrigin="0.5,0.5">
                             <Image.RenderTransform>
                                 <ScaleTransform x:Name="ImageScale" ScaleX="1" ScaleY="1" />
                             </Image.RenderTransform>
@@ -434,8 +436,8 @@
 
     <!--#region ROUNDEDIMAGE-->
     <Style TargetType="{x:Type local:RoundedImage}">
-        <Setter Property="Width" Value="150"/>
-        <Setter Property="Height" Value="150"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="50"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:RoundedImage}">
@@ -443,22 +445,98 @@
                         <converters:ImageSizeToRect x:Key="ImageSizeToRect"/>
                         <converters:CornerRadiusToRectangeRadius x:Key="CornerRadiusToRectangeRadius"/>
                     </ControlTemplate.Resources>
-                    <Grid x:Name="RootGrid" Width="{TemplateBinding Size}" Height="{TemplateBinding Size}">
-                        <Image x:Name="PART_Image"  Source="{TemplateBinding ImageSource}" Stretch="{TemplateBinding Stretch}" >
-                            <Image.Clip>
-                                <RectangleGeometry 
-                                    Rect="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Size, Converter={StaticResource ImageSizeToRect}}"
-                RadiusX="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CornerRadius, Converter={StaticResource CornerRadiusToRectangeRadius}}"
-                RadiusY="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CornerRadius, Converter={StaticResource CornerRadiusToRectangeRadius}}"/>
-                            </Image.Clip>
-                        </Image>
-                        <Border x:Name="PART_Spalsh" Opacity="0" CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderWidth}" Background="{TemplateBinding SplashColor}" SnapsToDevicePixels="True" ClipToBounds="True">
+                    <Grid x:Name="RootGrid" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" MaxHeight="{TemplateBinding MaxHeight}" MaxWidth="{TemplateBinding MaxWidth}" ClipToBounds="True">
+                        <Border x:Name="PART_ClipContainer"
+                            CornerRadius="{TemplateBinding CornerRadius}"
+                            ClipToBounds="True">
+                            <Image x:Name="PART_Image"
+                               Source="{TemplateBinding ImageSource}"
+                               Stretch="{TemplateBinding Stretch}"
+                               RenderTransformOrigin="0.5,0.5">
+                                <Image.RenderTransform>
+                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                </Image.RenderTransform>
+                            </Image>
+                        </Border>
+                        <Border x:Name="PART_Splash" Opacity="0" CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderWidth}" Background="{TemplateBinding SplashColor}" SnapsToDevicePixels="True" ClipToBounds="True">
 
                         </Border>
-                        <Border x:Name="PART_Border" CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderWidth}" BorderBrush="{TemplateBinding BorderColor}" SnapsToDevicePixels="True" ClipToBounds="True">
+                        <Border x:Name="PART_Border" CornerRadius="{TemplateBinding CornerRadius}" BorderThickness="{TemplateBinding BorderWidth}" BorderBrush="{TemplateBinding BorderColor}" SnapsToDevicePixels="True" ClipToBounds="True" IsHitTestVisible="False">
 
                         </Border>
                     </Grid>
+
+                    <ControlTemplate.Triggers>
+                        
+                        <!--ZOOM AU SURVOL-->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                                <Condition Property="AnimateOnMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+
+                            <!-- Quand on entre -->
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Image"
+                                     Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                     To="1.1" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Image"
+                                     Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                     To="1.1" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+
+                            <!-- Quand on sort -->
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Image"
+                                     Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                     To="1.0" Duration="0:0:0.2"/>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Image"
+                                     Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                     To="1.0" Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                        
+                        <!--AFFICHER SPLASH-->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsClickable" Value="True"/>
+                                <Condition Property="IsMouseOver" Value="True"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <!--Entree : apparition splash-->
+                            <MultiTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Splash"
+                             Storyboard.TargetProperty="Opacity"
+                             To="0.4"
+                             Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.EnterActions>
+
+                            <!-- Sortie : disparition splash -->
+                            <MultiTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PART_Splash"
+                             Storyboard.TargetProperty="Opacity"
+                             To="0"
+                             Duration="0:0:0.2"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </MultiTrigger.ExitActions>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
